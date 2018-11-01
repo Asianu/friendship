@@ -140,3 +140,11 @@ a:hover {
 	cursor: pointer;
 	background-color: orange;
 }
+
+.landing-card > div {
+	transition: transform .5s ease-out;
+}
+
+.landing-card > div:hover {
+	transform: translate(0, -20px);
+}
