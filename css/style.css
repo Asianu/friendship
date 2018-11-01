@@ -13,16 +13,33 @@ html, body {
 /*
  * Reusable css classes goes here
  */
- .page {
- 	padding: 0;
+.link:hover{
+	text-decoration: none;
+	color: white;
+	background-color: orange;
+}
+
+.link {
+	color: black;
+}
+
+div.callout_button {
+	/*border: 5px solid black;*/
+}
+.page {
+	padding: 0;
  	height: 100vh;
- }
+}
 
 /*
  * Navbar styling goes here
  */
- .logo {
-    max-height: 40px;
+.logo {
+	max-height: 40px;
+}
+
+.bg-orange {
+	background-color: orange !important;
 }
 
 /*
