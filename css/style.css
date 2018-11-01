@@ -30,4 +30,5 @@ html, body {
  */
  #landing-screen {
  	border: 1px solid red;
+ 	height: 90vh;
  }
