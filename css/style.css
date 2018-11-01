@@ -20,4 +20,6 @@ div.callout_button {
 /*
  * Navbar styling goes here
  */
-
+ .logo {
+    max-height: 40px;
+}
