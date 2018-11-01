@@ -3,8 +3,7 @@
 	<head>
 
 		<link href="css/bootstrap.min.css" rel="stylesheet">
-		<link href="css/home.css" rel="stylesheet">
-		<link href="css/navBar.css" rel="stylesheet">
+		<link href="css/style.css" rel="stylesheet">
 
 		<!-- Link to FontAwesome icons for free icons -->
 		<!-- <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.2/css/all.css" integrity="sha384-/rXc/GQVaYpyDdyxK+ecHPVYJSN9bmVFBvjA/9eOB+pb3F2w2N6fc5qB9Ew5yIns" crossorigin="anonymous"> -->
@@ -13,50 +12,52 @@
 	</head>
 
 	<body>
-		<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-		  <a class="navbar-brand" href="#"><img class="logo" src="assets/logo.png"/></a>
-		  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-		    <span class="navbar-toggler-icon"></span>
-		  </button>
+		<div class="container-fluid p-0">
+			<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+			  <a class="navbar-brand" href="#"><img class="logo" src="assets/logo.png"/></a>
+			  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+			    <span class="navbar-toggler-icon"></span>
+			  </button>
 
-		  <div class="collapse navbar-collapse" id="navbarSupportedContent">
-		    <ul class="navbar-nav mr-auto">
-		      <li class="nav-item active">
-		        <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
-		      </li>
-		      <li class="nav-item">
-		        <a class="nav-link" href="#">Link</a>
-		      </li>
-		    </ul>
+			  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+			    <ul class="navbar-nav mr-auto">
+			      <li class="nav-item active">
+			        <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+			      </li>
+			      <li class="nav-item">
+			        <a class="nav-link" href="#">Link</a>
+			      </li>
+			    </ul>
 
-	    <!-- Implement this if we feel like a search function is necessary/reach -->
-	    <!--
-		    <form class="form-inline my-2 my-lg-0">
-		      <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-		      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-		    </form>
-		-->
+		    <!-- Implement this if we feel like a search function is necessary/reach -->
+		    <!--
+			    <form class="form-inline my-2 my-lg-0">
+			      <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+			      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+			    </form>
+			-->
 
-		  </div>
-		</nav>
+			  </div>
+			</nav>
 
-		<div class="page container-full mt-5">
-			<div class="row">
-				<div class="col-sm callout_button" id="find_mentor">
-					<i class="fas fa-search"></i>
-					<!-- <img class="home_selector" src="assets/search.png" /> -->
-					<h1>Find a Mentor</h1>
+			<div class="page container mt-5">
+				<div class="row">
+					<div class="col-12 col-sm-6 callout_button" id="find_mentor">
+						<i class="fas fa-search"></i>
+						<!-- <img class="home_selector" src="assets/search.png" /> -->
+						<h1>Find a Mentor</h1>
+					</div>
+
+					<div class="col-12 col-sm-6 callout_button" id="be_mentor">
+						<i class="fas fa-graduation-cap"></i>
+						<!-- <img class="home_selector" src="assets/cap.png" /> -->
+						<h1>Be a Mentor</h1>
+					</div>
 				</div>
 
-				<div class="col-sm callout_button" id="be_mentor">
-					<i class="fas fa-graduation-cap"></i>
-					<!-- <img class="home_selector" src="assets/cap.png" /> -->
-					<h1>Be a Mentor</h1>
-				</div>
 			</div>
 
-		</div>
-
+	</div>
 
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 		<script src="js/bootstrap.min.js"></script>

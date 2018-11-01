@@ -7,15 +7,17 @@
  * General html elements go here.
  */
 html, body {
-	margin: 0;
-	height: 100%;
+	/*height: 100%;*/
 }
 
 /*
  * Reusable css classes goes here
  */
-
+div.callout_button {
+	/*border: 5px solid black;*/
+}
 
 /*
  * Navbar styling goes here
  */
+
