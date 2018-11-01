@@ -7,12 +7,13 @@
  * General html elements go here.
  */
 html, body {
-	/*height: 100%;*/
+	height: 100%;
 }
 
 /*
  * Reusable css classes goes here
  */
+<<<<<<< HEAD
  .link:hover{
 	 text-decoration: none;
  }
@@ -24,6 +25,12 @@ html, body {
 div.callout_button {
 	/*border: 5px solid black;*/
 }
+=======
+ .page {
+ 	padding: 0;
+ 	height: 100vh;
+ }
+>>>>>>> 5db9f232f291c085d34e78a2a14382a0a01f2f29
 
 /*
  * Navbar styling goes here
@@ -31,3 +38,10 @@ div.callout_button {
  .logo {
     max-height: 40px;
 }
+
+/*
+ * Homepage items go here
+ */
+ #landing-screen {
+ 	border: 1px solid red;
+ }
