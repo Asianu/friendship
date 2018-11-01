@@ -13,16 +13,17 @@ html, body {
 /*
  * Reusable css classes goes here
  */
-<<<<<<< HEAD
- .link a:hover{
+ .link:hover{
 	 text-decoration: none;
  }
 
-=======
+ .link {
+	 color: black;
+ }
+
 div.callout_button {
 	/*border: 5px solid black;*/
 }
->>>>>>> 37e862559ffa330fb4efdfc176b0f533b9ce6aa0
 
 /*
  * Navbar styling goes here
