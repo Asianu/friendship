@@ -41,11 +41,66 @@
                 </nav>
             <div class="container p-0">
                 <form>
-                    <div class="form-group">
+                    <div class="form-group mt-3">
                         <label>Name</label>
-
+                        <input type="text" class="form-control" value="Alfred Shibata" readonly/>
+                        <small class="form-text text-muted">If this is not your name, please make sure you're logged in to the correct account</small>
                     </div>
-                </form>
+                    <div class="form-group form-row">
+                        <div class="col-lg">
+                            <label>Type of Activity</label>
+                            <select class="custom-select">
+                                <option selected>Choose...</option>
+                                <option>Art</option>
+                                <option>Board Games</option>
+                                <option>Dancing</option>
+                                <option>Exploration</option>
+                                <option>Food</option>
+                                <option>Music</option>
+                                <option>Nature</option>
+                                <option>Sports</option>
+                                <option>Video Games</option>
+                                <option>Other</option>
+                            </select>
+                        </div>
+                        <div class="col-lg">
+                            <label>Specific Activity</label>
+                            <input type="text" class="form-control"/>
+                        </div>
+                    </div>
+                    <div class="form-group form-row">
+                        <div class="slidecontainer">
+                            <label>Level of Expertise</label>
+                            <input type="range" min="0" max="100" value="50" class="slider" id="myRange">
+                            <p> Value: <span id="demo"></span></p>
+                        </div>
+
+                        <script>
+                        var slider = document.getElementById("myRange");
+                        var output = document.getElementById("demo");
+                        output.innerHTML = slider.value;
+
+                        slider.oninput = function() {
+                            output.innerHTML = this.value;
+                        }
+                        </script>
+                    </div>
+                    <div class="form-group">
+                        <label>Additional Information</label>
+                        <textarea class="form-control" rows="8"></textarea>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm"></div>
+                        <div class="col-sm"></div>
+                        <div class="col-sm mb-3">
+                            <button class="button mx-2 mt-1">Cancel</button>
+                            <button class="button mx-2 mt-1">Submit</button>
+                        </div>
+                    </div>
+                </form
             </div>
         </div>
     </body>
+    
+
+</html>
