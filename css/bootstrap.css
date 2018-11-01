@@ -3933,20 +3933,30 @@ tbody.collapse.show {
   display: block;
 }
 
-.navbar {
+.navbar {    
+  box-sizing: border-box;
+  display: flex;
+  flex: 0 1 auto;
+  flex-direction: row;
+  flex-wrap: wrap;
+  margin-left: 0;
+  margin-right: 0;
+  height: 56px;
+  padding-left: 16px;
+  padding-right: 16px;
   position: relative;
-  display: -webkit-box;
+  align-items: center;
+  /* display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
   -ms-flex-wrap: wrap;
   flex-wrap: wrap;
   -webkit-box-align: center;
   -ms-flex-align: center;
-  align-items: center;
   -webkit-box-pack: justify;
   -ms-flex-pack: justify;
   justify-content: space-between;
-  padding: 0.5rem 1rem;
+  padding: 0.5rem 1rem; */
 }
 
 .navbar > .container,
@@ -3966,8 +3976,8 @@ tbody.collapse.show {
 
 .navbar-brand {
   display: inline-block;
-  padding-top: 0.3125rem;
-  padding-bottom: 0.3125rem;
+  /* padding-top: 0.3125rem; */
+  /* padding-bottom: 0.3125rem; */
   margin-right: 1rem;
   font-size: 1.25rem;
   line-height: inherit;
