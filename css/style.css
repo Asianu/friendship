@@ -1,4 +1,21 @@
+/* Filename: style.css
+ * Description: main stylesheet for project friendship. stylesheet is broken up
+ *				into sections to maintain order.
+ */
+
+/* 
+ * General html elements go here.
+ */
 html, body {
 	margin: 0;
 	height: 100%;
 }
+
+/*
+ * Reusable css classes goes here
+ */
+
+
+/*
+ * Navbar styling goes here
+ */
