@@ -3,6 +3,18 @@
  *				into sections to maintain order.
  */
 
+/* The following numbers correspond to media breakpoints
+ * 	sm: 576px
+ *	md: 768px
+ *	lg: 992px
+ *	xl: 1200px
+ */
+
+
+:root {
+	/* for variables */
+}
+
 /* 
  * General html elements go here.
  */
@@ -10,22 +22,22 @@ html, body {
 	height: 100%;
 }
 
+a {
+	text-align: center;
+}
+
+a:hover {
+	color: white;
+	text-decoration: none;
+}
+
 /*
  * Reusable css classes goes here
  */
-.link:hover{
-	text-decoration: none;
-	color: white;
-	background-color: orange;
-}
-
 .link {
 	color: black;
 }
 
-div.callout_button {
-	/*border: 5px solid black;*/
-}
 .page {
 	padding: 0;
  	height: 100vh;
@@ -45,7 +57,24 @@ div.callout_button {
 /*
  * Homepage items go here
  */
- #landing-screen {
- 	border: 1px solid red;
- 	height: 90vh;
- }
+ @media (min-width: 768px) {
+
+	#landing-screen div {
+		height: 100%;
+	}
+
+}
+
+#landing-screen {
+	height: 100vh;
+}
+
+#landing-screen div {
+	min-height: 200px;
+}
+
+.landing-card:hover {
+	color: white;
+	cursor: pointer;
+	background-color: orange;
+}
