@@ -83,15 +83,25 @@ a:hover {
 }
 
 .button {
-	border-color: orange;
+	/* border-color: orange; */
+	/* border-color: white; */
 	color: orange;
 	font-size: 30px;
 	height: 50px;
 	width: 150px;
 	border-radius: 5px;
 }
+.primary {
+	background-color: orange;
+	color: white;
+	border-color: orange;
+}
 
-.button:hover {
+.alternate {
+	border-color: white;
+}
+
+.button.alternate:hover {
 	color: white;
 	background-color: orange;
 	cursor: pointer;
@@ -99,10 +109,18 @@ a:hover {
 	transition: background-color 0.15s ease-in;
 }
 
-.button:focus {
+.button:hover {
+	color: orange;
+	background-color: white;
+	border-color: orange;
+	cursor: pointer;
+	transition: color 0.15s ease-in, background-color 0.15s ease-in;
+}
+
+.button.primary:focus {
 	outline: none;
-	color: white;
-	background-color: orange;
+	color: orange;
+	background-color: white;
 }
 
 /*
