@@ -14,6 +14,9 @@ html, body {
 /*
  * Reusable css classes goes here
  */
+ .link a:hover{
+	 text-decoration: none;
+ }
 
 
 /*
