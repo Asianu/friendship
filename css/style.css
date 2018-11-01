@@ -13,7 +13,6 @@ html, body {
 /*
  * Reusable css classes goes here
  */
-<<<<<<< HEAD
  .link:hover{
 	 text-decoration: none;
  }
@@ -25,12 +24,10 @@ html, body {
 div.callout_button {
 	/*border: 5px solid black;*/
 }
-=======
  .page {
  	padding: 0;
  	height: 100vh;
  }
->>>>>>> 5db9f232f291c085d34e78a2a14382a0a01f2f29
 
 /*
  * Navbar styling goes here
