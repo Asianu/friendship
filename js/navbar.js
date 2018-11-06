@@ -1,23 +1,17 @@
-var creds = {
-	'user': 'cse170-team-friendship',
-	'password': 'launchpad'
-};
-
 var strg = window.localStorage;
 
 $(document).ready(function(){
-	console.log('Hello World');
 
 	console.log(strg);
 
-	if (strg.getItem('login_token') == null || strg.getItem('login_item') == false) {
+	if (strg.getItem('login_token') != 'true') {
 		console.log('user has not logged in yet');
-		$('#user-icon').hide();
-		$('#login-button').show();
+		$('#nav-user').hide();
+		$('#nav-login').show();
 	}
 	else {
 		console.log('user is logged in')
-		$('#user-icon').show();
-		$('#login-button').hide();
+		$('#nav-user').show();
+		$('#nav-login').hide();
 	}
 });

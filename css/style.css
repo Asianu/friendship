@@ -146,12 +146,12 @@ a.nav-link {
 }
 
 @media (max-width: 768px) {
-	#user-icon, #login-button {
-		display: none;
+	#nav-login, #nav-user {
+		display: none !important;
 	}
 }
 
-#user-icon, #login-button {
+#nav-login, #nav-user {
 	color: #fed294;
 	font-size: 16px;
 }
