@@ -1,153 +1,148 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<head>
-    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <head>
+        <meta name="viewport" content="width=device-width,initial-scale=1">
 
-    <link href="css/bootstrap.min.css" rel="stylesheet">
-    <link href="css/style.css" rel="stylesheet">
+        <link href="css/bootstrap.min.css" rel="stylesheet">
+        <link href="css/style.css" rel="stylesheet">
 
-    <!-- Link to FontAwesome icons for free icons -->
-    <!-- <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.2/css/all.css" integrity="sha384-/rXc/GQVaYpyDdyxK+ecHPVYJSN9bmVFBvjA/9eOB+pb3F2w2N6fc5qB9Ew5yIns" crossorigin="anonymous"> -->
-    <link href="font-awesome/css/all.css" rel="stylesheet">
+        <!-- Link to FontAwesome icons for free icons -->
+        <!-- <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.2/css/all.css" integrity="sha384-/rXc/GQVaYpyDdyxK+ecHPVYJSN9bmVFBvjA/9eOB+pb3F2w2N6fc5qB9Ew5yIns" crossorigin="anonymous"> -->
+        <link href="font-awesome/css/all.css" rel="stylesheet">
 
-</head>
+    </head>
 
-<body>
-    <div class="page">
-        <nav class="navbar navbar-expand-md navbar-dark bg-orange sticky-top">
-            <a class="navbar-brand" href="index.html"><img class="logo" src="assets/logo.png"/></a>
+    <body>
+        <div class="page">
+            <nav class="navbar navbar-expand-md navbar-dark bg-orange sticky-top">
+                <a class="navbar-brand" href="index.html"><img class="logo" src="assets/logo.png"/></a>
 
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
 
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav mr-auto float-left">
-                    <li class="nav-item">
-                        <a class="nav-link" href="find.html">Find</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="register.html">Be</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link nav-hide" href="profile.html">User</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link nav-hide" href="login.html">Login</a>
-                    </li>
-                </ul>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav mr-auto float-left">
+                        <li class="nav-item">
+                            <a class="nav-link" href="find.html">Find</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="register.html">Be</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link nav-hide" id="nav-collapse-user" href="profile.html">User</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link nav-hide" id="nav-collapse-login" href="login.html">Login</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link nav-hide" id="nav-collapse-signout" href="#">Sign Out</a>
+                        </li>
+                    </ul>
 
-                <a class="nav-link" id="nav-login" href="login.html">Login</a>
-                <a class="nav-link" id="nav-user" href="profile.html"><i class="fas fa-user user"></i></a>
-
-        <!-- Implement this if we feel like a search function is necessary/reach -->
-        <!--
-            <form class="form-inline my-2 my-lg-0">
-              <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-              <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-            </form>
-        -->
-
-            </div>
-        </nav>
-
-        <div class="container mt-3">
-            <form>
-                <div class="form-group">
-                    <label>Name</label>
-                    <input type="text" class="form-control" value="Alfred Shibata" readonly />
-                    <small class="form-text text-muted">If this is not your name, please make sure you're logged in to
-                        the correct account</small>
+                    <a class="nav-link nav-custom" id="nav-login" href="login.html">Login</a>
+                    <a class="nav-link nav-custom" id="nav-signout" href="#">Sign Out</a>
+                    <a class="nav-link nav-custom" id="nav-user" href="profile.html"><i class="fas fa-user user"></i></a>
                 </div>
-                <div class="form-group form-row">
-                    <div class="col-lg">
-                        <label>Type of Activity</label>
-                        <select class="custom-select">
-                            <option selected>Choose...</option>
-                            <option>Art</option>
-                            <option>Board Games</option>
-                            <option>Dancing</option>
-                            <option>Exploration</option>
-                            <option>Food</option>
-                            <option>Music</option>
-                            <option>Nature</option>
-                            <option>Sports</option>
-                            <option>Video Games</option>
-                            <option>Other</option>
-                        </select>
+            </nav>
+
+            <div class="container mt-3">
+                <form>
+                    <div class="form-group">
+                        <label>Name</label>
+                        <input type="text" class="form-control" value="Alfred Shibata" readonly />
+                        <small class="form-text text-muted">If this is not your name, please make sure you're logged in to
+                            the correct account</small>
                     </div>
-                    <div class="col-lg">
-                        <label>Specific Activity</label>
-                        <input type="text" class="form-control" />
+                    <div class="form-group form-row">
+                        <div class="col-lg">
+                            <label>Type of Activity</label>
+                            <select class="custom-select">
+                                <option selected>Choose...</option>
+                                <option>Art</option>
+                                <option>Board Games</option>
+                                <option>Dancing</option>
+                                <option>Exploration</option>
+                                <option>Food</option>
+                                <option>Music</option>
+                                <option>Nature</option>
+                                <option>Sports</option>
+                                <option>Video Games</option>
+                                <option>Other</option>
+                            </select>
+                        </div>
+                        <div class="col-lg">
+                            <label>Specific Activity</label>
+                            <input type="text" class="form-control" />
+                        </div>
                     </div>
-                </div>
-                <div class="form-group form-row">
-                    <div class="slidecontainer">
-                        <label>Level of Expertise</label>
-                        <input type="range" min="0" max="100" value="50" class="slider" id="myRange">
-                        <p> Value: <span id="demo"></span></p>
+                    <div class="form-group form-row">
+                        <div class="slidecontainer">
+                            <label>Level of Expertise</label>
+                            <input type="range" min="0" max="100" value="50" class="slider" id="myRange">
+                            <p> Value: <span id="demo"></span></p>
+                        </div>
+
+                        <script>
+                            var slider = document.getElementById("myRange");
+                            var output = document.getElementById("demo");
+                            output.innerHTML = slider.value;
+
+                            slider.oninput = function() {
+                                output.innerHTML = this.value;
+                            }
+                        </script>
+                        
                     </div>
+                    <div class="form-group">
+                        <label>Additional Information</label>
+                        <textarea class="form-control" rows="8"></textarea>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm"></div>
+                        <div class="col-sm"></div>
+                        <div class="col-xs mb-3">
+                            <button class="button retHomeBtn alternate mx-2" id="cancelButton">
+                                <a href="index.html"></a>
+                                Cancel
+                            </button>
+                            <button type="button" class="button primary mx-2" data-toggle="modal" data-target="#exampleModal">
+                                Submit
+                            </button>
 
-                    <script>
-                        var slider = document.getElementById("myRange");
-                        var output = document.getElementById("demo");
-                        output.innerHTML = slider.value;
-
-                        slider.oninput = function() {
-                            output.innerHTML = this.value;
-                        }
-                    </script>
-                    
-                </div>
-                <div class="form-group">
-                    <label>Additional Information</label>
-                    <textarea class="form-control" rows="8"></textarea>
-                </div>
-                <div class="row">
-                    <div class="col-sm"></div>
-                    <div class="col-sm"></div>
-                    <div class="col-xs mb-3">
-                        <button class="button retHomeBtn alternate mx-2" id="cancelButton">
-                            <a href="index.html"></a>
-                            Cancel
-                        </button>
-                        <button type="button" class="button primary mx-2" data-toggle="modal" data-target="#exampleModal">
-                            Submit
-                        </button>
-
-                        <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-                            aria-hidden="true">
-                            <div class="modal-dialog" role="document">
-                                <div class="modal-content">
-                                    <div class="modal-header">
-                                        <h5 class="modal-title" id="exampleModalLabel">Congratulations!</h5>
-                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                            <span aria-hidden="true">&times;</span>
-                                        </button>
-                                    </div>
-                                    <div class="modal-body">
-                                        <p>Thanks for registering as a mentor.</p>
-                                    </div>
-                                    <div class="modal-footer">
-                                        <button type="button" class="btn btn-primary retHomeBtn" data-dismiss="modal">
-                                            <a href="profile.html"></a>
-                                            Close
-                                        </button>
+                            <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+                                aria-hidden="true">
+                                <div class="modal-dialog" role="document">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title" id="exampleModalLabel">Congratulations!</h5>
+                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                <span aria-hidden="true">&times;</span>
+                                            </button>
+                                        </div>
+                                        <div class="modal-body">
+                                            <p>Thanks for registering as a mentor.</p>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-primary retHomeBtn" data-dismiss="modal">
+                                                <a href="profile.html"></a>
+                                                Close
+                                            </button>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
+
                         </div>
-
                     </div>
-                </div>
-            </form>
+                </form>
+            </div>
         </div>
-    </div>
 
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-    <script src="js/bootstrap.min.js"></script>
-    <script src="js/register.js"></script>
-    <script src="js/navbar.js"></script>
-</body>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+        <script src="js/bootstrap.min.js"></script>
+        <script src="js/register.js"></script>
+        <script src="js/navbar.js"></script>
+    </body>
 </html>

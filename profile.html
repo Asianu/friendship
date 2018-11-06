@@ -1,19 +1,19 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<head>
-    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <head>
+        <meta name="viewport" content="width=device-width,initial-scale=1">
 
-    <link href="css/bootstrap.min.css" rel="stylesheet">
-    <link href="css/style.css" rel="stylesheet">
+        <link href="css/bootstrap.min.css" rel="stylesheet">
+        <link href="css/style.css" rel="stylesheet">
 
-    <!-- Link to FontAwesome icons for free icons -->
-    <!-- <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.2/css/all.css" integrity="sha384-/rXc/GQVaYpyDdyxK+ecHPVYJSN9bmVFBvjA/9eOB+pb3F2w2N6fc5qB9Ew5yIns" crossorigin="anonymous"> -->
-    <link href="font-awesome/css/all.css" rel="stylesheet">
+        <!-- Link to FontAwesome icons for free icons -->
+        <!-- <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.2/css/all.css" integrity="sha384-/rXc/GQVaYpyDdyxK+ecHPVYJSN9bmVFBvjA/9eOB+pb3F2w2N6fc5qB9Ew5yIns" crossorigin="anonymous"> -->
+        <link href="font-awesome/css/all.css" rel="stylesheet">
 
-</head>
+    </head>
 
-<body>
+    <body>
     <div class="page">
         <nav class="navbar navbar-expand-md navbar-dark bg-orange sticky-top">
             <a class="navbar-brand" href="index.html"><img class="logo" src="assets/logo.png"/></a>
@@ -31,24 +31,19 @@
                         <a class="nav-link" href="register.html">Be</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link nav-hide" href="profile.html">User</a>
+                        <a class="nav-link nav-hide" id="nav-collapse-user" href="profile.html">User</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link nav-hide" href="login.html">Login</a>
+                        <a class="nav-link nav-hide" id="nav-collapse-login" href="login.html">Login</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link nav-hide" id="nav-collapse-signout" href="#">Sign Out</a>
                     </li>
                 </ul>
 
-                <a class="nav-link" id="nav-login" href="login.html">Login</a>
-                    <a class="nav-link" id="nav-user" href="profile.html"><i class="fas fa-user user"></i></a>
-
-        <!-- Implement this if we feel like a search function is necessary/reach -->
-        <!--
-            <form class="form-inline my-2 my-lg-0">
-              <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-              <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-            </form>
-        -->
-
+                <a class="nav-link nav-custom" id="nav-login" href="login.html">Login</a>
+                <a class="nav-link nav-custom" id="nav-signout" href="#">Sign Out</a>
+                <a class="nav-link nav-custom" id="nav-user" href="profile.html"><i class="fas fa-user user"></i></a>
             </div>
         </nav>
 
@@ -91,3 +86,4 @@
         <script src="js/navbar.js"></script>
     </div>
     </body>
+</html>
