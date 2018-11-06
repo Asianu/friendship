@@ -23,11 +23,12 @@ html, body {
 }
 
 a {
+	color: black;
 	text-align: center;
 }
 
 a:hover {
-	color: white;
+	color: white !important;
 	text-decoration: none;
 }
 
@@ -126,12 +127,33 @@ a:hover {
 /*
  * Navbar styling goes here
  */
+a.nav-link {
+	text-align: left; 	
+}
+
 .logo {
 	max-height: 40px;
 }
 
 .bg-orange {
 	background-color: orange !important;
+}
+
+@media (min-width: 768px) {
+	.nav-hide {
+		display: none !important;
+	}
+}
+
+@media (max-width: 768px) {
+	#user-icon, #login-button {
+		display: none;
+	}
+}
+
+#user-icon, #login-button {
+	color: #fed294;
+	font-size: 16px;
 }
 
 /*
@@ -142,7 +164,6 @@ a:hover {
 	#landing-screen div {
 		height: 100%;
 	}
-
 }
 
 #landing-screen {
