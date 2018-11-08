@@ -9,35 +9,53 @@
  *	lg: 992px
  *	xl: 1200px
  */
+ @font-face {
+     font-family: 'Poppins';
+     src: url('../assets/fonts/Poppins-Medium.woff2') format('woff2'),
+         url('../assets/fonts/Poppins-Medium.woff') format('woff');
+     font-weight: 500;
+     font-style: normal;
+ }
 
+ @font-face {
+     font-family: 'Poppins';
+     src: url('../assets/fonts/Poppins-SemiBold.woff2') format('woff2'),
+         url('../assets/fonts/Poppins-SemiBold.woff') format('woff');
+     font-weight: 600;
+     font-style: normal;
+ }
+
+ @font-face {
+     font-family: 'Poppins';
+     src: url('../assets/fonts/Poppins-Regular.woff2') format('woff2'),
+         url('../assets/fonts/Poppins-Regular.woff') format('woff');
+     font-weight: normal;
+     font-style: normal;
+ }
 
 :root {
-	/* for variables */
+	--primary-color: #FF26A0;
+	--secondary-color: #6F25E7;
 }
 
-/* 
+/*
  * General html elements go here.
  */
 html, body {
+	font-family: "Poppins", sans-serif;
 	height: 100%;
 }
 
-a {
-	color: black;
-	text-align: center;
-}
-
-a:hover {
-	color: white !important;
-	text-decoration: none;
+h1 {
+	color: var(--primary-color);
 }
 
 /*
  * Reusable css classes goes here
  */
-.link {
+/*.link {
 	color: black;
-}
+}*/
 
 .page {
 	padding: 0;
@@ -92,6 +110,7 @@ a:hover {
 	width: 150px;
 	border-radius: 5px;
 }
+
 .primary {
 	background-color: orange;
 	color: white;
@@ -124,19 +143,67 @@ a:hover {
 	background-color: white;
 }
 
+.btn.cta-button {
+	min-width: 200px;
+}
+
+.btn {
+	border-radius: 200px;
+	border: none;
+	padding-top: 16px;
+	padding-bottom: 16px;
+	transition: .3s;
+	margin: 10px;
+}
+
+.btn:hover {
+	transform:translateY(-8px);
+}
+
+.btn-primary {
+	background: var(--primary-color);
+}
+
+.btn-primary:hover {
+	background: var(--primary-color);
+	box-shadow: 0 6px 20px -4px rgba(255,0,143,0.60);
+}
+
+.btn-secondary:hover {
+	background: var(--secondary-color);
+	box-shadow: 0 6px 20px -4px rgba(111,37,231,0.60);
+}
+
+.btn-secondary {
+	background: var(--secondary-color);
+}
 /*
  * Navbar styling goes here
  */
-a.nav-link {
+.navbar {
+	background: #FFFFFF;
+	box-shadow: 0 1px 6px 0 rgba(0,0,0,0.20);
+}
+
+.nav-link {
+	color: black !important;
 	text-align: left; 	
+}
+
+.nav-link:hover {
+	color: var(--primary-color) !important;
+}
+
+#nav-signin {
+	color: var(--primary-color) !important;
+}
+
+#nav-signin:hover {
+	color: var(--secondary-color) !important;
 }
 
 .logo {
 	max-height: 40px;
-}
-
-.bg-orange {
-	background-color: orange !important;
 }
 
 @media (min-width: 768px) {
@@ -151,39 +218,8 @@ a.nav-link {
 	}
 }
 
-.nav-custom {
-	color: #fed294;
-	font-size: 16px;
-}
 
 /*
  * Homepage items go here
  */
- @media (min-width: 768px) {
 
-	#landing-screen div {
-		height: 100%;
-	}
-}
-
-#landing-screen {
-	height: 100%;
-}
-
-#landing-screen div {
-	min-height: 200px;
-}
-
-.landing-card:hover {
-	color: white;
-	cursor: pointer;
-	background-color: orange;
-}
-
-.landing-card > div {
-	transition: transform .5s ease-out;
-}
-
-.landing-card > div:hover {
-	transform: translate(0, -20px);
-}

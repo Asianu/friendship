@@ -4,21 +4,21 @@ $(document).ready(function(){
 
 	console.log(strg);
 
-	if (strg.getItem('login_token') != 'true') {
+	if (strg.getItem('signin_token') != 'true') {
 		console.log('user has not logged in yet');
 		$('#nav-signout, #nav-collapse-signout, #nav-user, #nav-collapse-user').hide();
-		$('#nav-login, #nav-collapse-login').show();
+		$('#nav-signin, #nav-collapse-signin').show();
 	}
 	else {
 		console.log('user is logged in')
 		$('#nav-signout, #nav-collapse-signout, #nav-user, #nav-collapse-user').show();
-		$('#nav-login, #nav-collapse-login').hide();
+		$('#nav-signin, #nav-collapse-signin').hide();
 	}
 
 	$('#nav-signout, #nav-collapse-signout').click(function() {
 		console.log('user is signing out');
 		strg.removeItem('user');
-		strg.setItem('login_token', false);
+		strg.setItem('signin_token', false);
 		window.location.reload();
 	});
 });
