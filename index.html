@@ -14,21 +14,24 @@
 
 	<body>
 		<div class="page">
-			<nav class="navbar navbar-expand-md navbar-dark bg-orange sticky-top">
-		  		<a class="navbar-brand" href="index.html"><img class="logo" src="assets/logo.png"/></a>
 
-			  	<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-			    	<span class="navbar-toggler-icon"></span>
-			  	</button>
+			<nav class="navbar navbar-expand-lg bg-white sticky-top">
+			  <a class="navbar-brand" href="index.html"><img class="logo" src="assets/logo.svg"/></a>
+			  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+			    <span class="navbar-toggler-icon"></span>
+			  </button>
 
-			  	<div class="collapse navbar-collapse" id="navbarSupportedContent">
-			    	<ul class="navbar-nav mr-auto float-left">
-		      			<li class="nav-item">
-		        			<a class="nav-link" href="find.html">Find</a>
-		    	  		</li>
-		    	  		<li class="nav-item">
-		    	    		<a class="nav-link" href="register.html">Be</a>
-						</li>
+			  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+			    <ul class="navbar-nav mr-auto float-left">
+		      		<li class="nav-item">
+		        		<a class="nav-link" href="find.html">Find Mentor</a>
+		      		</li>
+		      		<li class="nav-item">
+		        		<a class="nav-link" href="register.html">Be Mentor</a>
+							</li>
+							<li class="nav-item">
+		        		<a class="nav-link sign-in-link" href="signin.html">Sign In</a>
+							</li>
 						<li class="nav-item">
 							<a class="nav-link nav-hide" id="nav-collapse-user" href="profile.html">User</a>
 						</li>
@@ -36,40 +39,32 @@
 							<a class="nav-link nav-hide" id="nav-collapse-login" href="login.html">Login</a>
 						</li>
 						<li class="nav-item">
-							<a class="nav-link nav-hide" id="nav-collapse-signout" href="login.html">Sign Out</a>
+							<a class="nav-link nav-hide" id="nav-collapse-signout" href="index.html">Sign Out</a>
 						</li>
 				    </ul>
+							<li>
+							 <button type="button" class="btn btn-primary nav-button">Sign Up</button>
+							</li>
+
+			    </ul>
 
 				    <a class="nav-link nav-custom" id="nav-login" href="login.html">Login</a>
-				    <a class="nav-link nav-custom" id="nav-signout" href="login.html">Sign Out</a>
+				    <a class="nav-link nav-custom" id="nav-signout" href="index.html">Sign Out</a>
 					<a class="nav-link nav-custom" id="nav-user" href="profile.html"><i class="fas fa-user user"></i></a>
 			  	</div>
 			</nav>
 
-			<div class="container-fluid" id="landing-screen">
-				<div class="row">
-					<div class="col-12 col-md landing-card p-0">
-						<a href="find.html"></a>
-						<div class="container-fluid" id="find_mentor">
-							<div class="row justify-content-center align-items-center">
-								<h1><i class="fas fa-search landing-icon"></i> Find a Mentor</h1>
-							</div>
-						</div>
-					</div>
+		<div class="container h-100">
+			<div class="row align-items-center justify-content-center h-100"> <!-- makes content align w/ center at 100% -->
+				<div class="col text-center">
+					<h1>LaunchPad Connects You To Others</h1>
+					<p>Start by selecting how you want to join the community.</p>
+					<button type="button" class="btn btn-primary cta-button">Find a Mentor</button>
+					<button type="button" class="btn btn-secondary cta-button">Be a Mentor</button>
 
-					<hr>
-
-					<div class="col-12 col-md landing-card p-0">
-						<a href="register.html"></a>
-						<div class="container-fluid" id="be_mentor">
-							<div class="row justify-content-center align-items-center">
-								<h1><i class="fas fa-graduation-cap landing-icon"></i> Be a Mentor</h1>
-							</div>
-						</div>
-					</div>
 				</div>
-
 			</div>
+		</div>
 
 		</div>
 
