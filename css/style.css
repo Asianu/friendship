@@ -207,12 +207,33 @@ a.sign-in-link:hover {
 /*
  * Navbar styling goes here
  */
+a.nav-link {
+	text-align: left; 	
+}
+
 .logo {
 	max-height: 40px;
 }
 
 .bg-orange {
 	background-color: orange !important;
+}
+
+@media (min-width: 768px) {
+	.nav-hide {
+		display: none !important;
+	}
+}
+
+@media (max-width: 768px) {
+	.nav-custom {
+		display: none !important;
+	}
+}
+
+.nav-custom {
+	color: #fed294;
+	font-size: 16px;
 }
 
 /*
@@ -223,7 +244,6 @@ a.sign-in-link:hover {
 	#landing-screen div {
 		height: 100%;
 	}
-
 }
 
 #landing-screen {

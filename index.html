@@ -1,12 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
 	<head>
-
+		<meta name="viewport" content="width=device-width,initial-scale=1">
+		
+		<!-- css links -->
 		<link href="css/bootstrap.min.css" rel="stylesheet">
 		<link href="css/style.css" rel="stylesheet">
 
 		<!-- Link to FontAwesome icons for free icons -->
-		<!-- <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.2/css/all.css" integrity="sha384-/rXc/GQVaYpyDdyxK+ecHPVYJSN9bmVFBvjA/9eOB+pb3F2w2N6fc5qB9Ew5yIns" crossorigin="anonymous"> -->
 		<link href="font-awesome/css/all.css" rel="stylesheet">
 
 	</head>
@@ -21,7 +22,7 @@
 			  </button>
 
 			  <div class="collapse navbar-collapse" id="navbarSupportedContent">
-			    <ul class="navbar-nav mr-auto">
+			    <ul class="navbar-nav mr-auto float-left">
 		      		<li class="nav-item">
 		        		<a class="nav-link" href="find.html">Find Mentor</a>
 		      		</li>
@@ -31,13 +32,26 @@
 							<li class="nav-item">
 		        		<a class="nav-link sign-in-link" href="signin.html">Sign In</a>
 							</li>
+						<li class="nav-item">
+							<a class="nav-link nav-hide" id="nav-collapse-user" href="profile.html">User</a>
+						</li>
+						<li class="nav-item">
+							<a class="nav-link nav-hide" id="nav-collapse-login" href="login.html">Login</a>
+						</li>
+						<li class="nav-item">
+							<a class="nav-link nav-hide" id="nav-collapse-signout" href="index.html">Sign Out</a>
+						</li>
+				    </ul>
 							<li>
 							 <button type="button" class="btn btn-primary nav-button">Sign Up</button>
 							</li>
 
 			    </ul>
 
-			  </div>
+				    <a class="nav-link nav-custom" id="nav-login" href="login.html">Login</a>
+				    <a class="nav-link nav-custom" id="nav-signout" href="index.html">Sign Out</a>
+					<a class="nav-link nav-custom" id="nav-user" href="profile.html"><i class="fas fa-user user"></i></a>
+			  	</div>
 			</nav>
 
 		<div class="container h-100">
@@ -57,6 +71,7 @@
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 		<script src="js/bootstrap.min.js"></script>
 		<script src="js/index.js"></script>
+		<script src="js/navbar.js"></script>
 	</body>
 
 </html>
