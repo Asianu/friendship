@@ -1,0 +1,189 @@
+/* Filename: style.css
+ * Description: main stylesheet for project friendship. stylesheet is broken up
+ *				into sections to maintain order.
+ */
+
+/* The following numbers correspond to media breakpoints
+ * 	sm: 576px
+ *	md: 768px
+ *	lg: 992px
+ *	xl: 1200px
+ */
+
+
+:root {
+	/* for variables */
+}
+
+/* 
+ * General html elements go here.
+ */
+html, body {
+	height: 100%;
+}
+
+a {
+	color: black;
+	text-align: center;
+}
+
+a:hover {
+	color: white !important;
+	text-decoration: none;
+}
+
+/*
+ * Reusable css classes goes here
+ */
+.link {
+	color: black;
+}
+
+.page {
+	padding: 0;
+ 	height: 100vh;
+}
+
+.slidecontainer {
+	width: 100%;
+}
+
+.slider {
+	-webkit-appearance: none;
+	appearance: none;
+	width: 100%;
+	height:10px;
+	border-radius: 5px;
+	background: #d3d3d3;
+	outline: none;
+	opacity: 0.7;
+	-webkit-transition: .2s;
+	transition: opacity .2s;
+}
+
+.slide:hover {
+	opacity: 1;
+}
+
+.slider::-webkit-slider-thumb{
+	-webkit-appearance: none;
+	appearance: none;
+	width: 25px;
+	height: 25px;
+	border-radius: 50%;
+	background: orange;
+	cursor: pointer;
+}
+
+.slider::-moz-range-thumb {
+	width: 25px;
+	height: 25px;
+	border-radius: 50%;
+	background: orange;
+	cursor: pointer;
+}
+
+.button {
+	/* border-color: orange; */
+	/* border-color: white; */
+	color: orange;
+	font-size: 30px;
+	height: 50px;
+	width: 150px;
+	border-radius: 5px;
+}
+.primary {
+	background-color: orange;
+	color: white;
+	border-color: orange;
+}
+
+.alternate {
+	border-color: white;
+}
+
+.button.alternate:hover {
+	color: white;
+	background-color: orange;
+	cursor: pointer;
+	transition: color 0.15s ease-in;
+	transition: background-color 0.15s ease-in;
+}
+
+.button:hover {
+	color: orange;
+	background-color: white;
+	border-color: orange;
+	cursor: pointer;
+	transition: color 0.15s ease-in, background-color 0.15s ease-in;
+}
+
+.button.primary:focus {
+	outline: none;
+	color: orange;
+	background-color: white;
+}
+
+/*
+ * Navbar styling goes here
+ */
+a.nav-link {
+	text-align: left; 	
+}
+
+.logo {
+	max-height: 40px;
+}
+
+.bg-orange {
+	background-color: orange !important;
+}
+
+@media (min-width: 768px) {
+	.nav-hide {
+		display: none !important;
+	}
+}
+
+@media (max-width: 768px) {
+	.nav-custom {
+		display: none !important;
+	}
+}
+
+.nav-custom {
+	color: #fed294;
+	font-size: 16px;
+}
+
+/*
+ * Homepage items go here
+ */
+ @media (min-width: 768px) {
+
+	#landing-screen div {
+		height: 100%;
+	}
+}
+
+#landing-screen {
+	height: 100%;
+}
+
+#landing-screen div {
+	min-height: 200px;
+}
+
+.landing-card:hover {
+	color: white;
+	cursor: pointer;
+	background-color: orange;
+}
+
+.landing-card > div {
+	transition: transform .5s ease-out;
+}
+
+.landing-card > div:hover {
+	transform: translate(0, -20px);
+}
