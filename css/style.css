@@ -9,26 +9,67 @@
  *	lg: 992px
  *	xl: 1200px
  */
+ @font-face {
+     font-family: 'Poppins';
+     src: url('../assets/fonts/Poppins-Medium.woff2') format('woff2'),
+         url('../assets/fonts/Poppins-Medium.woff') format('woff');
+     font-weight: 500;
+     font-style: normal;
+ }
 
+ @font-face {
+     font-family: 'Poppins';
+     src: url('../assets/fonts/Poppins-SemiBold.woff2') format('woff2'),
+         url('../assets/fonts/Poppins-SemiBold.woff') format('woff');
+     font-weight: 600;
+     font-style: normal;
+ }
+
+ @font-face {
+     font-family: 'Poppins';
+     src: url('../assets/fonts/Poppins-Regular.woff2') format('woff2'),
+         url('../assets/fonts/Poppins-Regular.woff') format('woff');
+     font-weight: normal;
+     font-style: normal;
+ }
 
 :root {
 	/* for variables */
 }
 
-/* 
+/*
  * General html elements go here.
  */
 html, body {
+	font-family: "Poppins", sans-serif;
 	height: 100%;
+}
+.navbar {
+	background: #FFFFFF;
+	box-shadow: 0 1px 6px 0 rgba(0,0,0,0.20);
+}
+
+h1 {
+	color: #FF26A0;
 }
 
 a {
+	color: inherit;
 	text-align: center;
 }
 
+
 a:hover {
-	color: white;
+	color: #FF26A0;
 	text-decoration: none;
+}
+
+a.sign-in-link {
+	color: #FF26A0;
+}
+
+a.sign-in-link:hover {
+	color: #6F25E7;
 }
 
 /*
@@ -121,6 +162,46 @@ a:hover {
 	outline: none;
 	color: orange;
 	background-color: white;
+}
+
+.btn.cta-button {
+	min-width: 200px;
+}
+
+.btn {
+	border-radius: 200px;
+	border: none;
+	padding-top: 16px;
+	padding-bottom: 16px;
+	transition: .3s;
+	margin: 10px;
+}
+
+.btn:hover {
+	transform:translateY(-8px);
+}
+
+.btn-primary {
+	background: #FF26A0;
+	box-shadow: 0 6px 20px -4px rgba(255,0,143,0.60);
+}
+
+.btn-primary:hover {
+	background: #FF26A0;
+}
+
+.btn-secondary:hover {
+	background: #6F25E7;
+}
+
+.btn-secondary {
+	background: #6F25E7;
+	box-shadow: 0 6px 20px -4px rgba(111,37,231,0.60);
+}
+
+.nav-button {
+	padding-top: 2px;
+	padding-bottom: 2px;
 }
 
 /*

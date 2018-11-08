@@ -13,8 +13,9 @@
 
 	<body>
 		<div class="page">
-			<nav class="navbar navbar-expand-lg navbar-dark bg-orange sticky-top">
-			  <a class="navbar-brand" href="index.html"><img class="logo" src="assets/logo.png"/></a>
+
+			<nav class="navbar navbar-expand-lg bg-white sticky-top">
+			  <a class="navbar-brand" href="index.html"><img class="logo" src="assets/logo.svg"/></a>
 			  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
 			    <span class="navbar-toggler-icon"></span>
 			  </button>
@@ -22,54 +23,37 @@
 			  <div class="collapse navbar-collapse" id="navbarSupportedContent">
 			    <ul class="navbar-nav mr-auto">
 		      		<li class="nav-item">
-		        		<a class="nav-link" href="find.html">Find</a>
+		        		<a class="nav-link" href="find.html">Find Mentor</a>
 		      		</li>
 		      		<li class="nav-item">
-		        		<a class="nav-link" href="register.html">Be</a>
-					</li>
-					<li class="nav-item text-right">
-						<a class="nav-link" href="profile.html"><i class="fas fa-user user"></i></a>
-					</li>
-			    </ul>
+		        		<a class="nav-link" href="register.html">Be Mentor</a>
+							</li>
+							<li class="nav-item">
+		        		<a class="nav-link sign-in-link" href="signin.html">Sign In</a>
+							</li>
+							<li>
+							 <button type="button" class="btn btn-primary nav-button">Sign Up</button>
+							</li>
 
-		    <!-- Implement this if we feel like a search function is necessary/reach -->
-		    <!--
-			    <form class="form-inline my-2 my-lg-0">
-			      <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-			      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-			    </form>
-			-->
+			    </ul>
 
 			  </div>
 			</nav>
 
-			<div class="container-fluid" id="landing-screen">
-				<div class="row">
-					<div class="col-12 col-md landing-card p-0">
-						<a href="find.html"></a>
-						<div class="container-fluid" id="find_mentor">
-							<div class="row justify-content-center align-items-center">
-								<h1><i class="fas fa-search landing-icon"></i> Find a Mentor</h1>
-							</div>
-						</div>
-					</div>
+		<div class="container h-100">
+			<div class="row align-items-center justify-content-center h-100"> <!-- makes content align w/ center at 100% -->
+				<div class="col text-center">
+					<h1>LaunchPad Connects You To Others</h1>
+					<p>Start by selecting how you want to join the community.</p>
+					<button type="button" class="btn btn-primary cta-button">Find a Mentor</button>
+					<button type="button" class="btn btn-secondary cta-button">Be a Mentor</button>
 
-					<hr>
-
-					<div class="col-12 col-md landing-card p-0">
-						<a href="register.html"></a>
-						<div class="container-fluid" id="be_mentor">
-							<div class="row justify-content-center align-items-center">
-								<h1><i class="fas fa-graduation-cap landing-icon"></i> Be a Mentor</h1>
-							</div>
-						</div>
-					</div>
 				</div>
-
 			</div>
+		</div>
 
 		</div>
-		
+
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 		<script src="js/bootstrap.min.js"></script>
 		<script src="js/index.js"></script>
