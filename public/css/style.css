@@ -89,7 +89,7 @@ h1 {
 	width: 25px;
 	height: 25px;
 	border-radius: 50%;
-	background: orange;
+	background: var(--primary-color);
 	cursor: pointer;
 }
 

@@ -88,17 +88,34 @@
                     <div class="form-group form-row">
                         <div class="slidecontainer">
                             <label>Level of Expertise</label>
-                            <input type="range" min="0" max="100" value="50" class="slider" id="myRange">
+                            <input type="range" min="1" max="5" value="3" class="slider" id="myRange">
                             <p> Value: <span id="demo"></span></p>
                         </div>
 
                         <script>
                             var slider = document.getElementById("myRange");
                             var output = document.getElementById("demo");
-                            output.innerHTML = slider.value;
+                            output.innerHTML = "Intermediate";
 
                             slider.oninput = function() {
-                                output.innerHTML = this.value;
+                                switch(this.value){
+                                    case '1':
+                                        output.innerHTML = "Beginner";
+                                        break;
+                                    case '2':
+                                        output.innerHTML = "Novice";
+                                        break;
+                                    case '3':
+                                        output.innerHTML = "Intermediate";
+                                        break;
+                                    case '4':
+                                        output.innerHTML = "Advanced";
+                                        break;
+                                    case '5':
+                                        output.innerHTML = "Expert";
+                                        break;
+
+                                }
                             }
                         </script>
                         
@@ -111,11 +128,11 @@
                         <div class="col-sm"></div>
                         <div class="col-sm"></div>
                         <div class="col-xs mb-3">
-                            <button class="button retHomeBtn alternate mx-2" id="cancelButton">
+                            <button type="button" class="btn btn-secondary cta-button retHomeBtn alternate mx-2" id="cancelButton">
                                 <a href="index.html"></a>
                                 Cancel
                             </button>
-                            <button type="button" class="button primary mx-2" data-toggle="modal" data-target="#exampleModal">
+                            <button type="button" class="btn btn-primary cta-button primary mx-2" data-toggle="modal" data-target="#exampleModal">
                                 Submit
                             </button>
 
@@ -133,7 +150,7 @@
                                             <p>Thanks for registering as a mentor.</p>
                                         </div>
                                         <div class="modal-footer">
-                                            <button type="button" class="btn btn-primary retHomeBtn" data-dismiss="modal">
+                                            <button type="button" class="btn btn-primary cta-button retHomeBtn" data-dismiss="modal">
                                                 <a href="profile.html"></a>
                                                 Close
                                             </button>
