@@ -218,6 +218,15 @@ h1 {
 	}
 }
 
+.disabled {
+	color: grey !important;
+}
+
+.disabled:hover {
+	color: grey !important;
+	cursor: default;
+}
+
 
 /*
  * Homepage items go here

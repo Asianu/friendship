@@ -8,13 +8,13 @@ $(document).ready(function(){
 		console.log('user has not logged in yet');
 		$('#nav-signout, #nav-collapse-signout, #nav-user, #nav-collapse-user').hide();
 		$('#nav-signin, #nav-collapse-signin').show();
-		$('#nav-be').addClass('disabled');
+		$('#nav-be').addClass('disabled').attr('href', '#');
 	}
 	else {
 		console.log('user is logged in')
 		$('#nav-signout, #nav-collapse-signout, #nav-user, #nav-collapse-user').show();
 		$('#nav-signin, #nav-collapse-signin').hide();
-		$('#nav-be').removeClass('disabled');
+		$('#nav-be').removeClass('disabled').attr('href', 'register.html');
 	}
 
 	$('#nav-signout, #nav-collapse-signout').click(function() {
