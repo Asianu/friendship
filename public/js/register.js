@@ -48,17 +48,21 @@ $(document).ready(function() {
 		var user = {};
 		$.each(input, function(index, form_obj) {
 			if (form_obj.name == "expertise") {
-				switch(form_obj.value) {
-					case '1': user[form_obj.name] = "Beginner";
-						break;
-					case '2': user[form_obj.name] = "Novice";
-						break;
-					case '3': user[form_obj.name] = "Intermediate";
-						break;
-					case '4': user[form_obj.name] = "Advanced";
-						break;
-					case '5': user[form_obj.name] = "Expert";
-						break;
+				var expertiseLevel = parseInt(form_obj.value)
+				if (expertiseLevel == 1){
+					user[form_obj.name] = "No Experience"
+				} else if (expertiseLevel <= 20){
+					user[form_obj.name] = "Beginner";
+				} else if (expertiseLevel <= 40) {
+					user[form_obj.name] = "Novice";
+				} else if (expertiseLevel <= 60) {
+					user[form_obj.name] = "Intermediate";
+				} else if (expertiseLevel <= 80) {
+					user[form_obj.name] = "Advanced";
+				} else if (expertiseLevel < 100) {
+					user[form_obj.name] = "Expert";
+				} else {
+					user[form_obj.name] = "Master";
 				}
 			}
 			else {
