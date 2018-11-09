@@ -27,6 +27,7 @@ $(document).ready(function() {
 
 });
 
+/* JQuery toggle for modal */
 jQuery(document).ready(function($) {
     $(".clickable-row").click(function() {
 		$('#exampleModal').modal('show');

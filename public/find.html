@@ -78,40 +78,63 @@
                                 </tr>
                             </script>
 
-                            <tr class="clickable-row">
-                                <td>Alfred Shibata</td>
-                                <td>Mario Kart</td>
-                                <td>Beginner</td>
-                            </tr>
+                                <tr class="clickable-row">
+                                    <td id="name">Alfredo Shibata</td>
+                                    <td id="activity">Mario Kart</td>
+                                    <td id="expertise">Beginner</td>
+                                </tr>
 
-                            <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-                                aria-hidden="true">
-                                <div class="modal-dialog" role="document">
-                                    <div class="modal-content">
-                                        <div class="modal-header">
-                                            <h5 class="modal-title" id="exampleModalLabel">Congratulations!</h5>
-                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                                <span aria-hidden="true">&times;</span>
-                                            </button>
-                                        </div>
-                                        <div class="modal-body">
-                                            <p>Thanks for registering as a mentor.</p>
-                                        </div>
-                                        <div class="modal-footer">
-                                            <button type="button" class="btn btn-primary cta-button retHomeBtn" data-dismiss="modal">
-                                                <a href="profile.html"></a>
-                                               Close
-                                            </button>
+                                <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+                                    aria-hidden="true">
+                                    <div class="modal-dialog" role="document">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h5 class="modal-title" id="exampleModalLabel">User Preview</h5>
+                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                    <span aria-hidden="true">&times;</span>
+                                                </button>
+                                            </div>
+                                            <div class="modal-body">
+                                                <div class="row">
+                                                    <div class="col">
+                                                        <h4>Alfred Shibata</h4>
+                                                        <h6>Activities</h6>
+                                                        <ul class="activity-list">
+                                                            <li class="activity-list-item">Mario Kart</li>
+                                                            <li class="activity-list-item">Dancing</li>
+                                                        </ul>
+                                                    </div>
+                                                    <div class="col profile-modal">
+                                                        <img class="profilePic" src="assets/prof.png"/>
+                                                        <br>
+                                                        <span class="fa fa-star checked"></span>
+                                                        <span class="fa fa-star checked"></span>
+                                                        <span class="fa fa-star checked"></span>
+                                                        <span class="fa fa-star checked"></span>
+                                                        <span class="fa fa-star"></span>
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col">
+                                                        <h6>Short Bio</h6>
+                                                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec fermentum at dui pretium porttitor. Ut non tincidunt erat. Vivamus posuere, arcu sit amet semper sagittis, dolor ligula tempus diam, quis pulvinar sapien augue sed nibh. In dui est, feugiat vitae arcu vel, efficitur maximus erat. In ultricies, erat sit amet eleifend sagittis, ex nisi feugiat mauris, sed lobortis arcu diam sed elit. Maecenas scelerisque quis dui at venenatis.
+                                                            </p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-primary cta-button retHomeBtn" data-dismiss="modal">
+                                                Close
+                                                </button>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
-                            </div>
                             
                         </tbody>
                         
                         
                     </table>
-                    <div class="clearfix"></div>
 
                 </div>
 
@@ -130,6 +153,7 @@
     <!-- <script src="https://www.gstatic.com/firebasejs/5.5.7/firebase-messaging.js"></script> -->
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="js/star-rating.js" type="text/javascript"></script>
     <script src="js/bootstrap.min.js"></script>
     <script src="js/handlebars-v4.0.12.js"></script>
     <script src="js/find.js"></script>
