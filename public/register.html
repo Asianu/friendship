@@ -36,7 +36,7 @@
                             <a class="nav-link" href="register.html">Be Mentor</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link nav-hide" id="nav-collapse-user" href="profile.html">User</a>
+                            <a class="nav-link nav-hide" id="nav-collapse-user" href="profile.html">Profile</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link nav-hide" id="nav-collapse-signin" href="signin.html">Sign In</a>
@@ -59,7 +59,7 @@
                     <div class="form-group">
                         <label id="form-name-label">Name</label>
                         <script id="form-name-value-template" type="text/x-handlebars-template">
-                            <input type="text" class="form-control" value="{{username}}" readonly />
+                            <input type="text" class="form-control" name="name" value="{{username}}" readonly />
                         </script>
                         <small class="form-text text-muted">If this is not your name, please make sure you're logged in to
                             the correct account</small>
@@ -67,7 +67,7 @@
                     <div class="form-group form-row">
                         <div class="col-lg">
                             <label>Type of Activity</label>
-                            <select class="custom-select" id="form-activity-dropdown">
+                            <select class="custom-select" id="form-activity-dropdown" name="activity">
                                 <option selected>Choose...</option>
                                 <script id="form-activity-template" type="text/x-handlebars-template">
                                     <option>{{activity}}</option>
@@ -76,13 +76,13 @@
                         </div>
                         <div class="col-lg">
                             <label>Specific Activity</label>
-                            <input type="text" class="form-control" />
+                            <input type="text" class="form-control" name="specific-activity"/>
                         </div>
                     </div>
                     <div class="form-group form-row">
                         <div class="slidecontainer">
                             <label>Level of Expertise</label>
-                            <input type="range" min="1" max="5" value="3" class="slider" id="myRange">
+                            <input type="range" min="1" max="5" value="3" class="slider" id="myRange" name="expertise">
                             <p> Value: <span id="demo"></span></p>
                         </div>
 
@@ -116,7 +116,7 @@
                     </div>
                     <div class="form-group">
                         <label>Additional Information</label>
-                        <textarea class="form-control" rows="8"></textarea>
+                        <textarea class="form-control" rows="8" name="about"></textarea>
                     </div>
                     <div class="row">
                         <div class="col-sm"></div>
@@ -126,7 +126,7 @@
                                 <a href="index.html"></a>
                                 Cancel
                             </button>
-                            <button type="button" class="btn btn-primary cta-button primary mx-2" data-toggle="modal" data-target="#exampleModal">
+                            <button type="button" class="btn btn-primary cta-button primary mx-2" id="form-submit-button" data-toggle="modal" data-target="#exampleModal">
                                 Submit
                             </button>
 
