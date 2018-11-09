@@ -165,6 +165,7 @@ h1 {
 }
 
 .btn-disabled:hover {
+	cursor: default !important;
 	transform: none !important;
 }
 
