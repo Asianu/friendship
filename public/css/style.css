@@ -160,6 +160,14 @@ h1 {
 	transform:translateY(-8px);
 }
 
+.btn-disabled {
+	background: grey;
+}
+
+.btn-disabled:hover {
+	transform: none !important;
+}
+
 .btn-primary {
 	background: var(--primary-color);
 }
