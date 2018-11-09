@@ -56,7 +56,9 @@
             </nav>
 
         <div class="container mt-3">
-            <h1>User Profile</h1>
+            <script id="username-template" type="text/x-handlebars-template">
+                <h1>{{username}}</h1>
+            </script>
             <div class="row">
                 <div class="col">
                     <h2>Your Mentors</h2>
@@ -91,6 +93,8 @@
 
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
         <script src="js/bootstrap.min.js"></script>
+        <script src="js/handlebars-v4.0.12.js"></script>
+        <script src="js/profile.js"></script>
         <script src="js/navbar.js"></script>
     </div>
     </body>
