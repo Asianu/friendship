@@ -16,8 +16,8 @@ $(document).ready(function() {
 					strg.setItem('signin_token', true);
 
 					var input = {
-						'username' : $('#formGroupLoginUsername').val(),
-						'password' : $('#formGroupLoginPassword').val()
+						'username' : $('#formGroupSignInUsername').val(),
+						'password' : $('#formGroupSignInPassword').val()
 					};
 
 					strg.setItem('user', JSON.stringify(input));
