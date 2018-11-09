@@ -55,7 +55,7 @@
             </nav>
 
             <div class="container mt-3">
-                <form>
+                <form class="needs-validation" novalidate>
                     <div class="form-group">
                         <label id="form-name-label">Name</label>
                         <script id="form-name-value-template" type="text/x-handlebars-template">
@@ -67,12 +67,15 @@
                     <div class="form-group form-row">
                         <div class="col-lg">
                             <label>Type of Activity</label>
-                            <select class="custom-select" id="form-activity-dropdown" name="activity">
-                                <option selected>Choose...</option>
+                            <select class="custom-select" id="form-activity-dropdown" name="activity" required>
+                                <option value="" selected>Choose...</option>
                                 <script id="form-activity-template" type="text/x-handlebars-template">
-                                    <option>{{activity}}</option>
+                                    <option value={{activity}}>{{activity}}</option>
                                 </script>
                             </select>
+                            <div class="invalid-feedback">
+                                <p>Please choose an activity.</p>
+                            </div>
                         </div>
                         <div class="col-lg">
                             <label>Specific Activity</label>
@@ -126,7 +129,7 @@
                                 <a href="index.html"></a>
                                 Cancel
                             </button>
-                            <button type="button" class="btn btn-primary cta-button primary mx-2" id="form-submit-button" data-toggle="modal" data-target="#exampleModal">
+                            <button type="button" class="btn btn-primary cta-button primary mx-2" data-toggle="modal" data-target="#exampleModal">
                                 Submit
                             </button>
 
@@ -144,7 +147,7 @@
                                             <p>Thanks for registering as a mentor.</p>
                                         </div>
                                         <div class="modal-footer">
-                                            <button type="button" class="btn btn-primary cta-button retHomeBtn" data-dismiss="modal">
+                                            <button type="button" class="btn btn-primary cta-button retHomeBtn" id="submit-data-btn" data-dismiss="modal">
                                                 <a href="profile.html"></a>
                                                 Close
                                             </button>
