@@ -187,13 +187,16 @@ h1 {
 	background: var(--secondary-color);
 }
 
-.profilePic {
-	max-width: 7vw;
-	max-height: 7vw;
+.fa-user-circle{
+	font-size: 7vw;
 }
 
-.profile-modal {
-	align-content: center;
+.row {
+	/*border: 1px solid black;*/
+}
+
+.center-text {
+	text-align: center;
 }
 
 .checked {
