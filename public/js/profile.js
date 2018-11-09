@@ -9,7 +9,7 @@ $(document).ready(function() {
 
 	// put in simple data
 	var context = {username: "Hello"};
-	var html = template(JSON.parse(localStorage.getItem('user')));
+	var html = template(JSON.parse(strg.getItem('user')));
 
 	// inject html code into the page
 	parentDiv.prepend(html);
