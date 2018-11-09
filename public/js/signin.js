@@ -1,4 +1,4 @@
-var strg = window.localStorage
+var strg = window.localStorage;
 
 $(document).ready(function() {
 	window.addEventListener('load', function() {

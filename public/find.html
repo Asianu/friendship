@@ -70,7 +70,15 @@
                             <th>Level of Expertise</th>
                         </thead>
 
-                        <tbody>
+                        <tbody id="find-table-body">
+                            <script id="mentor-entry-template" type="text/x-handlebars-template">
+                                <tr>
+                                    <td>{{name}}</td>
+                                    <td>{{activity}}</td>
+                                    <td>{{expertise}}</td>
+                                </tr>
+                            </script>
+
                             <tr>
                                 <td>Alfred Shibata</td>
                                 <td>Mario Kart</td>
@@ -135,8 +143,18 @@
 
     </div>
 
+    <!-- Firebase App is always required and must be first -->
+    <script src="https://www.gstatic.com/firebasejs/5.5.7/firebase-app.js"></script>
+
+    <!-- Add additional services that you want to use -->
+    <!-- <script src="https://www.gstatic.com/firebasejs/5.5.7/firebase-auth.js"></script> -->
+    <script src="https://www.gstatic.com/firebasejs/5.5.7/firebase-database.js"></script>
+    <!-- <script src="https://www.gstatic.com/firebasejs/5.5.7/firebase-messaging.js"></script> -->
+
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
+    <script src="js/handlebars-v4.0.12.js"></script>
+    <script src="js/find.js"></script>
     <script src="js/navbar.js"></script>
 </body>
 </html>
