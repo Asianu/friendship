@@ -21,7 +21,7 @@ $(document).ready(function() {
 			// pre-compile the template
 			var template = Handlebars.compile($("#mentor-entry-template").html());
 
-			$("#find-table-body").prepend(template(mentor));
+			$("#find-table-body").append(template(mentor));
 		});
 	});
 

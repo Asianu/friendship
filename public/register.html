@@ -70,7 +70,7 @@
                             <select class="custom-select" id="form-activity-dropdown" name="activity" required>
                                 <option value="" selected>Choose...</option>
                                 <script id="form-activity-template" type="text/x-handlebars-template">
-                                    <option value={{activity}}>{{activity}}</option>
+                                    <option>{{activity}}</option>
                                 </script>
                             </select>
                             <div class="invalid-feedback">
@@ -129,7 +129,7 @@
                                 <a href="index.html"></a>
                                 Cancel
                             </button>
-                            <button type="button" class="btn btn-primary cta-button primary mx-2" data-toggle="modal" data-target="#exampleModal">
+                            <button type="submit" class="btn btn-primary cta-button primary mx-2" data-toggle="modal" ><!-- data-target="#exampleModal"> -->
                                 Submit
                             </button>
 
