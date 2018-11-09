@@ -177,6 +177,20 @@ h1 {
 .btn-secondary {
 	background: var(--secondary-color);
 }
+
+.profilePic {
+	max-width: 7vw;
+	max-height: 7vw;
+}
+
+.profile-modal {
+	align-content: center;
+}
+
+.checked {
+	color: var(--secondary-color)
+}
+
 /*
  * Navbar styling goes here
  */
