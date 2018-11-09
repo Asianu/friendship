@@ -16,22 +16,12 @@ $(document).ready(function() {
 	// for each mentor, add a row to the table
 	mentorRef.once('value').then(function(snapshot) {
 		var mentors = snapshot.val();
-		$.each(mentors, function(key, value) {
+		$.each(mentors, function(key, mentor) {
 
 			// pre-compile the template
-			var source = $("#mentor-entry-template").html();
-			var template = Handlebars.compile(source);
+			var template = Handlebars.compile($("#mentor-entry-template").html());
 
-			var parentDiv = $("#find-table-body")
-
-			var html = template(value);
-
-			// inject html code into the page
-			parentDiv.append(html);
-
-			console.log(key + " : " + value);
-
-			console.log(value);
+			$("#find-table-body").append(template(mentor));
 		});
 	});
 

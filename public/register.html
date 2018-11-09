@@ -14,7 +14,6 @@
         <link href="css/style.css" rel="stylesheet">
 
         <!-- Link to FontAwesome icons for free icons -->
-        <!-- <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.2/css/all.css" integrity="sha384-/rXc/GQVaYpyDdyxK+ecHPVYJSN9bmVFBvjA/9eOB+pb3F2w2N6fc5qB9Ew5yIns" crossorigin="anonymous"> -->
         <link href="font-awesome/css/all.css" rel="stylesheet">
 
     </head>
@@ -37,7 +36,7 @@
                             <a class="nav-link" href="register.html">Be Mentor</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link nav-hide" id="nav-collapse-user" href="profile.html">User</a>
+                            <a class="nav-link nav-hide" id="nav-collapse-user" href="profile.html">Profile</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link nav-hide" id="nav-collapse-signin" href="signin.html">Sign In</a>
@@ -58,37 +57,32 @@
             <div class="container mt-3">
                 <form>
                     <div class="form-group">
-                        <label>Name</label>
-                        <input type="text" class="form-control" value="Alfred Shibata" readonly />
+                        <label id="form-name-label">Name</label>
+                        <script id="form-name-value-template" type="text/x-handlebars-template">
+                            <input type="text" class="form-control" name="name" value="{{username}}" readonly />
+                        </script>
                         <small class="form-text text-muted">If this is not your name, please make sure you're logged in to
                             the correct account</small>
                     </div>
                     <div class="form-group form-row">
                         <div class="col-lg">
                             <label>Type of Activity</label>
-                            <select class="custom-select">
+                            <select class="custom-select" id="form-activity-dropdown" name="activity">
                                 <option selected>Choose...</option>
-                                <option>Art</option>
-                                <option>Board Games</option>
-                                <option>Dancing</option>
-                                <option>Exploration</option>
-                                <option>Food</option>
-                                <option>Music</option>
-                                <option>Nature</option>
-                                <option>Sports</option>
-                                <option>Video Games</option>
-                                <option>Other</option>
+                                <script id="form-activity-template" type="text/x-handlebars-template">
+                                    <option>{{activity}}</option>
+                                </script>
                             </select>
                         </div>
                         <div class="col-lg">
                             <label>Specific Activity</label>
-                            <input type="text" class="form-control" />
+                            <input type="text" class="form-control" name="specific-activity"/>
                         </div>
                     </div>
                     <div class="form-group form-row">
                         <div class="slidecontainer">
                             <label>Level of Expertise</label>
-                            <input type="range" min="1" max="5" value="3" class="slider" id="myRange">
+                            <input type="range" min="1" max="5" value="3" class="slider" id="myRange" name="expertise">
                             <p> Value: <span id="demo"></span></p>
                         </div>
 
@@ -122,7 +116,7 @@
                     </div>
                     <div class="form-group">
                         <label>Additional Information</label>
-                        <textarea class="form-control" rows="8"></textarea>
+                        <textarea class="form-control" rows="8" name="about"></textarea>
                     </div>
                     <div class="row">
                         <div class="col-sm"></div>
@@ -132,7 +126,7 @@
                                 <a href="index.html"></a>
                                 Cancel
                             </button>
-                            <button type="button" class="btn btn-primary cta-button primary mx-2" data-toggle="modal" data-target="#exampleModal">
+                            <button type="button" class="btn btn-primary cta-button primary mx-2" id="form-submit-button" data-toggle="modal" data-target="#exampleModal">
                                 Submit
                             </button>
 
@@ -165,8 +159,18 @@
             </div>
         </div>
 
+        <!-- Firebase App is always required and must be first -->
+        <script src="https://www.gstatic.com/firebasejs/5.5.7/firebase-app.js"></script>
+
+        <!-- Add additional services that you want to use -->
+        <!-- <script src="https://www.gstatic.com/firebasejs/5.5.7/firebase-auth.js"></script> -->
+        <script src="https://www.gstatic.com/firebasejs/5.5.7/firebase-database.js"></script>
+        <!-- <script src="https://www.gstatic.com/firebasejs/5.5.7/firebase-messaging.js"></script> -->
+
+
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
         <script src="js/bootstrap.min.js"></script>
+        <script src="js/handlebars-v4.0.12.js"></script>
         <script src="js/register.js"></script>
         <script src="js/navbar.js"></script>
     </body>
