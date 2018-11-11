@@ -124,6 +124,8 @@ $(document).ready(function() {
 
 	});
 
+
+
 	// make sure name field is properly generated
 	var template = Handlebars.compile($("#form-name-value-template").html());
 	$(template(JSON.parse(strg.getItem('user')))).insertAfter('#form-name-label');
