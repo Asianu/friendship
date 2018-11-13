@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 
+<<<<<<< HEAD
     <head>
         <title>LaunchPad</title>
         
@@ -72,46 +73,44 @@
                                 <script id="form-activity-template" type="text/x-handlebars-template">
                                     <option>{{activity}}</option>
                                 </script>
-                            </select>
-                            <div class="invalid-feedback">
-                                <p>Please choose an activity.</p>
-                            </div>
-                        </div>
-                        <div class="col-lg">
-                            <label>Specific Activity</label>
-                            <input type="text" class="form-control" name="specific-activity"/>
+                        </select>
+                        <div class="invalid-feedback">
+                            <p>Please choose an activity.</p>
                         </div>
                     </div>
-                    <div class="form-group form-row">
-                        <div class="slidecontainer">
-                            <label>Level of Expertise</label>
-                            <input type="range" min="1" max="5" value="3" class="slider" id="myRange" name="expertise">
-                            <p> Value: <span id="demo"></span></p>
-                        </div>
+                    <div class="col-lg">
+                        <label>Specific Activity</label>
+                        <input type="text" class="form-control" name="specific-activity" />
+                    </div>
+                </div>
+                <div class="form-group form-row">
+                    <div class="slidecontainer">
+                        <label>Level of Expertise</label>
+                        <input type="range" min="1" max="100" value="50" class="slider" id="myRange" name="expertise">
+                        <p> Skill Level: <span id="demo"></span></p>
+                    </div>
 
-                        <script>
-                            var slider = document.getElementById("myRange");
+                    <script>
+                        var slider = document.getElementById("myRange");
                             var output = document.getElementById("demo");
                             output.innerHTML = "Intermediate";
 
                             slider.oninput = function() {
-                                switch(this.value){
-                                    case '1':
-                                        output.innerHTML = "Beginner";
-                                        break;
-                                    case '2':
-                                        output.innerHTML = "Novice";
-                                        break;
-                                    case '3':
-                                        output.innerHTML = "Intermediate";
-                                        break;
-                                    case '4':
-                                        output.innerHTML = "Advanced";
-                                        break;
-                                    case '5':
-                                        output.innerHTML = "Expert";
-                                        break;
-
+                                var expertiseLevel = parseInt(this.value)
+                                if (expertiseLevel == 1){
+                                    output.innerHTML = "None";
+                                } else if (expertiseLevel <= 20){
+                                    output.innerHTML = "Beginner";
+                                } else if (expertiseLevel <= 40) {
+                                    output.innerHTML = "Novice";
+                                } else if (expertiseLevel <= 60) {
+                                    output.innerHTML = "Intermediate";
+                                } else if (expertiseLevel <= 80) {
+                                    output.innerHTML = "Advanced";
+                                } else if (expertiseLevel < 100) {
+                                    output.innerHTML = "Expert";
+                                } else {
+                                    output.innerHTML = "Master";
                                 }
                             }
                         </script>
@@ -155,26 +154,27 @@
                                     </div>
                                 </div>
                             </div>
-
                         </div>
+
                     </div>
-                </form>
-            </div>
+                </div>
+            </form>
         </div>
+    </div>
 
-        <!-- Firebase App is always required and must be first -->
-        <script src="https://www.gstatic.com/firebasejs/5.5.7/firebase-app.js"></script>
+    <!-- Firebase App is always required and must be first -->
+    <script src="https://www.gstatic.com/firebasejs/5.5.7/firebase-app.js"></script>
 
-        <!-- Add additional services that you want to use -->
-        <!-- <script src="https://www.gstatic.com/firebasejs/5.5.7/firebase-auth.js"></script> -->
-        <script src="https://www.gstatic.com/firebasejs/5.5.7/firebase-database.js"></script>
-        <!-- <script src="https://www.gstatic.com/firebasejs/5.5.7/firebase-messaging.js"></script> -->
+    <!-- Add additional services that you want to use -->
+    <!-- <script src="https://www.gstatic.com/firebasejs/5.5.7/firebase-auth.js"></script> -->
+    <script src="https://www.gstatic.com/firebasejs/5.5.7/firebase-database.js"></script>
+    <!-- <script src="https://www.gstatic.com/firebasejs/5.5.7/firebase-messaging.js"></script> -->
 
 
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-        <script src="js/bootstrap.min.js"></script>
-        <script src="js/handlebars-v4.0.12.js"></script>
-        <script src="js/register.js"></script>
-        <script src="js/navbar.js"></script>
-    </body>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/handlebars-v4.0.12.js"></script>
+    <script src="js/register.js"></script>
+    <script src="js/navbar.js"></script>
+</body>
 </html>

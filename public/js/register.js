@@ -83,7 +83,44 @@ $(document).ready(function() {
 	// to update the database when a form has been submitted
 	$("#submit-data-btn").click(function() {
 		
-    	
+    	var input = $('form').serializeArray();
+
+		// parse input data into a user JSON object
+		var user = {};
+		$.each(input, function(index, form_obj) {
+			if (form_obj.name == "expertise") {
+				var expertiseLevel = parseInt(form_obj.value)
+				if (expertiseLevel == 1){
+					user[form_obj.name] = "No Experience"
+				} else if (expertiseLevel <= 20){
+					user[form_obj.name] = "Beginner";
+				} else if (expertiseLevel <= 40) {
+					user[form_obj.name] = "Novice";
+				} else if (expertiseLevel <= 60) {
+					user[form_obj.name] = "Intermediate";
+				} else if (expertiseLevel <= 80) {
+					user[form_obj.name] = "Advanced";
+				} else if (expertiseLevel < 100) {
+					user[form_obj.name] = "Expert";
+				} else {
+					user[form_obj.name] = "Master";
+				}
+			}
+			else {
+				user[form_obj.name] = form_obj.value;
+			}
+		});
+		console.log(user);
+
+		// get a new key for post
+		var newPostKey = firebase.database().ref().child('mentors').push().key;
+
+		var updates = {};
+		updates['/mentors/' + newPostKey] = user;
+
+		firebase.database().ref().update(updates);
+
+		console.log(newPostKey);
 
 	});
 
