@@ -55,9 +55,12 @@
             </nav>
 
         <div class="container mt-3">
-            <script id="username-template" type="text/x-handlebars-template">
-                <h1>{{displayName}}</h1>
-            </script>
+            <div class="row" id="profile_header">
+                <script id="username-template" type="text/x-handlebars-template">
+                    <img src="{{photoURL}}" class="mr-3" id="profPic"/>
+                    <h1>{{displayName}}</h1>
+                </script>
+            </div>
             <div class="row">
                 <div class="col">
                     <h2>Your Mentors</h2>

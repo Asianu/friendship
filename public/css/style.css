@@ -257,4 +257,7 @@ h1 {
 /*
  * Homepage items go here
  */
-
+#profPic {
+	height: 3em;
+	border-radius: 50%;
+}
