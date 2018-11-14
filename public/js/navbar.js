@@ -25,8 +25,6 @@ $(document).ready(function(){
 		$('#nav-signout, #nav-collapse-signout, #nav-user, #nav-collapse-user').show();
 		$('#nav-signin, #nav-collapse-signin').hide();
 		$('#nav-be').removeClass('disabled').attr('href', 'register.html');
-		// TODO: remove this for security reasons
-		console.log(JSON.parse(strg.getItem('user')));
 	}
 
 	$('#nav-signout, #nav-collapse-signout').click(function() {

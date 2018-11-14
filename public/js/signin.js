@@ -11,6 +11,10 @@ $(document).ready(function() {
 				// or whether we leave that to developer to handle.
 				strg.setItem('signin_token', true);
 				strg.setItem('user', JSON.stringify(firebase.auth().currentUser));
+
+				// do some stuff with the database
+				// var 
+
 				return true
 		    },
 		    uiShown: function() {
@@ -21,6 +25,7 @@ $(document).ready(function() {
 		},
 		// Will use popup for IDP Providers sign-in flow instead of the default, redirect.
 		signInFlow: 'popup',
+		
 		// TODO: use this when we deploy
 		// signInSuccessUrl: 'http://cse170-launchpad.firebaseapp.com',
 		signInSuccessUrl: 'http://localhost:5000/',
