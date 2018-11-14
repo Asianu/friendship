@@ -115,8 +115,13 @@ $(document).ready(function() {
 	});
 
 	// make sure name field is properly generated
-	var template = Handlebars.compile($("#form-name-value-template").html());
-	$(template(JSON.parse(strg.getItem('user')))).insertAfter('#form-name-label');
+	firebase.auth().onAuthStateChanged(function(user) {
+	  if (user) {
+		console.log(firebase.auth().currentUser.uid);
+		var template = Handlebars.compile($("#form-name-value-template").html());
+		$(template(user)).insertAfter('#form-name-label');
+	  }
+	});
 
 	$(".retHomeBtn").click(function() {
 		window.location = $(this).find("a").attr("href");

@@ -10,10 +10,27 @@ $(document).ready(function() {
 				// Return type determines whether we continue the redirect automatically
 				// or whether we leave that to developer to handle.
 				strg.setItem('signin_token', true);
-				strg.setItem('user', JSON.stringify(firebase.auth().currentUser));
 
+				firebase.auth().onAuthStateChanged(function(user) {
+					userRef = firebase.database().ref('/users');
+				});
 				// do some stuff with the database
-				// var 
+				var userRef = firebase.database().ref('/users');
+
+				var user = JSON.parse(strg.getItem('user'));
+				var uid = user['uid'];
+
+				if(!(uid in userRef)) {
+
+					var updates = {};
+					updates['/users/' + uid] = user;
+
+					firebase.database().ref().update(updates);
+				}
+
+				strg.removeItem('userRef');
+				strg.removeItem('updates');
+
 
 				return true
 		    },
@@ -25,7 +42,7 @@ $(document).ready(function() {
 		},
 		// Will use popup for IDP Providers sign-in flow instead of the default, redirect.
 		signInFlow: 'popup',
-		
+
 		// TODO: use this when we deploy
 		// signInSuccessUrl: 'http://cse170-launchpad.firebaseapp.com',
 		signInSuccessUrl: 'http://localhost:5000/',
