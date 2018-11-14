@@ -1,6 +1,21 @@
 var strg = window.localStorage;
 
 $(document).ready(function() {
+	// Initialize Firebase
+	var config = {
+		apiKey: "AIzaSyCC10Foydrc3wvtIebKN1kys_LoL40QU7Y",
+		authDomain: "cse170-launchpad.firebaseapp.com",
+		databaseURL: "https://cse170-launchpad.firebaseio.com",
+		projectId: "cse170-launchpad",
+		storageBucket: "cse170-launchpad.appspot.com",
+		messagingSenderId: "80394625965"
+	};
+	firebase.initializeApp(config);
+
+	// var 
+
+
+
 	window.addEventListener('load', function() {
 		// Fetch all the forms we want to apply custom Booststrap validation styles to
 		var forms = $('.needs-validation');
