@@ -117,7 +117,6 @@ $(document).ready(function() {
 	// make sure name field is properly generated
 	firebase.auth().onAuthStateChanged(function(user) {
 	  if (user) {
-		console.log(firebase.auth().currentUser.uid);
 		var template = Handlebars.compile($("#form-name-value-template").html());
 		$(template(user)).insertAfter('#form-name-label');
 	  }

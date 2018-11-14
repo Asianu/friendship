@@ -29,13 +29,12 @@ $(document).ready(function(){
 
 	$('#nav-signout, #nav-collapse-signout').click(function() {
 		console.log('user is signing out');
-		strg.removeItem('user');
-		strg.setItem('signin_token', false);
 		firebase.auth().signOut().then(function () {
 			console.log('sign out successful');
 		}).catch(function(error) {
 			console.log('sign out error');
 		});
+		strg.setItem('signin_token', false);
 
 		window.location.replace('http://localhost:5000');
 		// TODO: use below code during deploy
