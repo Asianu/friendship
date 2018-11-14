@@ -8,7 +8,13 @@ $(document).ready(function() {
 				// User successfully signed in.
 				// Return type determines whether we continue the redirect automatically
 				// or whether we leave that to developer to handle.
+				
+				// TODO: use localhost for development, cse170-* for deployment
+				redirectUrl = 'http://localhost:5000';
+				// redirectUrl = 'https://cse170-launchpad.firebaseapp.com';
+
 				strg.setItem('signin_token', true);
+
 				// add the user to the database if does not exist
 				firebase.auth().onAuthStateChanged(function(user) {
 					if (user) {
@@ -50,11 +56,7 @@ $(document).ready(function() {
 		    }
 		},
 		// Will use popup for IDP Providers sign-in flow instead of the default, redirect.
-		signInFlow: 'popup',
-
-		// TODO: use this when we deploy
-		signInSuccessUrl: 'http://cse170-launchpad.firebaseapp.com',
-		// signInSuccessUrl: 'http://localhost:5000/',
+		signInFlow: 'default',
 		signInOptions: [
 			// Leave the lines as is for the providers you want to offer your users.
 			firebase.auth.GoogleAuthProvider.PROVIDER_ID,
