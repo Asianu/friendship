@@ -7,6 +7,13 @@
         ".read": "$uid === auth.uid",
         ".write": "$uid === auth.uid"
       }
+    },
+    "mentors": {
+      ".read": "auth != null",
+    },
+    "activities": {
+      ".read": true,
+      ".write": false
     }
   }
 }

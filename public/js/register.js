@@ -3,14 +3,10 @@ var strg = window.localStorage;
 $(document).ready(function() {
 
 	// to populate the activites field
-	var activityRef = firebase.database().ref('/activities').orderByValue();
-	activityRef.once('value').then(function(snapshot) {
-		var activities = snapshot.val();
-		$.each(activities, function(key, activity) {
-			var template = Handlebars.compile($("#form-activity-template").html());
-
-			$("#form-activity-dropdown").append(template({'activity' : activity}));
-		});
+	var activityRef = firebase.database().ref('/activities');
+	activityRef.orderByValue().on("value" function(activity) {
+		var template = Handlebars.compile($("#form-activity-template").html());
+		$("#form-activity-dropdown").append(template({'activity' : activity.val()}));
 	});
 
 	// for validation purposes
