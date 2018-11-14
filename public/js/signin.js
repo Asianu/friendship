@@ -1,18 +1,39 @@
 var strg = window.localStorage;
 
 $(document).ready(function() {
-	// Initialize Firebase
-	var config = {
-		apiKey: "AIzaSyCC10Foydrc3wvtIebKN1kys_LoL40QU7Y",
-		authDomain: "cse170-launchpad.firebaseapp.com",
-		databaseURL: "https://cse170-launchpad.firebaseio.com",
-		projectId: "cse170-launchpad",
-		storageBucket: "cse170-launchpad.appspot.com",
-		messagingSenderId: "80394625965"
-	};
-	firebase.initializeApp(config);
 
-	// var 
+	var ui = new firebaseui.auth.AuthUI(firebase.auth());
+	ui.start('#firebaseui-auth-container', {
+		callbacks: {
+		    signInSuccessWithAuthResult: function(authResult, redirectUrl) {
+				// User successfully signed in.
+				// Return type determines whether we continue the redirect automatically
+				// or whether we leave that to developer to handle.
+				strg.setItem('signin_token', true);
+				strg.setItem('user', JSON.stringify(firebase.auth().currentUser));
+				return true
+		    },
+		    uiShown: function() {
+				// The widget is rendered.
+				// Hide the loader.
+				document.getElementById('loader').style.display = 'none';
+		    }
+		},
+		// Will use popup for IDP Providers sign-in flow instead of the default, redirect.
+		signInFlow: 'popup',
+		// TODO: use this when we deploy
+		// signInSuccessUrl: 'http://cse170-launchpad.firebaseapp.com',
+		signInSuccessUrl: 'http://localhost:5000/',
+		signInOptions: [
+			// Leave the lines as is for the providers you want to offer your users.
+			firebase.auth.GoogleAuthProvider.PROVIDER_ID,
+			// firebase.auth.FacebookAuthProvider.PROVIDER_ID,
+			// firebase.auth.TwitterAuthProvider.PROVIDER_ID,
+			// firebase.auth.GithubAuthProvider.PROVIDER_ID,
+			// firebase.auth.EmailAuthProvider.PROVIDER_ID,
+			// firebase.auth.PhoneAuthProvider.PROVIDER_ID
+		]
+	});
 
 
 
