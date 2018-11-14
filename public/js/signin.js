@@ -28,18 +28,14 @@ $(document).ready(function() {
 									'mentor_list': firebase.database().ref('mentor_list').child(user.uid).push().key,
 									'mentee_list': firebase.database().ref('mentee_list').child(user.uid).push().key
 								}).then(function() {
-									// TODO: use this for dev, replace for deployment
-									// window.location.replace('http://cse170-launchpad.firebaseapp.com');
-									window.location.replace('http://localhost:5000');
+									window.location.replace(redirectUrl);
 								}).catch(function(err) {
 									console.log('err', err);
 								});
 							}
 							else {
 								console.log('singing in existing user ' + user.displayName);
-								// TODO: use this for dev, replace for deployment
-								// window.location.replace('http://cse170-launchpad.firebaseapp.com');
-								window.location.replace('http://localhost:5000');
+								window.location.replace(redirectUrl);
 							}
 						});	
 					}
@@ -57,7 +53,7 @@ $(document).ready(function() {
 		signInFlow: 'popup',
 
 		// TODO: use this when we deploy
-		// signInSuccessUrl: 'http://cse170-launchpad.firebaseapp.com',
+		signInSuccessUrl: 'http://cse170-launchpad.firebaseapp.com',
 		// signInSuccessUrl: 'http://localhost:5000/',
 		signInOptions: [
 			// Leave the lines as is for the providers you want to offer your users.
