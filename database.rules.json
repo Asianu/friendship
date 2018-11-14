@@ -10,6 +10,7 @@
     },
     "mentors": {
       ".read": "auth != null",
+      ".write": "auth != null"
     },
     "activities": {
       ".read": true,
