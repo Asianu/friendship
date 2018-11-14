@@ -4,7 +4,7 @@ $(document).ready(function() {
 
 	// to populate the activites field
 	var activityRef = firebase.database().ref('/activities');
-	activityRef.orderByValue().on("value" function(activity) {
+	activityRef.orderByValue().on("child_added", function(activity) {
 		var template = Handlebars.compile($("#form-activity-template").html());
 		$("#form-activity-dropdown").append(template({'activity' : activity.val()}));
 	});
@@ -21,28 +21,33 @@ $(document).ready(function() {
 	          event.stopPropagation();
 	        }
 	        else {
+	        	console.log('there');
 	        	var input = $('form').serializeArray();
 
-				// parse input data into a user JSON object
-				var user = {};
-				$.each(input, function(index, form_obj) {
-					if (form_obj.name == "expertise") {
-						switch(form_obj.value) {
-							case '1': user[form_obj.name] = "Beginner";
-								break;
-							case '2': user[form_obj.name] = "Novice";
-								break;
-							case '3': user[form_obj.name] = "Intermediate";
-								break;
-							case '4': user[form_obj.name] = "Advanced";
-								break;
-							case '5': user[form_obj.name] = "Expert";
-								break;
-						}
+			// parse input data into a user JSON object
+			var user = {};
+			$.each(input, function(index, form_obj) {
+				if (form_obj.name == "expertise") {
+					var expertiseLevel = parseInt(form_obj.value)
+					if (expertiseLevel == 1){
+						user[form_obj.name] = "No Experience"
+					} else if (expertiseLevel <= 20){
+						user[form_obj.name] = "Beginner";
+					} else if (expertiseLevel <= 40) {
+						user[form_obj.name] = "Novice";
+					} else if (expertiseLevel <= 60) {
+						user[form_obj.name] = "Intermediate";
+					} else if (expertiseLevel <= 80) {
+						user[form_obj.name] = "Advanced";
+					} else if (expertiseLevel < 100) {
+						user[form_obj.name] = "Expert";
+					} else {
+						user[form_obj.name] = "Master";
 					}
-					else {
-						user[form_obj.name] = form_obj.value;
-					}
+				}
+				else {
+					user[form_obj.name] = form_obj.value;
+				}
 				});
 				console.log(user);
 
@@ -67,48 +72,49 @@ $(document).ready(function() {
 	  }, false);
 
 	// to update the database when a form has been submitted
-	$("#submit-data-btn").click(function() {
+	// $("#submit-data-btn").click(function() {
+	// 	console.log("here");
 		
-    	var input = $('form').serializeArray();
+ //    	var input = $('form').serializeArray();
 
-		// parse input data into a user JSON object
-		var user = {};
-		$.each(input, function(index, form_obj) {
-			if (form_obj.name == "expertise") {
-				var expertiseLevel = parseInt(form_obj.value)
-				if (expertiseLevel == 1){
-					user[form_obj.name] = "No Experience"
-				} else if (expertiseLevel <= 20){
-					user[form_obj.name] = "Beginner";
-				} else if (expertiseLevel <= 40) {
-					user[form_obj.name] = "Novice";
-				} else if (expertiseLevel <= 60) {
-					user[form_obj.name] = "Intermediate";
-				} else if (expertiseLevel <= 80) {
-					user[form_obj.name] = "Advanced";
-				} else if (expertiseLevel < 100) {
-					user[form_obj.name] = "Expert";
-				} else {
-					user[form_obj.name] = "Master";
-				}
-			}
-			else {
-				user[form_obj.name] = form_obj.value;
-			}
-		});
-		console.log(user);
+	// 	// parse input data into a user JSON object
+	// 	var user = {};
+	// 	$.each(input, function(index, form_obj) {
+	// 		if (form_obj.name == "expertise") {
+	// 			var expertiseLevel = parseInt(form_obj.value)
+	// 			if (expertiseLevel == 1){
+	// 				user[form_obj.name] = "No Experience"
+	// 			} else if (expertiseLevel <= 20){
+	// 				user[form_obj.name] = "Beginner";
+	// 			} else if (expertiseLevel <= 40) {
+	// 				user[form_obj.name] = "Novice";
+	// 			} else if (expertiseLevel <= 60) {
+	// 				user[form_obj.name] = "Intermediate";
+	// 			} else if (expertiseLevel <= 80) {
+	// 				user[form_obj.name] = "Advanced";
+	// 			} else if (expertiseLevel < 100) {
+	// 				user[form_obj.name] = "Expert";
+	// 			} else {
+	// 				user[form_obj.name] = "Master";
+	// 			}
+	// 		}
+	// 		else {
+	// 			user[form_obj.name] = form_obj.value;
+	// 		}
+	// 	});
+	// 	console.log(user);
 
-		// get a new key for post
-		var newPostKey = firebase.database().ref().child('mentors').push().key;
+	// 	// get a new key for post
+	// 	var newPostKey = firebase.database().ref().child('mentors').push().key;
 
-		var updates = {};
-		updates['/mentors/' + newPostKey] = user;
+	// 	var updates = {};
+	// 	updates['/mentors/' + newPostKey] = user;
 
-		firebase.database().ref().update(updates);
+	// 	firebase.database().ref().update(updates);
 
-		console.log(newPostKey);
+	// 	console.log(newPostKey);
 
-	});
+	// });
 
 	// make sure name field is properly generated
 	firebase.auth().onAuthStateChanged(function(user) {
