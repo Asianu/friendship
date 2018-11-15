@@ -46,7 +46,7 @@ html, body {
 	height: 100%;
 }
 
-h1 {
+h1, h2 {
 	color: var(--primary-color);
 }
 
@@ -97,50 +97,8 @@ h1 {
 	width: 25px;
 	height: 25px;
 	border-radius: 50%;
-	background: orange;
+	background: var(--primary-color);
 	cursor: pointer;
-}
-
-.button {
-	/* border-color: orange; */
-	/* border-color: white; */
-	color: orange;
-	font-size: 30px;
-	height: 50px;
-	width: 150px;
-	border-radius: 5px;
-}
-
-.primary {
-	background-color: orange;
-	color: white;
-	border-color: orange;
-}
-
-.alternate {
-	border-color: white;
-}
-
-.button.alternate:hover {
-	color: white;
-	background-color: orange;
-	cursor: pointer;
-	transition: color 0.15s ease-in;
-	transition: background-color 0.15s ease-in;
-}
-
-.button:hover {
-	color: orange;
-	background-color: white;
-	border-color: orange;
-	cursor: pointer;
-	transition: color 0.15s ease-in, background-color 0.15s ease-in;
-}
-
-.button.primary:focus {
-	outline: none;
-	color: orange;
-	background-color: white;
 }
 
 .btn.cta-button {
@@ -257,4 +215,7 @@ h1 {
 /*
  * Homepage items go here
  */
-
+#profPic {
+	height: 3em;
+	border-radius: 50%;
+}

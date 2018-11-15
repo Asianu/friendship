@@ -1,7 +1,20 @@
+// These rules grant access to a node matching the authenticated
+// user's ID from the Firebase auth token
 {
-  /* Visit https://firebase.google.com/docs/database/security to learn more about security rules. */
   "rules": {
-    ".read": true,
-    ".write": true
+    "users": {
+      "$uid": {
+        ".read": "$uid === auth.uid",
+        ".write": "$uid === auth.uid"
+      }
+    },
+    "mentors": {
+      ".read": "auth != null",
+      ".write": "auth != null"
+    },
+    "activities": {
+      ".read": true,
+      ".write": false
+    }
   }
 }

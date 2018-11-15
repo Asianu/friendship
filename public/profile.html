@@ -55,12 +55,15 @@
             </nav>
 
         <div class="container mt-3">
-            <script id="username-template" type="text/x-handlebars-template">
-                <h1>{{username}}</h1>
-            </script>
+            <div class="row" id="profile_header">
+                <script id="username-template" type="text/x-handlebars-template">
+                    <img src="{{photoURL}}" class="mr-3" id="profPic"/>
+                    <h1>{{displayName}}</h1>
+                </script>
+            </div>
             <div class="row">
                 <div class="col">
-                    <h2>Your Mentors</h2>
+                    <h3>Your Mentors</h3>
                     <table id="mentor-table" class="table table-striped table-hover">
                         <thead>
                             <th>Name</th>
@@ -75,14 +78,16 @@
                                     <td>{{expertise}}</td>
                                 </tr>
                             </script>
-                            
+                            <tr>
+                                <td colspan="3">You don't have any mentors yet...</td>
+                            </tr>
                         </tbody>
                     </table>
                 </div>
             </div> 
             <div class="row">
                 <div class="col">
-                    <h2>Your Mentees</h2>
+                    <h3>Your Mentees</h3>
                     <table id="mentee-table" class="table table-striped table-hover">
                         <thead>
                             <th>Name</th>
@@ -95,6 +100,9 @@
                                     <td>{{activity}}</td>
                                 </tr>
                             </script>
+                            <tr>
+                                <td colspan="2">You don't have any mentees yet...</td>
+                            </tr>
                         </tbody>
                     </table>
                 </div>
@@ -102,12 +110,20 @@
 
         </div>
 
+        <!-- Firebase App is always required and must be first -->
+        <script src="https://www.gstatic.com/firebasejs/5.5.7/firebase-app.js"></script>
+
+        <!-- Add additional services that you want to use -->
+        <script src="https://www.gstatic.com/firebasejs/5.5.7/firebase-auth.js"></script>
+        <!-- <script src="https://www.gstatic.com/firebasejs/5.5.7/firebase-database.js"></script> -->
+        <!-- <script src="https://www.gstatic.com/firebasejs/5.5.7/firebase-messaging.js"></script> -->
 
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
         <script src="js/bootstrap.min.js"></script>
         <script src="js/handlebars-v4.0.12.js"></script>
-        <script src="js/profile.js"></script>
+        <!-- always put navbar.js before page.js as we load firebase with the navbar file -->
         <script src="js/navbar.js"></script>
+        <script src="js/profile.js"></script>
     </div>
     </body>
 </html>
