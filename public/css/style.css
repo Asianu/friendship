@@ -250,6 +250,7 @@ h1, h2 {
 }
 
 .cardProfilePic {
+	padding: 0px;
 	height: 5em;
 	width: 5em;
 }

@@ -5,12 +5,16 @@ $(document).ready(function() {
 
 	mentorRef.orderByChild('name').on('child_added', function(mentor) {
 		// pre-compile the template
-		// var template = Handlebars.compile($("#mentor-entry-template").html());
-		// $("#find-table-body").append(template(mentor.val()));
 
 		var mentor_info = mentor.val();
-		var template = Handlebars.compile($("#find-card-template").html());
-		$("#mentors-row").append(template(mentor_info));
+		firebase.database().ref('/users').child(mentor_info.uid).once('value').then(function(snapshot) {
+			// to load the profile picture
+			mentor_info.photoURL = snapshot.val().photoURL;
+
+			var template = Handlebars.compile($("#find-card-template").html());
+			$("#mentors-row").append(template(mentor_info));
+		});
+
 	});
 
 });
