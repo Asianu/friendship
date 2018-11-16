@@ -68,18 +68,20 @@
                         <thead>
                             <th>Name</th>
                             <th>Activity</th>
+                            <th>Specific Activity</th>
                             <th>Level of Expertise</th>
                         </thead>
-                        <tbody id="find-table-body">
-                            <script id="mentor-entry-template" type="text/x-handlebars-template">
+                        <tbody id="mentor-table-body">
+                            <script id="mentor-table-template" type="text/x-handlebars-template">
                                 <tr class="clickable-row">
                                     <td>{{name}}</td>
                                     <td>{{activity}}</td>
+                                    <td>{{specific-activity}}</td>
                                     <td>{{expertise}}</td>
                                 </tr>
                             </script>
-                            <tr>
-                                <td colspan="3">You don't have any mentors yet...</td>
+                            <tr id="empty-mentor-row">
+                                <td colspan="4">You don't have any mentors yet...</td>
                             </tr>
                         </tbody>
                     </table>
@@ -92,16 +94,18 @@
                         <thead>
                             <th>Name</th>
                             <th>Activity</th>
+                            <th>Specific Activity</th>
                         </thead>
-                        <tbody id="find-table-body">
-                            <script id="mentor-entry-template" type="text/x-handlebars-template">
+                        <tbody id="mentee-table-body">
+                            <script id="mentee-table-template" type="text/x-handlebars-template">
                                 <tr class="clickable-row">
                                     <td>{{name}}</td>
                                     <td>{{activity}}</td>
+                                    <td>{{specific-activity}}</td>
                                 </tr>
                             </script>
-                            <tr>
-                                <td colspan="2">You don't have any mentees yet...</td>
+                            <tr id="empty-mentee-row">
+                                <td colspan="3">You don't have any mentees yet...</td>
                             </tr>
                         </tbody>
                     </table>
@@ -115,7 +119,7 @@
 
         <!-- Add additional services that you want to use -->
         <script src="https://www.gstatic.com/firebasejs/5.5.7/firebase-auth.js"></script>
-        <!-- <script src="https://www.gstatic.com/firebasejs/5.5.7/firebase-database.js"></script> -->
+        <script src="https://www.gstatic.com/firebasejs/5.5.7/firebase-database.js"></script>
         <!-- <script src="https://www.gstatic.com/firebasejs/5.5.7/firebase-messaging.js"></script> -->
 
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
