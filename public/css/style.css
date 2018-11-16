@@ -158,7 +158,7 @@ h1, h2 {
 }
 
 .checked {
-	color: var(--secondary-color)
+	color: var(--secondary-color);
 }
 
 .profilePic{
@@ -222,10 +222,61 @@ h1, h2 {
 
 
 /*
- * Homepage items go here
+ * Profile items go here
  */
-#profPic {
+.profilePic {
 	height: 3em;
+	width: 3em;
 	border-radius: 50%;
 
+}
+
+/*
+ *	Find items go here
+ */ 
+.card {
+	max-width: 400px;
+}
+.card p {
+	font-size: .95em;
+}
+
+.card img {
+	align-self: center;
+}
+
+.card-footer {
+	line-height: 2em;
+}
+
+.cardProfilePic {
+	height: 5em;
+	width: 5em;
+}
+
+.tag {
+	/*margin: 10px;*/
+	color: var(--primary-color);
+	font-size: .75em;
+	font-weight: bold;
+	background: rgba(0, 0, 0, 0);
+	border-radius: 200px;
+	border: 2px solid var(--primary-color);
+	transition: .3s;
+}
+
+.tag:hover {
+	color: white;
+	text-decoration: none;
+	background: var(--primary-color);
+	cursor: pointer;
+}
+
+.tag-primary {
+	background: var(--primary-color);
+}
+
+.tag-primary:hover {
+	background: var(--primary-color);
+	box-shadow: 0 6px 20px -4px rgba(255,0,143,0.60);
 }
