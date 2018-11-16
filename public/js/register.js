@@ -73,6 +73,8 @@ $(document).ready(function() {
 	}, false);
 
 
+
+
 	// make sure name field is properly generated
 	firebase.auth().onAuthStateChanged(function(user) {
 	  if (user) {
