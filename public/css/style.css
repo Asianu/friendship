@@ -115,6 +115,7 @@ h1, h2 {
 }
 
 .btn:hover {
+	cursor: pointer;
 	transform:translateY(-8px);
 }
 
