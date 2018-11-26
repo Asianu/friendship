@@ -114,6 +114,20 @@ h1, h2 {
 	margin: 10px;
 }
 
+.group-btn {
+	border:none;
+	/* padding-top: 16px;
+	padding-bottom: 16px; */
+	transition:.3s;
+	padding: 16px;
+	margin: 10px;
+}
+.group-btn:hover {
+	cursor: pointer;
+	transform: translateY(-8px);
+	box-shadow: 0 6px 20px -4px var(--primary-color)
+}
+
 .btn:hover {
 	cursor: pointer;
 	transform:translateY(-8px);
@@ -217,6 +231,9 @@ h1, h2 {
 	cursor: default;
 }
 
+.no-edit:hover {
+	cursor: not-allowed;
+}
 
 /*
  * Profile items go here
