@@ -62,6 +62,7 @@
                     <h2>Find a Mentor</h2>
                     <div class="card-deck mt-4">
                         <div class="row no-gutters" id="mentors-row">
+<<<<<<< HEAD
                             <div class="col">
                                 <div class="card mb-3">
                                     <img class="profilePic cardProfilePic mt-4" src="https://lh4.googleusercontent.com/-ApT_FAkIwnc/AAAAAAAAAAI/AAAAAAAABIg/mcknIyeXL08/photo.jpg"/>
@@ -86,6 +87,10 @@
                                         </div>
                                     </div>
                                 </div>
+=======
+                            <div class="col" id="empty-page-col">
+                                <p>Please sign in to view mentors...</p>
+>>>>>>> f9425f5c42c6bf6b2e31940d14862f93ce4cdca0
                             </div>
                             <script id="find-card-template" type="text/x-handlebars-template">
                                 <div class="col">
@@ -102,11 +107,11 @@
                                             </div>
                                             <hr>
                                             <p class="card-text">{{about}}</p>
-                                            <button type="button" class="btn btn-primary cta-button">Request</button>
-                                            <div class="card-footer">
-                                                <a class="tag px-3 py-1" href="#" role="button">{{activity}}</a>
-                                                <a class="tag px-3 py-1" href="#" role="button">{{specific-activity}}</a>
-                                            </div>
+                                            <button type="button" class="request btn btn-primary cta-button " id={{mentor_id}}>Request</button>
+                                        </div>
+                                        <div class="card-footer">
+                                            <a class="tag px-3 py-1" href="#" role="button">{{activity}}</a>
+                                            <a class="tag px-3 py-1" href="#" role="button">{{specific-activity}}</a>
                                         </div>
                                     </div>
                                 </div>

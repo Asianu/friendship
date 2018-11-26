@@ -54,9 +54,11 @@ $(document).ready(function() {
 
 				// get a new key for post
 				var newMentorKey = firebase.database().ref().child('mentors').push().key;
+				user['mentor_id'] = newMentorKey;
 
 				var updates = {};
 				updates['/mentors/' + newMentorKey] = user;
+				console.log(updates);
 
 				firebase.database().ref().update(updates);
 

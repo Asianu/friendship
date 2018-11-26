@@ -115,6 +115,7 @@ h1, h2 {
 }
 
 .btn:hover {
+	cursor: pointer;
 	transform:translateY(-8px);
 }
 
@@ -221,10 +222,10 @@ h1, h2 {
  * Profile items go here
  */
 .profilePic {
+	padding: 0px;
 	height: 3em;
 	width: 3em;
 	border-radius: 50%;
-
 }
 
 /*
@@ -246,7 +247,6 @@ h1, h2 {
 }
 
 .cardProfilePic {
-	padding: 0px;
 	height: 5em;
 	width: 5em;
 }
@@ -256,6 +256,7 @@ h1, h2 {
 	color: var(--primary-color);
 	font-size: .75em;
 	font-weight: bold;
+	white-space: nowrap;
 	background: rgba(0, 0, 0, 0);
 	border-radius: 200px;
 	border: 2px solid var(--primary-color);

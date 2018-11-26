@@ -4,7 +4,7 @@
   "rules": {
     "users": {
       "$uid": {
-        ".read": "$uid === auth.uid",
+        ".read": "auth != null",
         ".write": "$uid === auth.uid"
       }
     },
@@ -15,6 +15,14 @@
     "activities": {
       ".read": true,
       ".write": false
+    },
+    "mentor_list": {
+      ".read": "auth != null",
+      ".write": "auth != null"
+    },
+    "mentee_list": {
+      ".read": "auth != null",
+      ".write": "auth != null",
     }
   }
 }
