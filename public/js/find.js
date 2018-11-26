@@ -3,7 +3,7 @@ var strg = window.localStorage;
 $(document).ready(function() {
 
 	// if user is signed in, hide the empty-page-col element
-	if(strg.getItem('signin_token') == true) {
+	if(strg.getItem('signin_token') == 'true') {
 		$("#empty-page-col").hide();
 	}
 
