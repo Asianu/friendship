@@ -1,4 +1,5 @@
 var strg = window.localStorage;
+var counter = 1;
 
 $(document).ready(function() {
 
@@ -90,29 +91,30 @@ $(document).ready(function() {
 		return false;
     });
     
-    // $("#add-button").click(function() {
-    //     $("#activity-list").append(
-    //     '<div id="activity1" class="form-row">\
-    //     <div class="col-lg">\
-    //         <input type="text" class="form-control" name="specific-activity"/>\
-    //     </div>\
-    //     <div class="col-lg">\
-    //         <div class="custom-control custom-radio custom-control-inline">\
-    //             <input type="radio" id="customRadioInline1" name="customRadioInline1" class="custom-control-input tag">\
-    //             <label class="custom-control-label tag radio-tag" for="customRadioInline1">Advanced</label>\
-    //         </div>\
-    //         <div class="custom-control custom-radio custom-control-inline">\
-    //             <input type="radio" id="customRadioInline2" name="customRadioInline1" class="custom-control-input">\
-    //             <label class="custom-control-label tag radio-tag" for="customRadioInline2">Expert</label>\
-    //         </div>\
-    //         <div class="custom-control custom-radio custom-control-inline">\
-    //             <input type="radio" id="customRadioInline3" name="customRadioInline1" class="custom-control-input">\
-    //             <label class="custom-control-label tag radio-tag" for="customRadioInline3">Master</label>\
-    //         </div>\
-    //         <button id="new-row" class="add-button"><i class="fas fa-check" aria-hidden="true"></i></button>\
-    //     </div>\
-    // </div>'
-    // );
-    // });
+    $("#new-row").click(function(e) {
+        e.preventDefault();
+        counter = counter + 1;
+        $("#activity-list").append('<div id="activity-'+counter+'" class="form-row">\
+            <div class="col-lg">\
+                <input type="text" class="form-control" name="activity-'+counter+'" />\
+            </div>\
+            <div class="col-lg">\
+                <div class="custom-control custom-radio custom-control-inline">\
+                    <input type="radio" id="adv-radio-1" name="expertise-radio-1">\
+                    <label class="tag" for="adv-radio-1">Advanced</label>\
+                </div>\
+                <div class="custom-control custom-radio custom-control-inline">\
+                    <input type="radio" id="exp-radio-1" name="expertise-radio-1">\
+                    <label class="tag" for="exp-radio-1">Expert</label>\
+                </div>\
+                <div class="custom-control custom-radio custom-control-inline">\
+                    <input type="radio" id="mas-radio-1" name="expertise-radio-1">\
+                    <label class="tag" for="mas-radio-1">Master</label>\
+                </div>\
+                <button id="new-row" class="add-btn"><i class="fas fa-check" aria-hidden="true"></i></button>\
+            </div>\
+        </div>\
+        ');
+    });
 
 });
