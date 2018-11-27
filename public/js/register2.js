@@ -16,7 +16,7 @@ $(document).ready(function() {
 	    var forms = document.getElementsByClassName('needs-validation');
 	    // Loop over them and prevent submission
 	    var validation = Array.prototype.filter.call(forms, function(form) {
-	      form.addEventListener($("#submit"), function(event) {
+	      form.addEventListener("submit", function(event) {
 	        if (form.checkValidity() === false) {
 	          event.preventDefault();
 	          event.stopPropagation();
@@ -114,7 +114,7 @@ $(document).ready(function() {
                 </div>\
             </div>\
             <div id="row-modifier-icon">\
-                <button class="add-btn"><i class="fas fa-check" aria-hidden="true"></i></button>\
+                <button type="button" class="add-btn"><i class="fas fa-check" aria-hidden="true"></i></button>\
             </div>\
         </div>\
         ');
