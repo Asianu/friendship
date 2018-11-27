@@ -84,22 +84,26 @@
                             <input type="text" class="form-control" name="specific-activity" />
                         </div>
                         <div class="col-lg">
-                            <div class="btn-group" role="group" aria-label="Basic example">
-                                <br>
-                                <button type="button" class="group-btn btn-primary">Advanced</button>
-                                <button type="button" class="group-btn btn-primary">Expert</button>
-                                <button type="button" class="group-btn btn-primary">Master</button>
+                            <div class="custom-control custom-radio custom-control-inline">
+                                <input type="radio" id="customRadioInline1" name="customRadioInline1" class="custom-control-input tag">
+                                <label class="custom-control-label tag radio-tag" for="customRadioInline1">Advanced</label>
                             </div>
-                        </div>
-                        <div class="col-lg">
-
+                            <div class="custom-control custom-radio custom-control-inline">
+                                <input type="radio" id="customRadioInline2" name="customRadioInline1" class="custom-control-input">
+                                <label class="custom-control-label tag radio-tag" for="customRadioInline2">Expert</label>
+                            </div>
+                            <div class="custom-control custom-radio custom-control-inline">
+                                <input type="radio" id="customRadioInline3" name="customRadioInline1" class="custom-control-input">
+                                <label class="custom-control-label tag radio-tag" for="customRadioInline3">Master</label>
+                            </div>
+                            <button id="new-row" class="add-button"><i class="fas fa-check" aria-hidden="true"></i></button>
                         </div>
                     </div>
 
                 </div>
 
 
-                <div class="form-group form-row">
+                <!-- <div class="form-group form-row">
                     <div class="slidecontainer">
                         <label>Level of Expertise</label>
                         <input type="range" min="1" max="100" value="50" class="slider" id="myRange" name="expertise">
@@ -131,7 +135,7 @@
                             }
                         </script>
 
-                </div>
+                </div> -->
                 <div class="form-group">
                     <label>Short Biography</label>
                     <textarea class="form-control" rows="8" name="about"></textarea>
@@ -140,11 +144,11 @@
                     <div class="col-sm"></div>
                     <div class="col-sm"></div>
                     <div class="col-xs mb-3">
-                        <button type="button" class="btn btn-secondary cta-button retHomeBtn alternate mx-2" id="cancelButton">
+                        <!-- <button type="button" class="btn btn-secondary cta-button retHomeBtn alternate mx-2" id="cancelButton">
                             <a href="index.html"></a>
                             Cancel
-                        </button>
-                        <button type="submit" class="btn btn-primary cta-button primary mx-2" data-toggle="modal"
+                        </button> -->
+                        <button id="submit" class="btn btn-primary cta-button primary mx-2" data-toggle="modal"
                             data-target="#exampleModal">
                             Submit
                         </button>
