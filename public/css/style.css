@@ -274,11 +274,14 @@ h1, h2 {
 	width: 5em;
 }
 
-.radio-tag {
-	padding: 10px;
+input[type="radio"] {
+	opacity: 0.011;
+	z-index: 100;
 }
-.radio-tag:checked {
-	background-color: var(--secondary-color);
+
+input[type="radio"]:checked + label {
+	color: white;
+	background-color: var(--primary-color);
 }
 
 .tag {
@@ -286,6 +289,7 @@ h1, h2 {
 	color: var(--primary-color);
 	font-size: .75em;
 	font-weight: bold;
+	padding: 10px;
 	white-space: nowrap;
 	background: rgba(0, 0, 0, 0);
 	border-radius: 200px;
@@ -293,7 +297,7 @@ h1, h2 {
 	transition: .3s;
 }
 
-.add-button{
+.add-btn{
 	color: green;
 	background: green;
 	font-size: .75em;

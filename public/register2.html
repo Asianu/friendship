@@ -62,7 +62,7 @@
                     <label id="form-name-label">Name</label>
                     <script id="form-name-value-template" type="text/x-handlebars-template">
                         <input type="text" class="form-control no-edit" name="name" value="{{displayName}}" readonly require/>
-                        </script>
+                    </script>
                     <small class="form-text text-muted">If this is not your name, please make sure you're logged in to
                         the correct account</small>
                 </div>
@@ -85,57 +85,23 @@
                         </div>
                         <div class="col-lg">
                             <div class="custom-control custom-radio custom-control-inline">
-                                <input type="radio" id="customRadioInline1" name="customRadioInline1" class="custom-control-input tag">
-                                <label class="custom-control-label tag radio-tag" for="customRadioInline1">Advanced</label>
+                                <input type="radio" id="adv-radio-1" name="expertise-radio-1">
+                                <label class="tag" for="adv-radio-1">Advanced</label>
+                            </div>
+
+                            <div class="custom-control custom-radio custom-control-inline">
+                                <input type="radio" id="exp-radio-1" name="expertise-radio-1">
+                                <label class="tag" for="exp-radio-1">Expert</label>
                             </div>
                             <div class="custom-control custom-radio custom-control-inline">
-                                <input type="radio" id="customRadioInline2" name="customRadioInline1" class="custom-control-input">
-                                <label class="custom-control-label tag radio-tag" for="customRadioInline2">Expert</label>
+                                <input type="radio" id="mas-radio-1" name="expertise-radio-1">
+                                <label class="tag" for="mas-radio-1">Master</label>
                             </div>
-                            <div class="custom-control custom-radio custom-control-inline">
-                                <input type="radio" id="customRadioInline3" name="customRadioInline1" class="custom-control-input">
-                                <label class="custom-control-label tag radio-tag" for="customRadioInline3">Master</label>
-                            </div>
-                            <button id="new-row" class="add-button"><i class="fas fa-check" aria-hidden="true"></i></button>
+                            <!-- <button id="new-row" class="add-btn"><i class="fas fa-check" aria-hidden="true"></i></button> -->
                         </div>
                     </div>
 
                 </div>
-
-
-                <!-- <div class="form-group form-row">
-                    <div class="slidecontainer">
-                        <label>Level of Expertise</label>
-                        <input type="range" min="1" max="100" value="50" class="slider" id="myRange" name="expertise">
-                        <p> Skill Level: <span id="demo"></span></p>
-                    </div>
-
-                    <script>
-                        var slider = document.getElementById("myRange");
-                            var output = document.getElementById("demo");
-                            output.innerHTML = "Intermediate";
-
-                            slider.oninput = function() {
-                                var expertiseLevel = parseInt(this.value)
-                                if (expertiseLevel == 1){
-                                    output.innerHTML = "None";
-                                } else if (expertiseLevel <= 20){
-                                    output.innerHTML = "Beginner";
-                                } else if (expertiseLevel <= 40) {
-                                    output.innerHTML = "Novice";
-                                } else if (expertiseLevel <= 60) {
-                                    output.innerHTML = "Intermediate";
-                                } else if (expertiseLevel <= 80) {
-                                    output.innerHTML = "Advanced";
-                                } else if (expertiseLevel < 100) {
-                                    output.innerHTML = "Expert";
-                                } else {
-                                    output.innerHTML = "Master";
-                                }
-                            }
-                        </script>
-
-                </div> -->
                 <div class="form-group">
                     <label>Short Biography</label>
                     <textarea class="form-control" rows="8" name="about"></textarea>
