@@ -311,6 +311,14 @@ input[type="radio"]:checked + label {
 
 .add-btn {
 	color: green;
+<<<<<<< HEAD
+	font-size: .75em;
+	font-weight: bold;
+	white-space: nowrap;
+	background: rgba(0, 0, 0, 0);
+	border-radius: 200px;
+=======
+>>>>>>> 8332ca21a9fbc73d4ac368d7bc02e95d8062ffef
 	border: 2px solid green;
 }
 
@@ -319,14 +327,13 @@ input[type="radio"]:checked + label {
 }
 
 .remove-btn {
-	color: green;
-	background: green;
+	color: red;
 	font-size: .75em;
 	font-weight: bold;
 	white-space: nowrap;
 	background: rgba(0, 0, 0, 0);
 	border-radius: 200px;
-	border: 2px solid green;
+	border: 2px solid red;
 	transition: .3s;
 }
 
