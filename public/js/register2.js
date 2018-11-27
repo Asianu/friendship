@@ -47,8 +47,9 @@ $(document).ready(function() {
 	    });
 	}, false);
 
-	// populate specific activity row
-	var input = {activity_id:2
+	// populate specific activity row, figure out a way here to implement a listener that will call this *again*
+	var input = {
+		activity_id: 1
 	};
 	var template = Handlebars.compile($("#form-activity-row-template").html());
 	$("#activity-list").append(template(input));
