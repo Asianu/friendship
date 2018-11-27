@@ -258,7 +258,7 @@ h1, h2 {
  *	Find items go here
  */ 
 .card {
-	max-width: 400px;
+	/*width: 250px;*/
 }
 .card p {
 	font-size: .95em;
