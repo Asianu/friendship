@@ -8,6 +8,10 @@
         ".write": "$uid === auth.uid"
       }
     },
+    "profiles": {
+      ".read": "auth!=null",
+      ".write": "auth!=null"
+    },
     "mentors": {
       ".read": "auth != null",
       ".write": "auth != null"

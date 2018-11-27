@@ -32,7 +32,8 @@ $(document).ready(function() {
 									'photoURL': user.photoURL,
 									'providerId': user.providerId,
 									'mentor_list': firebase.database().ref('mentor_list').child(user.uid).push().key,
-									'mentee_list': firebase.database().ref('mentee_list').child(user.uid).push().key
+									'mentee_list': firebase.database().ref('mentee_list').child(user.uid).push().key,
+									'profile_id' : firebase.database().ref('profiles').child(user.uid).push().key
 								}).then(function() {
 									window.location.replace(redirectUrl);
 								}).catch(function(err) {

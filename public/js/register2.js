@@ -16,29 +16,42 @@ $(document).ready(function() {
 	        	event.preventDefault();
 	        	var input = $('form').serializeArray();
 
-	        	$.each(input, function(key, value) {
-	        		console.log(key, value, value.value);
+
+	        	var profile = {};
+	        	profile['uid'] = firebase.auth().currentUser.uid;
+	        	profile['activities'] = {};
+
+	        	var profile_id = null;
+	        	firebase.database().ref('/users').child(firebase.auth().currentUser.uid).once('value').then(function(snapshot) {
+        			profile_id = snapshot.val().profile_id;
+	        	
+
+		        	var tmp_activity = null;
+		        	$.each(input, function(key, form_item) {
+
+		        		// add the activity to the profile
+		        		if(form_item.name.toLowerCase().indexOf('activity') >= 0) {
+		        			tmp_activity = form_item.value;
+		        			profile.activities[tmp_activity] = 0;
+		        		}
+
+		        		// add the expertise level of that activity to the profile
+		        		else if (form_item.name.toLowerCase().indexOf('expertise') >= 0) {
+		        			profile.activities[tmp_activity] = form_item.value;
+		        		}
+
+		        		// add any other relevant data to the profile
+		        		else {
+		        			profile[form_item.name] = form_item.value;
+		        		}
+		        	});
+
+		        	firebase.database().ref('/profiles/' + profile_id).set(profile);
 	        	});
 
-				// parse input data into a user JSON object
-				// var user = {};
+	        	console.log(profile);
 
-				// user['uid'] = firebase.auth().currentUser.uid;
-				// console.log(user);
-
-				// // get a new key for post
-				// var newMentorKey = firebase.database().ref().child('mentors').push().key;
-				// user['mentor_id'] = newMentorKey;
-
-				// var updates = {};
-				// updates['/mentors/' + newMentorKey] = user;
-				// console.log(updates);
-
-				// firebase.database().ref().update(updates);
-
-				// console.log(newMentorKey);
-
-				// $('#exampleModal').modal('show');
+				$('#exampleModal').modal('show');
 
 		        event.preventDefault();
 		        event.stopPropagation();
