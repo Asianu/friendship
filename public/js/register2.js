@@ -74,10 +74,11 @@ $(document).ready(function() {
         $("#activity-list").append(template(input));
         input.activity_id = input.activity_id + 1;
         $(".add-btn").bind("click", addRow);
+        $(".remove-btn").bind("click", deleteRow);
     };
 
-    $(".remove-btn").click(function() {
-        $("div").remove(this.parent());
-    });
+    function deleteRow() {
+        $(this).parent().parent().remove();
+    };
 
 });
