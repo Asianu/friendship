@@ -86,16 +86,15 @@
                             </div>
                             <div class="col-lg">
                                 <div class="custom-control custom-radio custom-control-inline">
-                                    <input type="radio" id="adv-radio-{{activity_id}}" name="expertise-radio-{{activity_id}}">
+                                    <input type="radio" id="adv-radio-{{activity_id}}" name="expertise-radio-{{activity_id}}" value=1 required>
                                     <label class="tag radio-tag" for="adv-radio-{{activity_id}}">Advanced</label>
                                 </div>
-
                                 <div class="custom-control custom-radio custom-control-inline">
-                                    <input type="radio" id="exp-radio-{{activity_id}}" name="expertise-radio-{{activity_id}}">
+                                    <input type="radio" id="exp-radio-{{activity_id}}" name="expertise-radio-{{activity_id}}" value=2 required>
                                     <label class="tag radio-tag" for="exp-radio-{{activity_id}}">Expert</label>
                                 </div>
                                 <div class="custom-control custom-radio custom-control-inline">
-                                    <input type="radio" id="mas-radio-{{activity_id}}" name="expertise-radio-{{activity_id}}">
+                                    <input type="radio" id="mas-radio-{{activity_id}}" name="expertise-radio-{{activity_id}}" value=3 required>
                                     <label class="tag radio-tag" for="mas-radio-{{activity_id}}">Master</label>
                                 </div>
                             </div>
@@ -115,7 +114,6 @@
                     <div class="col-sm"></div>
                     <div class="col-xs mb-3">
                         <button id="submit" class="btn btn-primary cta-button primary mx-2">
-                        <!-- data-toggle="modal" data-target="#exampleModal"> -->
                             Submit
                         </button>
 
