@@ -90,6 +90,29 @@ $(document).ready(function() {
 		return false;
     });
     
-    $("add-button")
+    $("#add-button").click(function() {
+        $("#activity-list").append(
+        '<div id="activity1" class="form-row">\
+        <div class="col-lg">\
+            <input type="text" class="form-control" name="specific-activity"/>\
+        </div>\
+        <div class="col-lg">\
+            <div class="custom-control custom-radio custom-control-inline">\
+                <input type="radio" id="customRadioInline1" name="customRadioInline1" class="custom-control-input tag">\
+                <label class="custom-control-label tag radio-tag" for="customRadioInline1">Advanced</label>\
+            </div>\
+            <div class="custom-control custom-radio custom-control-inline">\
+                <input type="radio" id="customRadioInline2" name="customRadioInline1" class="custom-control-input">\
+                <label class="custom-control-label tag radio-tag" for="customRadioInline2">Expert</label>\
+            </div>\
+            <div class="custom-control custom-radio custom-control-inline">\
+                <input type="radio" id="customRadioInline3" name="customRadioInline1" class="custom-control-input">\
+                <label class="custom-control-label tag radio-tag" for="customRadioInline3">Master</label>\
+            </div>\
+            <button id="new-row" class="add-button"><i class="fas fa-check" aria-hidden="true"></i></button>\
+        </div>\
+    </div>'
+    );
+    });
 
 });
