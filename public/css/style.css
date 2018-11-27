@@ -114,6 +114,20 @@ h1, h2 {
 	margin: 10px;
 }
 
+.group-btn {
+	border:none;
+	/* padding-top: 16px;
+	padding-bottom: 16px; */
+	transition:.3s;
+	padding: 16px;
+	margin: 10px;
+}
+.group-btn:hover {
+	cursor: pointer;
+	transform: translateY(-8px);
+	box-shadow: 0 6px 20px -4px var(--primary-color)
+}
+
 .btn:hover {
 	cursor: pointer;
 	transform:translateY(-8px);
@@ -171,10 +185,6 @@ h1, h2 {
 	color: var(--secondary-color);
 }
 
-.profilePic{
-	padding-top: 25px;
-}
-
 .stars {
 	padding-bottom: 15px;
 }
@@ -230,6 +240,9 @@ h1, h2 {
 	cursor: default;
 }
 
+.no-edit:hover {
+	cursor: not-allowed;
+}
 
 /*
  * Profile items go here
@@ -264,6 +277,13 @@ h1, h2 {
 	width: 5em;
 }
 
+.radio-tag {
+	padding: 10px;
+}
+.radio-tag:checked {
+	background-color: var(--secondary-color);
+}
+
 .tag {
 	/*margin: 10px;*/
 	color: var(--primary-color);
@@ -273,6 +293,18 @@ h1, h2 {
 	background: rgba(0, 0, 0, 0);
 	border-radius: 200px;
 	border: 2px solid var(--primary-color);
+	transition: .3s;
+}
+
+.add-button{
+	color: green;
+	background: green;
+	font-size: .75em;
+	font-weight: bold;
+	white-space: nowrap;
+	background: rgba(0, 0, 0, 0);
+	border-radius: 200px;
+	border: 2px solid green;
 	transition: .3s;
 }
 
