@@ -9,34 +9,36 @@ $(document).ready(function() {
 	    var validation = Array.prototype.filter.call(forms, function(form) {
 	      form.addEventListener("submit", function(event) {
 	        if (form.checkValidity() === false) {
-	        	console.log('here');
 	          event.preventDefault();
 	          event.stopPropagation();
 	        }
 	        else {
 	        	event.preventDefault();
-	        	console.log('there');
 	        	var input = $('form').serializeArray();
 
+	        	$.each(input, function(key, value) {
+	        		console.log(key, value, value.value);
+	        	});
+
 				// parse input data into a user JSON object
-				var user = {};
+				// var user = {};
 
-				user['uid'] = firebase.auth().currentUser.uid;
-				console.log(user);
+				// user['uid'] = firebase.auth().currentUser.uid;
+				// console.log(user);
 
-				// get a new key for post
-				var newMentorKey = firebase.database().ref().child('mentors').push().key;
-				user['mentor_id'] = newMentorKey;
+				// // get a new key for post
+				// var newMentorKey = firebase.database().ref().child('mentors').push().key;
+				// user['mentor_id'] = newMentorKey;
 
-				var updates = {};
-				updates['/mentors/' + newMentorKey] = user;
-				console.log(updates);
+				// var updates = {};
+				// updates['/mentors/' + newMentorKey] = user;
+				// console.log(updates);
 
-				firebase.database().ref().update(updates);
+				// firebase.database().ref().update(updates);
 
-				console.log(newMentorKey);
+				// console.log(newMentorKey);
 
-				$('#exampleModal').modal('show');
+				// $('#exampleModal').modal('show');
 
 		        event.preventDefault();
 		        event.stopPropagation();
