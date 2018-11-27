@@ -91,7 +91,7 @@ $(document).ready(function() {
 		return false;
     });
     
-    $("#new-row").click(function(e) {
+    $(".add-btn").click(function(e) {
         e.preventDefault();
         counter = counter + 1;
         $("#activity-list").append('<div id="activity-'+counter+'" class="form-row">\
@@ -100,16 +100,16 @@ $(document).ready(function() {
             </div>\
             <div class="col-lg">\
                 <div class="custom-control custom-radio custom-control-inline">\
-                    <input type="radio" id="adv-radio-1" name="expertise-radio-1">\
-                    <label class="tag" for="adv-radio-1">Advanced</label>\
+                    <input type="radio" id="adv-radio-'+counter+'" name="expertise-radio-'+counter+'">\
+                    <label class="tag" for="adv-radio-'+counter+'">Advanced</label>\
                 </div>\
                 <div class="custom-control custom-radio custom-control-inline">\
-                    <input type="radio" id="exp-radio-1" name="expertise-radio-1">\
-                    <label class="tag" for="exp-radio-1">Expert</label>\
+                    <input type="radio" id="exp-radio-'+counter+'" name="expertise-radio-'+counter+'">\
+                    <label class="tag" for="exp-radio-'+counter+'">Expert</label>\
                 </div>\
                 <div class="custom-control custom-radio custom-control-inline">\
-                    <input type="radio" id="mas-radio-1" name="expertise-radio-1">\
-                    <label class="tag" for="mas-radio-1">Master</label>\
+                    <input type="radio" id="mas-radio-'+counter+'" name="expertise-radio-'+counter+'">\
+                    <label class="tag" for="mas-radio-'+counter+'">Master</label>\
                 </div>\
                 <button id="new-row" class="add-btn"><i class="fas fa-check" aria-hidden="true"></i></button>\
             </div>\
