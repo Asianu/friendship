@@ -69,33 +69,33 @@ $(document).ready(function() {
 		return false;
     });
     
-    $(".add-btn").click(function(e) {
-        e.preventDefault();
-        counter = counter + 1;
-        $("#row-modifier-icon").html('<button class="remove-btn"><i class="fa fa-times" aria-hidden="true"></i></button>');
-        $("#activity-list").append('<div id="activity-'+counter+'" class="form-row">\
-            <div class="col-lg">\
-                <input type="text" class="form-control" name="activity-'+counter+'" />\
-            </div>\
-            <div class="col-lg">\
-                <div class="custom-control custom-radio custom-control-inline">\
-                    <input type="radio" id="adv-radio-'+counter+'" name="expertise-radio-'+counter+'">\
-                    <label class="tag" for="adv-radio-'+counter+'">Advanced</label>\
-                </div>\
-                <div class="custom-control custom-radio custom-control-inline">\
-                    <input type="radio" id="exp-radio-'+counter+'" name="expertise-radio-'+counter+'">\
-                    <label class="tag" for="exp-radio-'+counter+'">Expert</label>\
-                </div>\
-                <div class="custom-control custom-radio custom-control-inline">\
-                    <input type="radio" id="mas-radio-'+counter+'" name="expertise-radio-'+counter+'">\
-                    <label class="tag" for="mas-radio-'+counter+'">Master</label>\
-                </div>\
-            </div>\
-            <div id="row-modifier-icon">\
-                <button type="button" class="add-btn"><i class="fas fa-check" aria-hidden="true"></i></button>\
-            </div>\
-        </div>\
-        ');
-    });
+    // $(".add-btn").click(function(e) {
+    //     e.preventDefault();
+    //     counter = counter + 1;
+    //     $("#row-modifier-icon").html('<button class="remove-btn"><i class="fa fa-times" aria-hidden="true"></i></button>');
+    //     $("#activity-list").append('<div id="activity-'+counter+'" class="form-row">\
+    //         <div class="col-lg">\
+    //             <input type="text" class="form-control" name="activity-'+counter+'" />\
+    //         </div>\
+    //         <div class="col-lg">\
+    //             <div class="custom-control custom-radio custom-control-inline">\
+    //                 <input type="radio" id="adv-radio-'+counter+'" name="expertise-radio-'+counter+'">\
+    //                 <label class="tag" for="adv-radio-'+counter+'">Advanced</label>\
+    //             </div>\
+    //             <div class="custom-control custom-radio custom-control-inline">\
+    //                 <input type="radio" id="exp-radio-'+counter+'" name="expertise-radio-'+counter+'">\
+    //                 <label class="tag" for="exp-radio-'+counter+'">Expert</label>\
+    //             </div>\
+    //             <div class="custom-control custom-radio custom-control-inline">\
+    //                 <input type="radio" id="mas-radio-'+counter+'" name="expertise-radio-'+counter+'">\
+    //                 <label class="tag" for="mas-radio-'+counter+'">Master</label>\
+    //             </div>\
+    //         </div>\
+    //         <div id="row-modifier-icon">\
+    //             <button type="button" class="add-btn"><i class="fas fa-check" aria-hidden="true"></i></button>\
+    //         </div>\
+    //     </div>\
+    //     ');
+    // });
 
 });
