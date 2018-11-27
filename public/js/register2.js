@@ -27,29 +27,29 @@ $(document).ready(function() {
 
 				// parse input data into a user JSON object
 				var user = {};
-				$.each(input, function(index, form_obj) {
-					if (form_obj.name == "expertise") {
-						var expertiseLevel = parseInt(form_obj.value)
-						if (expertiseLevel == 1){
-							user[form_obj.name] = "No Experience"
-						} else if (expertiseLevel <= 20){
-							user[form_obj.name] = "Beginner";
-						} else if (expertiseLevel <= 40) {
-							user[form_obj.name] = "Novice";
-						} else if (expertiseLevel <= 60) {
-							user[form_obj.name] = "Intermediate";
-						} else if (expertiseLevel <= 80) {
-							user[form_obj.name] = "Advanced";
-						} else if (expertiseLevel < 100) {
-							user[form_obj.name] = "Expert";
-						} else {
-							user[form_obj.name] = "Master";
-						}
-					}
-					else {
-						user[form_obj.name] = form_obj.value;
-					}
-				});
+				// $.each(input, function(index, form_obj) {
+				// 	if (form_obj.name == "expertise") {
+				// 		var expertiseLevel = parseInt(form_obj.value)
+				// 		if (expertiseLevel == 1){
+				// 			user[form_obj.name] = "No Experience"
+				// 		} else if (expertiseLevel <= 20){
+				// 			user[form_obj.name] = "Beginner";
+				// 		} else if (expertiseLevel <= 40) {
+				// 			user[form_obj.name] = "Novice";
+				// 		} else if (expertiseLevel <= 60) {
+				// 			user[form_obj.name] = "Intermediate";
+				// 		} else if (expertiseLevel <= 80) {
+				// 			user[form_obj.name] = "Advanced";
+				// 		} else if (expertiseLevel < 100) {
+				// 			user[form_obj.name] = "Expert";
+				// 		} else {
+				// 			user[form_obj.name] = "Master";
+				// 		}
+				// 	}
+				// 	else {
+				// 		user[form_obj.name] = form_obj.value;
+				// 	}
+				//});
 				user['uid'] = firebase.auth().currentUser.uid;
 				console.log(user);
 
@@ -94,6 +94,7 @@ $(document).ready(function() {
     $(".add-btn").click(function(e) {
         e.preventDefault();
         counter = counter + 1;
+        $("#row-modifier-icon").html('<button class="remove-btn"><i class="fa fa-times" aria-hidden="true"></i></button>');
         $("#activity-list").append('<div id="activity-'+counter+'" class="form-row">\
             <div class="col-lg">\
                 <input type="text" class="form-control" name="activity-'+counter+'" />\
@@ -111,7 +112,9 @@ $(document).ready(function() {
                     <input type="radio" id="mas-radio-'+counter+'" name="expertise-radio-'+counter+'">\
                     <label class="tag" for="mas-radio-'+counter+'">Master</label>\
                 </div>\
-                <button id="new-row" class="add-btn"><i class="fas fa-check" aria-hidden="true"></i></button>\
+            </div>\
+            <div id="row-modifier-icon">\
+                <button class="add-btn"><i class="fas fa-check" aria-hidden="true"></i></button>\
             </div>\
         </div>\
         ');
