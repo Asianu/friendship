@@ -70,10 +70,14 @@ $(document).ready(function() {
     });
     
     function addRow() {
-        $(".row-modifier-icon").html('<button type="button" class="remove-btn"><i class="fa fa-times" aria-hidden="true"></i></button>');
+        $(".row-modifier-icon").html('<button type="button" class="tag remove-btn"><i class="fa fa-times" aria-hidden="true"></i></button>');
         $("#activity-list").append(template(input));
+        input.activity_id = input.activity_id + 1;
         $(".add-btn").bind("click", addRow);
-        input.argument_id = input.argument_id + 1;
     };
+
+    $(".remove-btn").click(function() {
+        $("div").remove(this.parent());
+    });
 
 });
