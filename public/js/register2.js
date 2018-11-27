@@ -51,16 +51,22 @@ $(document).ready(function() {
 	var input = {
 		activity_id: 1
 	};
-	var template = Handlebars.compile($("#form-activity-row-template").html());
-	$("#activity-list").append(template(input));
+	var activity_template = Handlebars.compile($("#form-activity-row-template").html());
+	$("#activity-list").append(activity_template(input));
+
+	$(".add-btn").click(function(e) {
+		input.activity_id = input.activity_id + 1;
+		console.log(input.activity_id);
+		$("#activity-list").append(activity_template(input));
+	});
 
 
 
 	// make sure name field is properly generated
 	firebase.auth().onAuthStateChanged(function(user) {
 	  if (user) {
-		var template = Handlebars.compile($("#form-name-value-template").html());
-		$(template(user)).insertAfter('#form-name-label');
+		var name_template = Handlebars.compile($("#form-name-value-template").html());
+		$(name_template(user)).insertAfter('#form-name-label');
 	  }
 	});
 
