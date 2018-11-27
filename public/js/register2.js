@@ -77,7 +77,7 @@ $(document).ready(function() {
     };
 
     $(".remove-btn").click(function() {
-        
+        $("div").remove(this.parent());
     });
 
 });
