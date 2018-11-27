@@ -68,10 +68,14 @@ $(document).ready(function() {
     });
     
     function addRow() {
-        $(".row-modifier-icon").html('<button type="button" class="remove-btn"><i class="fa fa-times" aria-hidden="true"></i></button>');
+        $(".row-modifier-icon").html('<button type="button" class="tag remove-btn"><i class="fa fa-times" aria-hidden="true"></i></button>');
         $("#activity-list").append(template(input));
         $(".add-btn").bind("click", addRow);
         input.argument_id = input.argument_id + 1;
     };
+
+    function deleteRow() {
+        
+    }
 
 });
