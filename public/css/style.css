@@ -311,14 +311,6 @@ input[type="radio"]:checked + label {
 
 .add-btn {
 	color: green;
-<<<<<<< HEAD
-	font-size: .75em;
-	font-weight: bold;
-	white-space: nowrap;
-	background: rgba(0, 0, 0, 0);
-	border-radius: 200px;
-=======
->>>>>>> 8332ca21a9fbc73d4ac368d7bc02e95d8062ffef
 	border: 2px solid green;
 }
 
