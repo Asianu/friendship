@@ -79,27 +79,31 @@
                         </div>
                     </div>
 
-                    <div id="activity-1" class="form-row">
-                        <div class="col-lg">
-                            <input type="text" class="form-control" name="activity-1" />
-                        </div>
-                        <div class="col-lg">
-                            <div class="custom-control custom-radio custom-control-inline">
-                                <input type="radio" id="adv-radio-1" name="expertise-radio-1">
-                                <label class="tag" for="adv-radio-1">Advanced</label>
+                    <script id="form-activity-row-template" type="text/x-handlebars-template">
+                        <div id="activity-{{activity_id}}" class="form-row">
+                            <div class="col-lg">
+                                <input type="text" class="form-control" name="activity-{{activity_id}}" required/>
                             </div>
+                            <div class="col-lg">
+                                <div class="custom-control custom-radio custom-control-inline">
+                                    <input type="radio" id="adv-radio-{{activity_id}}" name="expertise-radio-{{activity_id}}">
+                                    <label class="tag" for="adv-radio-{{activity_id}}">Advanced</label>
+                                </div>
 
-                            <div class="custom-control custom-radio custom-control-inline">
-                                <input type="radio" id="exp-radio-1" name="expertise-radio-1">
-                                <label class="tag" for="exp-radio-1">Expert</label>
+                                <div class="custom-control custom-radio custom-control-inline">
+                                    <input type="radio" id="exp-radio-{{activity_id}}" name="expertise-radio-{{activity_id}}">
+                                    <label class="tag" for="exp-radio-{{activity_id}}">Expert</label>
+                                </div>
+                                <div class="custom-control custom-radio custom-control-inline">
+                                    <input type="radio" id="mas-radio-{{activity_id}}" name="expertise-radio-{{activity_id}}">
+                                    <label class="tag" for="mas-radio-{{activity_id}}">Master</label>
+                                </div>
                             </div>
-                            <div class="custom-control custom-radio custom-control-inline">
-                                <input type="radio" id="mas-radio-1" name="expertise-radio-1">
-                                <label class="tag" for="mas-radio-1">Master</label>
+                            <div id="row-modifier-icon">
+                                <button type="button" class="add-btn"><i class="fas fa-check" aria-hidden="true"></i></button>
                             </div>
-                            <button type="button" id="new-row" class="add-btn"><i class="fas fa-plus" aria-hidden="true"></i></button>
                         </div>
-                    </div>
+                    </script>
 
                 </div>
                 <div class="form-group">

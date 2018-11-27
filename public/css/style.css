@@ -160,7 +160,7 @@ h1, h2 {
 	background: var(--secondary-color);
 }
 
-.btn.btn-req: {
+.btn.btn-req {
 	max-height: 50px !important;
 	padding: 0px !important;
 	min-width: 100px;
@@ -297,7 +297,19 @@ input[type="radio"]:checked + label {
 	transition: .3s;
 }
 
-.add-btn{
+.add-btn {
+	color: green;
+	background: green;
+	font-size: .75em;
+	font-weight: bold;
+	white-space: nowrap;
+	background: rgba(0, 0, 0, 0);
+	border-radius: 200px;
+	border: 2px solid green;
+	transition: .3s;
+}
+
+.remove-btn {
 	color: green;
 	background: green;
 	font-size: .75em;
