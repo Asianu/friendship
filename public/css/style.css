@@ -160,6 +160,15 @@ h1, h2 {
 	background: var(--secondary-color);
 }
 
+.btn.btn-req: {
+	max-height: 100px;
+	min-width: 100px;
+}
+
+.btn.btn-req:hover {
+	transform: translateX(12px);
+}
+
 .fa-user-circle{
 	font-size: 7vw;
 }
