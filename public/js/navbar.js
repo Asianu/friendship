@@ -37,7 +37,7 @@ $(document).ready(function(){
 		strg.setItem('signin_token', false);
 
 		// TODO: use below code during deploy
-		// window.location.replace('http://localhost:5000');
-		window.location.replace('http://cse170-launchpad.firebaseapp.com');
+		window.location.replace('http://localhost:5000');
+		// window.location.replace('http://cse170-launchpad.firebaseapp.com');
 	});
 });

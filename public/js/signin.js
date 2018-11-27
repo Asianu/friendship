@@ -10,8 +10,8 @@ $(document).ready(function() {
 				// or whether we leave that to developer to handle.
 				
 				// TODO: use localhost for development, cse170-* for deployment
-				// redirectUrl = 'http://localhost:5000';
-				redirectUrl = 'https://cse170-launchpad.firebaseapp.com';
+				redirectUrl = 'http://localhost:5000';
+				// redirectUrl = 'https://cse170-launchpad.firebaseapp.com';
 
 				strg.setItem('signin_token', true);
 
