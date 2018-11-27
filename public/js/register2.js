@@ -54,13 +54,11 @@ $(document).ready(function() {
     //$("#activity-list").append(template(input));
     addRow();
 
-
-
 	// make sure name field is properly generated
 	firebase.auth().onAuthStateChanged(function(user) {
 	  if (user) {
-		var template = Handlebars.compile($("#form-name-value-template").html());
-		$(template(user)).insertAfter('#form-name-label');
+		var name_template = Handlebars.compile($("#form-name-value-template").html());
+		$(name_template(user)).insertAfter('#form-name-label');
 	  }
 	});
 
