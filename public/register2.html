@@ -82,19 +82,19 @@
                     <script id="form-activity-row-template" type="text/x-handlebars-template">
                         <div class="form-row" id="activity-{{activity_id}}">
                             <div class="col-6">
-                                <input type="text" class="form-control" name="activity-{{activity_id}}" value="{{activity_name}}"required/>
+                                <input type="text" class="form-control" name="activity-{{activity_id}}" value="{{activity_name}}"/>
                             </div>
                             <div class="col-5">
                                 <div class="custom-control custom-radio custom-control-inline">
-                                    <input type="radio" id="adv-radio-{{activity_id}}" name="expertise-radio-{{activity_id}}" value=1 required>
+                                    <input type="radio" id="adv-radio-{{activity_id}}" name="expertise-radio-{{activity_id}}" value=1>
                                     <label class="tag radio-tag" for="adv-radio-{{activity_id}}">Advanced</label>
                                 </div>
                                 <div class="custom-control custom-radio custom-control-inline">
-                                    <input type="radio" id="exp-radio-{{activity_id}}" name="expertise-radio-{{activity_id}}" value=2 required>
+                                    <input type="radio" id="exp-radio-{{activity_id}}" name="expertise-radio-{{activity_id}}" value=2>
                                     <label class="tag radio-tag" for="exp-radio-{{activity_id}}">Expert</label>
                                 </div>
                                 <div class="custom-control custom-radio custom-control-inline">
-                                    <input type="radio" id="mas-radio-{{activity_id}}" name="expertise-radio-{{activity_id}}" value=3 required>
+                                    <input type="radio" id="mas-radio-{{activity_id}}" name="expertise-radio-{{activity_id}}" value=3>
                                     <label class="tag radio-tag" for="mas-radio-{{activity_id}}">Master</label>
                                 </div>
                             </div>
@@ -108,7 +108,7 @@
                 <div class="form-group" id="text-area-group">
                     <label>Short Biography</label>
                     <script id="form-bio-area-template" type="text/x-handlebars-template">
-                        <textarea class="form-control" rows="8" name="about" required>{{about}}</textarea>
+                        <textarea class="form-control" rows="8" name="about">{{about}}</textarea>
                     </script>
                 </div>
                 <div class="row">

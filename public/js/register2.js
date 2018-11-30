@@ -37,13 +37,25 @@ $(document).ready(function() {
 
 		        		// add the activity to the profile
 		        		if(form_item.name.toLowerCase().indexOf('activity') >= 0) {
-		        			tmp_activity = form_item.value;
-		        			profile.activities[tmp_activity] = 0;
+		        			if (form_item.value != null) {
+		        				tmp_activity = form_item.value;
+		        				profile.activities[tmp_activity] = 0;
+		        			}
+		        			else {
+		        				tmp_activity = null;
+		        			}
 		        		}
 
 		        		// add the expertise level of that activity to the profile
 		        		else if (form_item.name.toLowerCase().indexOf('expertise') >= 0) {
-		        			profile.activities[tmp_activity] = form_item.value;
+		        			if (tmp_activity != null) {
+		        				if (form_item.value != null) {
+			        				profile.activities[tmp_activity] = form_item.value;
+			        			}
+			        			else {
+			        				delete profile.activities[tmp_activity];
+			        			}
+		        			}
 		        		}
 
 		        		// add any other relevant data to the profile
@@ -51,8 +63,17 @@ $(document).ready(function() {
 		        			profile[form_item.name] = form_item.value;
 		        		}
 		        	});
-
-		        	firebase.database().ref('/profiles/' + profile_id).update(profile);
+		        	console.log(Object.keys(profile.activities).length);
+		        	if (profile.activities.hasOwnProperty("")) {
+		        		if (Object.keys(profile.activities).length == 1) {
+			        		delete(profile.activities);
+			        	}
+			        	else {
+			        		delete(profile.activities[""]);
+			        	}
+		        	}
+		        	console.log(profile)
+		        	firebase.database().ref('/profiles/' + profile_id).set(profile);
 	        	});
 
 	        	console.log(profile);
@@ -66,10 +87,6 @@ $(document).ready(function() {
 	      	}, false);
 	    });
 	}, false);
-
-	
-    //$("#activity-list").append(template(input));
-    // addRow();
 
 	// code to make sure that the page is loaded correctly with user's profile info
 	firebase.auth().onAuthStateChanged(function(user) {
@@ -88,54 +105,48 @@ $(document).ready(function() {
 			// search for the user's profile here
 			firebase.database().ref('/profiles').once('value').then(function(profiles) {
 
+				var prof_id = user_info.val().profile_id
+				var user_profile = profiles.val()[prof_id];
+
+				console.log(user_profile);
+
+				// bio data to be filled
+				$("#text-area-group").append(text_area_template(user_profile));
+
 				// if the profile exists, populate the page via this code
-				if (profiles.hasChild(user_info.val().profile_id)) {
+				if (profiles.val()[prof_id].hasOwnProperty('activities')) {
 
-					user_profile = profiles.val()[user_info.val().profile_id];
+					if (user_profile.hasOwnProperty('activities')) {
+						// activity data to be filled
+						$.each(user_profile.activities, function(act, exp) {
 
-					console.log(user_profile);
+							// update the activity_input so that addRow contains the proper information
+							activity_input['activity_name'] = act;
+							activity_input['activity_expertise'] = exp;
 
-					// activity data to be filled
-					$.each(user_profile.activities, function(act, exp) {
+							addRow();
 
-						// update the activity_input so that addRow contains the proper information
-						activity_input['activity_name'] = act;
-						activity_input['activity_expertise'] = exp;
+							// selects the correct values
+							if (exp == 1) {
+								$('#adv-radio-' + (activity_input['activity_id']-1)).prop('checked', true);
+							}
+							else if (exp == 2) {
+								$('#exp-radio-' + (activity_input['activity_id']-1)).prop('checked', true);
+							}
+							else if (exp == 3) {
+								$('#mas-radio-' + (activity_input['activity_id']-1)).prop('checked', true);
+							}
 
-						addRow();
-
-						// selects the correct values
-						if (exp == 1) {
-							$('#adv-radio-' + (activity_input['activity_id']-1)).prop('checked', true);
-						}
-						else if (exp == 2) {
-							$('#exp-radio-' + (activity_input['activity_id']-1)).prop('checked', true);
-						}
-						else {
-							$('#mas-radio-' + (activity_input['activity_id']-1)).prop('checked', true);
-						}
-
-						// reset activity_input's act and exp
-						activity_input['activity_name'] = "";
-						activity_input['activity_expertise'] = "";
-					});
-
-					// bio data to be filled
-					$("#text-area-group").append(text_area_template(user_profile));
-
+							// reset activity_input's act and exp
+							activity_input['activity_name'] = "";
+							activity_input['activity_expertise'] = "";
+						});
+					}
 				}
-
-				// otherwise default populate
-				else {
-
-				}
-
+				// otherwise default populate (add an empty activity template row)
+				else addRow();
 			});
-
-		
 		});
-
-
 	});
 
 	$(".retHomeBtn").click(function() {
@@ -178,6 +189,7 @@ $(document).ready(function() {
         console.log(activity_input);
     };
 
+    // helper function to delete rows and reset button functionality
     function deleteRow() {
         $(this).parent().parent().remove();
         activity_input['counter'] = activity_input['counter'] - 1;
@@ -190,6 +202,7 @@ $(document).ready(function() {
         row_btn.removeClass("remove-btn").addClass("add-btn");
 		row_btn.find("i").removeClass("fa-times").addClass("fa-plus");
         $(".add-btn").on("click", addRow);
+        $(".remove-btn").on("click", deleteRow);
 
         console.log(activity_input);
     };
