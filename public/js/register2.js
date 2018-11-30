@@ -1,5 +1,11 @@
 var strg = window.localStorage;
 
+// variable that will keep track of the number of activity rows in the page
+var activity_input = {
+	activity_id: 1,
+	counter: 1
+};
+
 $(document).ready(function() {
 
 	window.addEventListener('load', function(e) {
@@ -46,7 +52,7 @@ $(document).ready(function() {
 		        		}
 		        	});
 
-		        	firebase.database().ref('/profiles/' + profile_id).set(profile);
+		        	firebase.database().ref('/profiles/' + profile_id).update(profile);
 	        	});
 
 	        	console.log(profile);
@@ -61,20 +67,82 @@ $(document).ready(function() {
 	    });
 	}, false);
 
-	// populate specific activity row, figure out a way here to implement a listener that will call this *again*
-	var input = {
-		activity_id: 1
-	};
-	var template = Handlebars.compile($("#form-activity-row-template").html());
+	
     //$("#activity-list").append(template(input));
-    addRow();
+    // addRow();
 
-	// make sure name field is properly generated
+	// code to make sure that the page is loaded correctly with user's profile info
 	firebase.auth().onAuthStateChanged(function(user) {
-	  if (user) {
+
+		// compile the Handlebar templates
 		var name_template = Handlebars.compile($("#form-name-value-template").html());
+		var activity_template = Handlebars.compile($("#form-activity-row-template").html());
+		var text_area_template = Handlebars.compile($("#form-bio-area-template").html());
+
+		// name data to be filled
 		$(name_template(user)).insertAfter('#form-name-label');
-	  }
+
+		// retrieving the user's info here
+		firebase.database().ref('/users/' + user.uid).once('value').then(function(user_info) {
+
+
+			// search for the user's profile here
+			firebase.database().ref('/profiles').once('value').then(function(profiles) {
+
+				// if the profile exists, populate the page via this code
+				if (profiles.hasChild(user_info.val().profile_id)) {
+
+					user_profile = profiles.val()[user_info.val().profile_id];
+
+					console.log(user_profile);
+
+					// activity data to be filled
+					$.each(user_profile.activities, function(key, value) {
+						activity_input['activity_name'] = key;
+						activity_input['activity_expertise'] = value;
+
+						// if the new row is the second+, first change the 'plus' to a 'times'
+						if (activity_input['activity_id'] >= 2) {
+							var row_btn = $("#activity-" + (activity_input['activity_id']-1)).find("button");
+							row_btn.removeClass("add-btn").addClass("remove-btn");
+							row_btn.find("i").removeClass("fa-plus").addClass("fa-times");
+						}
+
+						// appends a new row
+						$('#activity-list').append(activity_template(activity_input));
+						if (value == 1) {
+							$('#adv-radio-' + activity_input['activity_id']).prop('checked', true);
+						}
+						else if (value == 2) {
+							$('#exp-radio-' + activity_input['activity_id']).prop('checked', true);
+						}
+						else {
+							$('#mas-radio-' + activity_input['activity_id']).prop('checked', true);
+						}
+						
+						console.log(activity_input);
+
+						// increment for future rows added
+						activity_input['activity_id'] = activity_input['activity_id'] + 1;
+						activity_input['counter'] = activity_input['counter'] + 1;
+					});
+
+					// bio data to be filled
+					$("#text-area-group").append(text_area_template(user_profile));
+
+				}
+
+				// otherwise default populate
+				else {
+
+				}
+
+			});
+
+		
+		});
+
+
 	});
 
 	$(".retHomeBtn").click(function() {
@@ -82,19 +150,19 @@ $(document).ready(function() {
 		return false;
     });
     
-    function addRow() {
-        if (input.activity_id >= 9){
-            return;
-        }
-        $(".row-modifier-icon").html('<button type="button" class="tag remove-btn"><i class="fa fa-times" aria-hidden="true"></i></button>');
-        $("#activity-list").append(template(input));
-        input.activity_id = input.activity_id + 1;
-        $(".add-btn").bind("click", addRow);
-        $(".remove-btn").bind("click", deleteRow);
-    };
+    // function addRow() {
+    //     if (input.activity_id >= 9){
+    //         return;
+    //     }
+    //     $(".row-modifier-icon").html('<button type="button" class="tag remove-btn"><i class="fa fa-times" aria-hidden="true"></i></button>');
+    //     $("#activity-list").append(template(input));
+    //     input.activity_id = input.activity_id + 1;
+    //     $(".add-btn").bind("click", addRow);
+    //     $(".remove-btn").bind("click", deleteRow);
+    // };
 
-    function deleteRow() {
-        $(this).parent().parent().remove();
-    };
+    // function deleteRow() {
+    //     $(this).parent().parent().remove();
+    // };
 
 });
