@@ -290,7 +290,7 @@ input[type="radio"]:checked + label {
 	padding: 5px 10px;
 	white-space: nowrap;
 	background: rgba(0, 0, 0, 0);
-	border-radius: 200px;
+	border-radius: 100px;
 	transition: .3s;
 }
 
@@ -309,7 +309,12 @@ input[type="radio"]:checked + label {
 	background: var(--primary-color);
 }
 
+.custom-control label {
+	margin-left: -40px;
+}
+
 .add-btn {
+	padding: 5px, 10px;
 	color: green;
 	border: 2px solid green;
 }
@@ -319,6 +324,7 @@ input[type="radio"]:checked + label {
 }
 
 .remove-btn {
+	padding: 5px 10px;
 	color: red;
 	border: 2px solid red;
 }

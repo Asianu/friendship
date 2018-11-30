@@ -31,7 +31,7 @@ $(document).ready(function() {
 	        	firebase.database().ref('/users').child(firebase.auth().currentUser.uid).once('value').then(function(snapshot) {
         			profile_id = snapshot.val().profile_id;
 	        	
-
+        			// go through the activity list and add it to the update object
 		        	var tmp_activity = null;
 		        	$.each(input, function(key, form_item) {
 
@@ -76,7 +76,6 @@ $(document).ready(function() {
 
 		// compile the Handlebar templates
 		var name_template = Handlebars.compile($("#form-name-value-template").html());
-		var activity_template = Handlebars.compile($("#form-activity-row-template").html());
 		var text_area_template = Handlebars.compile($("#form-bio-area-template").html());
 
 		// name data to be filled
@@ -97,34 +96,28 @@ $(document).ready(function() {
 					console.log(user_profile);
 
 					// activity data to be filled
-					$.each(user_profile.activities, function(key, value) {
-						activity_input['activity_name'] = key;
-						activity_input['activity_expertise'] = value;
+					$.each(user_profile.activities, function(act, exp) {
 
-						// if the new row is the second+, first change the 'plus' to a 'times'
-						if (activity_input['activity_id'] >= 2) {
-							var row_btn = $("#activity-" + (activity_input['activity_id']-1)).find("button");
-							row_btn.removeClass("add-btn").addClass("remove-btn");
-							row_btn.find("i").removeClass("fa-plus").addClass("fa-times");
-						}
+						// update the activity_input so that addRow contains the proper information
+						activity_input['activity_name'] = act;
+						activity_input['activity_expertise'] = exp;
 
-						// appends a new row
-						$('#activity-list').append(activity_template(activity_input));
-						if (value == 1) {
-							$('#adv-radio-' + activity_input['activity_id']).prop('checked', true);
+						addRow();
+
+						// selects the correct values
+						if (exp == 1) {
+							$('#adv-radio-' + (activity_input['activity_id']-1)).prop('checked', true);
 						}
-						else if (value == 2) {
-							$('#exp-radio-' + activity_input['activity_id']).prop('checked', true);
+						else if (exp == 2) {
+							$('#exp-radio-' + (activity_input['activity_id']-1)).prop('checked', true);
 						}
 						else {
-							$('#mas-radio-' + activity_input['activity_id']).prop('checked', true);
+							$('#mas-radio-' + (activity_input['activity_id']-1)).prop('checked', true);
 						}
-						
-						console.log(activity_input);
 
-						// increment for future rows added
-						activity_input['activity_id'] = activity_input['activity_id'] + 1;
-						activity_input['counter'] = activity_input['counter'] + 1;
+						// reset activity_input's act and exp
+						activity_input['activity_name'] = "";
+						activity_input['activity_expertise'] = "";
 					});
 
 					// bio data to be filled
@@ -150,19 +143,55 @@ $(document).ready(function() {
 		return false;
     });
     
-    // function addRow() {
-    //     if (input.activity_id >= 9){
-    //         return;
-    //     }
-    //     $(".row-modifier-icon").html('<button type="button" class="tag remove-btn"><i class="fa fa-times" aria-hidden="true"></i></button>');
-    //     $("#activity-list").append(template(input));
-    //     input.activity_id = input.activity_id + 1;
-    //     $(".add-btn").bind("click", addRow);
-    //     $(".remove-btn").bind("click", deleteRow);
-    // };
+    // helper function to add a new row to the activity list
+    function addRow() {
+		var activity_template = Handlebars.compile($("#form-activity-row-template").html());
 
-    // function deleteRow() {
-    //     $(this).parent().parent().remove();
-    // };
+    	// no more than 8 rows allowed
+        if (activity_input['counter'] >= 9){
+        	console.log("max number of rows added");
+            return;
+        }
+
+        // remove add buttons from all existing rows first
+        var row_btn = $(".form-row").find("button");
+        row_btn.off();
+        row_btn.removeClass("add-btn").addClass("remove-btn");
+		row_btn.find("i").removeClass("fa-plus").addClass("fa-times");
+
+		// appends a new row
+		$('#activity-list').append(activity_template(activity_input));
+
+		// if the row has reached maximum capacity, make sure last row has 'x'
+		if (activity_input['counter'] == 8) {
+        	var row_btn = $(".form-row").find("button");
+			row_btn.removeClass("add-btn").addClass("remove-btn");
+			row_btn.find("i").removeClass("fa-plus").addClass("fa-times");
+		}
+
+        activity_input['activity_id'] = activity_input['activity_id'] + 1;
+        activity_input['counter'] = activity_input['counter'] + 1;
+
+        $(".add-btn").on("click", addRow);
+        $(".remove-btn").on("click", deleteRow);
+
+        console.log(activity_input);
+    };
+
+    function deleteRow() {
+        $(this).parent().parent().remove();
+        activity_input['counter'] = activity_input['counter'] - 1;
+
+        // make the last button always be plus (unless max capacity reached)
+        $(".form-row").find("button").off();
+
+        var row_btn = $(".form-row:last").find("button");
+        console.log(row_btn.name);
+        row_btn.removeClass("remove-btn").addClass("add-btn");
+		row_btn.find("i").removeClass("fa-times").addClass("fa-plus");
+        $(".add-btn").on("click", addRow);
+
+        console.log(activity_input);
+    };
 
 });
