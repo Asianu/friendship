@@ -10,7 +10,6 @@ $(document).ready(function() {
 
 	// get the reference to the profiles
 	var profileRef = firebase.database().ref('/profiles');
-
 	profileRef.orderByChild('name').on('child_added', function(profile) {
 		// pre-compile the template
 
@@ -20,8 +19,9 @@ $(document).ready(function() {
 			// to load the profile pictures
 			profile_info.photoURL = snapshot.val().photoURL;
 
+
 			var template = Handlebars.compile($("#find-card-template").html());
-			$("#mentors-row").append(template(profile_info));
+			$(".card-deck").append(template(profile_info));
 		});
 
 		// add the person into the mentor list of the current user
