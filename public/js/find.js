@@ -8,20 +8,20 @@ $(document).ready(function() {
 	}
 
 
-	// get the reference to the mentors
-	var mentorRef = firebase.database().ref('/mentors');
+	// get the reference to the profiles
+	var profileRef = firebase.database().ref('/profiles');
 
-	mentorRef.orderByChild('name').on('child_added', function(mentor) {
+	profileRef.orderByChild('name').on('child_added', function(profile) {
 		// pre-compile the template
 
-		var mentor_info = mentor.val();
+		var profile_info = profile.val();
 
-		firebase.database().ref('/users').child(mentor_info.uid).once('value').then(function(snapshot) {
+		firebase.database().ref('/users').child(profile_info.uid).once('value').then(function(snapshot) {
 			// to load the profile pictures
-			mentor_info.photoURL = snapshot.val().photoURL;
+			profile_info.photoURL = snapshot.val().photoURL;
 
 			var template = Handlebars.compile($("#find-card-template").html());
-			$("#mentors-row").append(template(mentor_info));
+			$("#mentors-row").append(template(profile_info));
 		});
 
 		// add the person into the mentor list of the current user

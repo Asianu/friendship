@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <title>LaunchPad</title>
+        
+        <meta name="viewport" content="width=device-width,initial-scale=1">
+        
+        <!-- favicon -->
+        <!-- TODO: make a .png or .ico version for tab icon -->
+        <link href="assets/logo.ico" rel="shortcut icon">
+
+        <link href="css/bootstrap.min.css" rel="stylesheet">
+        <link href="css/style.css" rel="stylesheet">
+
+        <!-- Link to FontAwesome icons for free icons -->
+        <link href="font-awesome/css/all.css" rel="stylesheet">
+
+    </head>
+
+    <body>
+        <div class="page">
+            <nav class="navbar navbar-expand-md navbar-light bg-white sticky-top">
+                <a class="navbar-brand" href="index.html"><img class="logo" src="assets/logo.svg"/></a>
+
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav mr-auto float-left">
+                        <li class="nav-item">
+                            <a class="nav-link" href="find.html">Find Mentor</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" id="nav-be" href="register.html">Be Mentor</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link nav-hide" id="nav-collapse-user" href="profile.html">Profile</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link nav-hide" id="nav-collapse-signin" href="signin.html">Sign In</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link nav-hide" id="nav-collapse-signout" href="index.html">Sign Out</a>
+                        </li>
+                    </ul>
+                    
+                    <!-- TODO: figure out how we want to deal with this -->
+                    <!-- <button type="button" class="btn btn-primary py-1 nav-custom">Sign Up</button> -->
+                    <a class="nav-link nav-custom" id="nav-signin" href="signin.html">Sign In</a>
+                    <a class="nav-link nav-custom" id="nav-signout" href="index.html">Sign Out</a>
+                    <a class="nav-link nav-custom" id="nav-user" href="profile.html"><i class="fas fa-user user"></i></a>
+                </div>
+            </nav>
+
+            <div class="container mt-3">
+                <form class="needs-validation" novalidate>
+                    <h2>Be a Mentor</h2>
+                    <div class="form-group">
+                        <label id="form-name-label">Name</label>
+                        <script id="form-name-value-template" type="text/x-handlebars-template">
+                            <input type="text" class="form-control" name="name" value="{{displayName}}" readonly require/>
+                        </script>
+                        <small class="form-text text-muted">If this is not your name, please make sure you're logged in to
+                            the correct account</small>
+                    </div>
+                    <div class="form-group form-row">
+                        <div class="col-lg">
+                            <label>Type of Activity</label>
+                            <select class="custom-select" id="form-activity-dropdown" name="activity" required>
+                                <option value="" selected>Choose...</option>
+                                <script id="form-activity-template" type="text/x-handlebars-template">
+                                    <option>{{activity}}</option>
+                                </script>
+                            </select>
+                        <div class="invalid-feedback">
+                            <p>Please choose an activity.</p>
+                        </div>
+                    </div>
+                    <div class="col-lg">
+                        <label>Specific Activity</label>
+                        <input type="text" class="form-control" name="specific-activity" />
+                    </div>
+                </div>
+                <div class="form-group form-row">
+                    <div class="slidecontainer">
+                        <label>Level of Expertise</label>
+                        <input type="range" min="1" max="100" value="50" class="slider" id="myRange" name="expertise">
+                        <p> Skill Level: <span id="demo"></span></p>
+                    </div>
+
+                    <script>
+                        var slider = document.getElementById("myRange");
+                            var output = document.getElementById("demo");
+                            output.innerHTML = "Intermediate";
+
+                            slider.oninput = function() {
+                                var expertiseLevel = parseInt(this.value)
+                                if (expertiseLevel == 1){
+                                    output.innerHTML = "None";
+                                } else if (expertiseLevel <= 20){
+                                    output.innerHTML = "Beginner";
+                                } else if (expertiseLevel <= 40) {
+                                    output.innerHTML = "Novice";
+                                } else if (expertiseLevel <= 60) {
+                                    output.innerHTML = "Intermediate";
+                                } else if (expertiseLevel <= 80) {
+                                    output.innerHTML = "Advanced";
+                                } else if (expertiseLevel < 100) {
+                                    output.innerHTML = "Expert";
+                                } else {
+                                    output.innerHTML = "Master";
+                                }
+                            }
+                        </script>
+                        
+                    </div>
+                    <div class="form-group">
+                        <label>Additional Information</label>
+                        <textarea class="form-control" rows="8" name="about"></textarea>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm"></div>
+                        <div class="col-sm"></div>
+                        <div class="col-xs mb-3">
+                            <button type="button" class="btn btn-secondary cta-button retHomeBtn alternate mx-2" id="cancelButton">
+                                <a href="index.html"></a>
+                                Cancel
+                            </button>
+                            <button type="submit" class="btn btn-primary cta-button primary mx-2" data-toggle="modal"data-target="#exampleModal">
+                                Submit
+                            </button>
+
+                            <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+                                aria-hidden="true">
+                                <div class="modal-dialog" role="document">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title" id="exampleModalLabel">Congratulations!</h5>
+                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                <span aria-hidden="true">&times;</span>
+                                            </button>
+                                        </div>
+                                        <div class="modal-body">
+                                            <p>Thanks for registering as a mentor.</p>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-primary cta-button retHomeBtn" id="submit-data-btn" data-dismiss="modal">
+                                                <a href="profile.html"></a>
+                                                Close
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Firebase App is always required and must be first -->
+    <script src="https://www.gstatic.com/firebasejs/5.5.7/firebase-app.js"></script>
+
+    <!-- Add additional services that you want to use -->
+    <script src="https://www.gstatic.com/firebasejs/5.5.7/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/5.5.7/firebase-database.js"></script>
+    <!-- <script src="https://www.gstatic.com/firebasejs/5.5.7/firebase-messaging.js"></script> -->
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/handlebars-v4.0.12.js"></script>
+    <!-- always put navbar.js before page.js as we load firebase with the navbar file -->
+    <script src="js/navbar.js"></script>
+    <script src="js/register_old.js"></script>
+</body>
+</html>
