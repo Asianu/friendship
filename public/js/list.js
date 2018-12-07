@@ -14,11 +14,15 @@ $(document).ready(function() {
 			var mentor_template = Handlebars.compile($("#mentor-table-template").html());
 			firebase.database().ref('/mentor_list').child(mentor_list_id).once('value').then(function(mentors) {
 				if(mentors.val() != null) {
-
 					$.each(mentors.val(), function(key, profile_id) {
 						firebase.database().ref('/profiles').child(profile_id).once('value').then(function(mentor) {
 							console.log(mentor.val());
-							$("#mentor-table-body").append(mentor_template(mentor.val()));
+							if (mentor.val().hasOwnProperty("activities")) {
+								$("#mentor-table-body").append(mentor_template(mentor.val()));
+							}
+							$('.remove-btn').on('click', function(event) {
+								console.log(this);
+							});
 						});
 						$("#empty-mentor-row").hide();
 					});
@@ -30,27 +34,20 @@ $(document).ready(function() {
 			// read data to get entry values for each mentee
 			firebase.database().ref('/mentee_list').child(mentee_list_id).once('value').then(function(mentees) {
 				if (mentees.val() != null) {
-					$.each(mentees.val(), function(key, value) {
-						$.each(value, function(uid, activity) {
-							var mentee_entry = {};
-
-							// get the data for the mentor's specific-activity
-							firebase.database().ref('/mentors').child(key).once('value').then(function(mentor) {
-								mentee_entry['activity'] = activity;
-								mentee_entry['specific-activity'] = mentor.val()['specific-activity'];
-
-								// get the data for the mentee's name
-								firebase.database().ref('/users').child(uid).once('value').then(function(mentee) {
-									mentee_entry['name'] = mentee.val().displayName;
-									$("#mentee-table-body").append(mentee_template(mentee_entry));
-								});
+					$.each(mentees.val(), function(key, uid) {
+						firebase.database().ref('/users').child(uid).once('value').then(function(user) {
+							firebase.database().ref('/profiles').child(user.val().profile_id).once('value').then(function(profile){
+								$("#mentee-table-body").append(mentee_template(profile.val()));
 							});
+
 						});
 						$("#empty-mentee-row").hide();
 					});
 				}
 			});
 		});
+
+
 	});
 
 });
