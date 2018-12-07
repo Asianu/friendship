@@ -100,14 +100,6 @@ $(document).ready(function() {
 		        			push_key = null;
 		        		}
 		        	});
-		        	// if (profile.activities.["activity_name"] == "") {
-		        	// 	if (Object.keys(profile.activities).length == 1) {
-			        // 		delete(profile.activities);
-			        // 	}
-			        // 	else {
-			        // 		delete(profile.activities[""]);
-			        // 	}
-		        	// }
 		        	console.log(profile)
 		        	firebase.database().ref('/profiles/' + profile_id).set(profile);
 	        	});
@@ -148,7 +140,7 @@ $(document).ready(function() {
 				$("#text-area-group").append(text_area_template(user_profile));
 
 				// if the profile exists, populate the page via this code
-				if (profiles.val()[prof_id].hasOwnProperty('activities')) {
+				if (user_profile != null) {
 
 					if (user_profile.hasOwnProperty('activities')) {
 						// activity data to be filled
