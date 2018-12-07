@@ -12,13 +12,13 @@
       ".read": "auth!=null",
       ".write": "auth!=null"
     },
-    "mentors": {
-      ".read": "auth != null",
-      ".write": "auth != null"
-    },
     "activities": {
       ".read": true,
       ".write": false
+    },
+    "mentors": {
+      ".read": "auth != null",
+      ".write": "auth != null"
     },
     "mentor_list": {
       ".read": "auth != null",
