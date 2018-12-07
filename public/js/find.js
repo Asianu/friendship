@@ -13,21 +13,23 @@ $(document).ready(function() {
 		
 		// code that loads each user card into the page
 		var profile_info = profile.val();
-		console.log(Object.keys(profile_info.activities).length);
-		firebase.database().ref('/users').child(profile_info.uid).once('value').then(function(user) {
-			// to load the profile pictures
-			profile_info.photoURL = user.val().photoURL;
+		// load card only if the user's profile contains at least one activity
+		if (profile_info.hasOwnProperty("activities")) {
+			firebase.database().ref('/users').child(profile_info.uid).once('value').then(function(user) {
+				// to load the profile pictures
+				profile_info.photoURL = user.val().photoURL;
 
-			// load info to a new card and append it
-			var template = Handlebars.compile($("#find-card-template").html());
-			$(".card-deck").append(template(profile_info));
+				// load info to a new card and append it
+				var template = Handlebars.compile($("#find-card-template").html());
+				$(".card-deck").append(template(profile_info));
 
-			// if the card is the current user's display text indicating that instead of a button
-			if (firebase.auth().currentUser.uid == profile_info.uid) {
-				$('#foot' + profile_info.uid).html('<p>This is you!</p>');
-			}
+				// if the card is the current user's display text indicating that instead of a button
+				if (firebase.auth().currentUser.uid == profile_info.uid) {
+					$('#foot' + profile_info.uid).html('<p>This is you!</p>');
+				}
 
-		});
+			});
+		}
 
 		// listener for each button, this is inside "on" function so that functionality is tied to each rendered button
 		$(document).on('click', '.request', function(event) {
