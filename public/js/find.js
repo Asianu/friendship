@@ -2,39 +2,34 @@ var strg = window.localStorage;
 
 $(document).ready(function() {
 
-	// helper to render row blocks
-	Handlebars.registerHelper('if_eq', function(a, b, opts) {
-	    if (a == b) {
-	        return opts.fn(this);
-	    } else {
-	        return opts.inverse(this);
-	    }
-	});
-
 	// if user is signed in, hide the empty-page-col element
 	if(strg.getItem('signin_token') == 'true') {
 		$("#empty-page-col").hide();
 	}
 
-
 	// get the reference to the profiles
 	var profileRef = firebase.database().ref('/profiles');
 	profileRef.orderByChild('name').on('child_added', function(profile) {
-		// pre-compile the template
-
+		
+		// code that loads each user card into the page
 		var profile_info = profile.val();
-
-		firebase.database().ref('/users').child(profile_info.uid).once('value').then(function(snapshot) {
+		console.log(Object.keys(profile_info.activities).length);
+		firebase.database().ref('/users').child(profile_info.uid).once('value').then(function(user) {
 			// to load the profile pictures
-			profile_info.photoURL = snapshot.val().photoURL;
+			profile_info.photoURL = user.val().photoURL;
 
-			console.log(profile_info);
-
+			// load info to a new card and append it
 			var template = Handlebars.compile($("#find-card-template").html());
 			$(".card-deck").append(template(profile_info));
+
+			// if the card is the current user's display text indicating that instead of a button
+			if (firebase.auth().currentUser.uid == profile_info.uid) {
+				$('#foot' + profile_info.uid).html('<p>This is you!</p>');
+			}
+
 		});
 
-		// add the person into the mentor list of the current user
+		// listener for each button, this is inside "on" function so that functionality is tied to each rendered button
 		$(document).on('click', '.request', function(event) {
 			event.stopPropagation();
 			event.stopImmediatePropagation();

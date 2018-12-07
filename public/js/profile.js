@@ -40,13 +40,11 @@ $(document).ready(function() {
 		        	var tmp_activity = null;
 		        	var tmp_expertise = null;
 	        		var push_key = null;
-		        	var num_activities = 0;
 		        	$.each(input, function(key, form_item) {
 		        		// add the activity to the profile
 		        		if(form_item.name.toLowerCase().indexOf('activity') >= 0) {
-		        			if (form_item.value != null) {
+		        			if (form_item.value != null && form_item.value != "") {
 		        				// update variables
-		        				num_activites = num_activities + 1;
 		        				tmp_activity = form_item.value;
 
 		        				// update profile to be saved
@@ -58,7 +56,7 @@ $(document).ready(function() {
 		        			}
 		        		}
 
-		        		// add the expertise level of that activity to the profile
+		        		// add the expertise level of that activity to the profile if name exists
 		        		else if (form_item.name.toLowerCase().indexOf('expertise') >= 0) {
 		        			if (tmp_activity != null) {
 		        				if (form_item.value != null) {
@@ -102,19 +100,17 @@ $(document).ready(function() {
 		        			push_key = null;
 		        		}
 		        	});
-		        	if (profile.activities.hasOwnProperty("")) {
-		        		if (Object.keys(profile.activities).length == 1) {
-			        		delete(profile.activities);
-			        	}
-			        	else {
-			        		delete(profile.activities[""]);
-			        	}
-		        	}
+		        	// if (profile.activities.["activity_name"] == "") {
+		        	// 	if (Object.keys(profile.activities).length == 1) {
+			        // 		delete(profile.activities);
+			        // 	}
+			        // 	else {
+			        // 		delete(profile.activities[""]);
+			        // 	}
+		        	// }
 		        	console.log(profile)
 		        	firebase.database().ref('/profiles/' + profile_id).set(profile);
 	        	});
-
-	        	console.log(profile);
 
 				$('#exampleModal').modal('show');
 

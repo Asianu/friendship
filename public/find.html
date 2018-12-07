@@ -61,61 +61,55 @@
                 <div class="col-md-12">
                     <h2>Find a Mentor</h2>
                     <div class="card-deck mt-4">
-                        <!-- <div class="row no-gutters" id="mentors-row"> -->
-                            <div class="col" id="empty-page-col">
-                                <p>Please sign in to view mentors...</p>
-                            </div>
-                            <script id="find-card-template" type="text/x-handlebars-template">
-                                <!-- <div class="col-12 col-sm-6 col-lg-4"> -->
-                                    <div class="card mb-3">
-                                        <img class="profilePic cardProfilePic mt-4" src={{photoURL}} alt="Card image cap"/>
-                                        <div class="card-body">
-                                            <h4 class="card-title center-text checked">{{name}}</h4>
-                                            <hr>
+                        <div class="col" id="empty-page-col">
+                            <p>Please sign in to view mentors...</p>
+                        </div>
+                        <script id="find-card-template" type="text/x-handlebars-template">
+                            <div class="card mb-3">
+                                <img class="profilePic cardProfilePic mt-4" src={{photoURL}} alt="Card image cap"/>
+                                <div class="card-body">
+                                    <h4 class="card-title center-text checked">{{name}}</h4>
+                                    <hr>
 
-                                            <div class="carousel slide" id="car{{uid}}" data-interval="false">
-                                                <div class="row carousel-inner">
-                                                    <div class="carousel-item active col">
-                                                        <p class="card-text">{{about}}</p>
-                                                    </div>
-                                                    <div class="carousel-item col">
-                                                        <table class="table table-sm table-borderless">
-                                                            <thead>
-                                                                <tr>
-                                                                    <th scope="col">Activity</th>
-                                                                    <th scope="col">Expertise</th>
-                                                                </tr>
-                                                            </thead>
-                                                            <tbody>
-                                                                {{#each activities}}
-                                                                {{#with this}}
-                                                                <tr>
-                                                                    <td>{{activity_name}}</td>
-                                                                    <td>{{activity_exp}}</td>
-                                                                </tr>
-                                                                {{/with}}
-                                                                {{/each}}
-                                                            </tbody>
-                                                        </table>
-                                                    </div>
-                                                </div> 
-                                                <a class="carousel-control-next" href="#car{{uid}}" role="button" data-slide="next">
-                                                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                                                    <span class="sr-only">Next</span>
-                                                </a>
-
+                                    <div class="carousel slide" id="car{{uid}}" data-interval="false">
+                                        <div class="row carousel-inner">
+                                            <div class="carousel-item active col">
+                                                <p class="card-text">{{about}}</p>
                                             </div>
-                                            
-                                        </div>
-                                        <div class="card-footer">
-                                            <button type="button" class="btn btn-primary btn-req" id={{uid}}>Request</button>
-                                            <!-- <a class="tag px-3 py-1" href="#" role="button">{{activity}}</a>
-                                            <a class="tag px-3 py-1" href="#" role="button">{{specific-activity}}</a> -->
-                                        </div>
+                                            <div class="carousel-item col">
+                                                <table class="table table-sm table-borderless">
+                                                    <thead>
+                                                        <tr>
+                                                            <th scope="col">Activity</th>
+                                                            <th scope="col">Expertise</th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                        {{#each activities}}
+                                                        {{#with this}}
+                                                        <tr>
+                                                            <td>{{activity_name}}</td>
+                                                            <td>{{activity_exp}}</td>
+                                                        </tr>
+                                                        {{/with}}
+                                                        {{/each}}
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        </div> 
+                                        <a class="carousel-control-next" href="#car{{uid}}" role="button" data-slide="next">
+                                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                            <span class="sr-only">Next</span>
+                                        </a>
+
                                     </div>
-                                <!-- </div> -->
-                            </script>
-                        <!-- </div> -->
+                                    
+                                </div>
+                                <div class="card-footer" id="foot{{uid}}">
+                                    <button type="button" class="btn btn-primary btn-req" id={{uid}}>Request</button>
+                                </div>
+                            </div>
+                        </script>
                     </div>
                 </div>
             </div>
