@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <title>LaunchPad</title>
+        
+        <meta name="viewport" content="width=device-width,initial-scale=1">
+        
+        <!-- favicon -->
+        <!-- TODO: make a .png or .ico version for tab icon -->
+        <link href="assets/logo.ico" rel="shortcut icon">
+        
+        <link href="css/bootstrap.min.css" rel="stylesheet">
+        <link href="css/style.css" rel="stylesheet">
+
+        <!-- Link to FontAwesome icons for free icons -->
+        <link href="font-awesome/css/all.css" rel="stylesheet">
+
+    </head>
+
+    <body>
+    <div class="page">
+        <nav class="navbar navbar-expand-md navbar-light bg-white sticky-top">
+                <a class="navbar-brand" href="index.html"><img class="logo" src="assets/logo.svg"/></a>
+
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav mr-auto float-left">
+                        <li class="nav-item">
+                            <a class="nav-link" href="find.html">Find Mentor</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" id="nav-be" href="list.html">My List</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link nav-hide" id="nav-collapse-user" href="profile.html">Profile</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link nav-hide" id="nav-collapse-signin" href="signin.html">Sign In</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link nav-hide" id="nav-collapse-signout" href="index.html">Sign Out</a>
+                        </li>
+                    </ul>
+                    
+                    <!-- TODO: figure out how we want to deal with this -->
+                    <!-- <button type="button" class="btn btn-primary py-1 nav-custom">Sign Up</button> -->
+                    <a class="nav-link nav-custom" id="nav-signin" href="signin.html">Sign In</a>
+                    <a class="nav-link nav-custom" id="nav-signout" href="index.html">Sign Out</a>
+                    <a class="nav-link nav-custom" id="nav-user" href="profile.html"><i class="fas fa-user user"></i></a>
+                </div>
+            </nav>
+
+        <div class="container mt-3">
+            <div class="row" id="profile_header">
+                <script id="username-template" type="text/x-handlebars-template">
+                    <img src="{{photoURL}}" class="mr-3 profilePic"/>
+                    <h1>{{displayName}}</h1>
+                </script>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <h3>Your Mentors</h3>
+                    <table id="mentor-table" class="table table-striped table-hover">
+                        <thead>
+                            <th>Name</th>
+                            <th>Activity</th>
+                            <th>Specific Activity</th>
+                            <th>Level of Expertise</th>
+                        </thead>
+                        <tbody id="mentor-table-body">
+                            <script id="mentor-table-template" type="text/x-handlebars-template">
+                                <tr class="clickable-row">
+                                    <td>{{name}}</td>
+                                    <td>{{activity}}</td>
+                                    <td>{{specific-activity}}</td>
+                                    <td>{{expertise}}</td>
+                                </tr>
+                            </script>
+                            <tr id="empty-mentor-row">
+                                <td colspan="4">You don't have any mentors yet...</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div> 
+            <div class="row">
+                <div class="col">
+                    <h3>Your Mentees</h3>
+                    <table id="mentee-table" class="table table-striped table-hover">
+                        <thead>
+                            <th>Name</th>
+                            <th>Activity</th>
+                            <th>Specific Activity</th>
+                        </thead>
+                        <tbody id="mentee-table-body">
+                            <script id="mentee-table-template" type="text/x-handlebars-template">
+                                <tr class="clickable-row">
+                                    <td>{{name}}</td>
+                                    <td>{{activity}}</td>
+                                    <td>{{specific-activity}}</td>
+                                </tr>
+                            </script>
+                            <tr id="empty-mentee-row">
+                                <td colspan="3">You don't have any mentees yet...</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- Firebase App is always required and must be first -->
+        <script src="https://www.gstatic.com/firebasejs/5.5.7/firebase-app.js"></script>
+
+        <!-- Add additional services that you want to use -->
+        <script src="https://www.gstatic.com/firebasejs/5.5.7/firebase-auth.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/5.5.7/firebase-database.js"></script>
+        <!-- <script src="https://www.gstatic.com/firebasejs/5.5.7/firebase-messaging.js"></script> -->
+
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+        <script src="js/bootstrap.min.js"></script>
+        <script src="js/handlebars-v4.0.12.js"></script>
+        <!-- always put navbar.js before page.js as we load firebase with the navbar file -->
+        <script src="js/navbar.js"></script>
+        <script src="js/list.js"></script>
+    </div>
+    </body>
+</html>

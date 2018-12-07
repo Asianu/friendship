@@ -24,7 +24,7 @@ $(document).ready(function(){
 		console.log('user is logged in')
 		$('#nav-signout, #nav-collapse-signout, #nav-user, #nav-collapse-user').show();
 		$('#nav-signin, #nav-collapse-signin').hide();
-		$('#nav-be').removeClass('disabled').attr('href', 'register.html');
+		$('#nav-be').removeClass('disabled').attr('href', 'list.html');
 	}
 
 	$('#nav-signout, #nav-collapse-signout').click(function() {
