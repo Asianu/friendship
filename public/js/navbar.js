@@ -19,12 +19,14 @@ $(document).ready(function(){
 		$('#nav-signout, #nav-collapse-signout, #nav-user, #nav-collapse-user').hide();
 		$('#nav-signin, #nav-collapse-signin').show();
 		$('#nav-be').addClass('disabled').attr('href', '#');
+		$('#nav-find').addClass('disabled').attr('href', '#');
 	}
 	else {
 		console.log('user is logged in')
 		$('#nav-signout, #nav-collapse-signout, #nav-user, #nav-collapse-user').show();
 		$('#nav-signin, #nav-collapse-signin').hide();
 		$('#nav-be').removeClass('disabled').attr('href', 'list.html');
+		$('#nav-find').removeClass('disabled').attr('href', 'list.html');
 	}
 
 	$('#nav-signout, #nav-collapse-signout').click(function() {
@@ -37,7 +39,7 @@ $(document).ready(function(){
 		strg.setItem('signin_token', false);
 
 		// TODO: use below code during deploy
-		window.location.replace('http://localhost:5000');
-		// window.location.replace('http://cse170-launchpad.firebaseapp.com');
+		// window.location.replace('http://localhost:5000');
+		window.location.replace('http://cse170-launchpad.firebaseapp.com');
 	});
 });
