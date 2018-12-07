@@ -74,7 +74,7 @@ $(document).ready(function() {
 						firebase.database().ref().update(updates);
 					});
 
-
+					$("#foot" + mentor_id).find('button').removeClass('btn-primary').addClass('btn-disabled');
 				});
 			}
 		});
