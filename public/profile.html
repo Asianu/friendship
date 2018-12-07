@@ -55,7 +55,10 @@
             </div>
         </nav>
 
-        <div class="container mt-3">
+        <div class="container mt-3" id="top-level">
+            <div class="alert alert-danger" role="alert" id="unfilled_elements" visibility="hidden">
+                Please fill out at least one activity before submitting!
+            </div>
             <form class="needs-validation" novalidate>
                 <h2>Profile</h2>
                 <div class="form-group">
@@ -80,7 +83,7 @@
                     </div>
 
                     <script id="form-activity-row-template" type="text/x-handlebars-template">
-                       <div class="form-row" id="activity-{{activity_id}}">
+                        <div class="form-row" id="activity-{{activity_id}}">
                             <div class="col-6">
                                 <input type="text" class="form-control activity-entry" name="activity-{{activity_id}}" value="{{activity_name}}"/>
                             </div>
