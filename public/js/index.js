@@ -6,6 +6,6 @@ $(document).ready(function() {
 		$('#landing-be').addClass('btn-disabled').removeClass('btn-secondary').attr('onclick', '#');
 	}
 	else {
-		$('#landing-be').removeClass('btn-disabled').addClass('btn-secondary').attr('onclick', "window.location.href='link.html'");
+		$('#landing-be').removeClass('btn-disabled').addClass('btn-secondary').attr('onclick', "window.location.href='profile.html'");
 	}
 });

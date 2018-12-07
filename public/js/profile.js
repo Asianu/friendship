@@ -181,8 +181,8 @@ $(document).ready(function() {
 					}
 				}
 				// otherwise default populate (add an empty activity template row)
-				else addRow();
 			});
+			addRow();
 		});
 	});
 
