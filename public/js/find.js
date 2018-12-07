@@ -12,8 +12,11 @@ $(document).ready(function() {
 		
 		// code that loads each user card into the page
 		var profile_info = profile.val();
+
 		// load card only if the user's profile contains at least one activity
 		if (profile_info.hasOwnProperty("activities")) {
+
+			// get some information of the profile card's person's and match data with existing user
 			firebase.database().ref('/users').child(profile_info.uid).once('value').then(function(user) {
 				// to load the profile pictures
 				profile_info.photoURL = user.val().photoURL;
@@ -27,6 +30,19 @@ $(document).ready(function() {
 					$('#foot' + profile_info.uid).html('<p>This is you!</p>');
 				}
 
+				// if the card is another user that the current user has already added as mentor, disable it
+				firebase.database().ref('/users').child(firebase.auth().currentUser.uid).once('value').then(function(currUser) {
+					firebase.database().ref('/mentor_list').child(currUser.val().mentor_list).once('value').then(function(mentor_list) {
+						if(mentor_list.val()) {
+							$.each(mentor_list.val(), function(key, mentor_profile_id) {
+								if (user.val().profile_id == mentor_profile_id) {
+									$('#foot' + profile_info.uid).find('button').removeClass('btn-primary').addClass('btn-disabled').off();
+								}
+							});
+						}
+					});
+				});
+
 			});
 		}
 
@@ -36,50 +52,31 @@ $(document).ready(function() {
 			event.stopImmediatePropagation();
 
 			mentor_id = event.target.id;
-			firebase.database().ref('/users').child(mentor_id).once('value').then(function(mentor) {
-				console.log(mentor.val());
+			if ($("#" + mentor_id).hasClass("btn-primary")) {
 
-				var updates = {};
+				firebase.database().ref('/users').child(mentor_id).once('value').then(function(mentor) {
+					console.log(mentor.val());
 
-				// add the user as a mentee to the mentor's mentee list
-				var key = firebase.database().ref('/mentee_list').child(mentor.val().mentee_list).push().key;
-				updates['/mentee_list/' + mentor.val().mentee_list + '/' + key] = firebase.auth().currentUser.uid;
+					var updates = {};
 
-				// add the mentor as a mentor to the user's mentor list
-				firebase.database().ref('/users').child(firebase.auth().currentUser.uid).once('value').then(function(user) {
-					updates['/mentor_list/' + user.val().mentor_list + '/' + key] = mentor.val().profile_id;
+					// generate a new key for the user
+					var key = firebase.database().ref('/mentee_list').child(mentor.val().mentee_list).push().key;
 
-					// updates database once the mentors are added						
-					console.log(updates);
-					firebase.database().ref().update(updates);
+					// add the user as a mentee to the mentor's mentee list
+					updates['/mentee_list/' + mentor.val().mentee_list + '/' + key] = firebase.auth().currentUser.uid;
+
+					// add the mentor as a mentor to the user's mentor list
+					firebase.database().ref('/users').child(firebase.auth().currentUser.uid).once('value').then(function(user) {
+						updates['/mentor_list/' + user.val().mentor_list + '/' + key] = mentor.val().profile_id;
+
+						// updates database once the mentors are added						
+						console.log(updates);
+						firebase.database().ref().update(updates);
+					});
+
+
 				});
-
-
-			});
-			// firebase.database().ref('/mentors').child(mentor_id).once('value').then(function(mentor) {
-			// 	// if user adds themself, do not add to database
-			// 	// TODO: find a way to disable button
-			// 	if(mentor.val().uid == firebase.auth().currentUser.uid) {
-			// 		console.log("adding self as mentor", mentor.val().uid);
-			// 		return false;
-			// 	}
-			// 	else {
-			// 		var updates = {};
-
-			// 		// to add the user as a mentee to the mentor's mentee list
-			// 		firebase.database().ref('/users').child(mentor.val().uid).once('value').then(function(user) {
-			// 			updates['/mentee_list/' + user.val().mentee_list + '/' + mentor_id + '/' + firebase.auth().currentUser.uid] = mentor.val().activity;
-
-			// 			// to add the mentor to the current user's mentor list
-			// 			firebase.database().ref('/users').child(firebase.auth().currentUser.uid).once('value').then(function(currUser) {
-			// 				updates['/mentor_list/' + currUser.val().mentor_list + '/' + mentor_id] = "";
-							
-			// 				console.log(updates);
-			// 				firebase.database().ref().update(updates);
-			// 			});
-			// 		});
-			// 	}
-			// });
+			}
 		});
 	});
 });
