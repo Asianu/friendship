@@ -1,5 +1,10 @@
 var strg = window.localStorage;
 
+const LEVEL_ONE = "Average";
+const LEVEL_TWO = "Skilled";
+const LEVEL_THREE = "Expert";
+const LEVEL_FOUR = "Veteran";
+
 // variable that will keep track of the number of activity rows in the page
 var activity_input = {
 	activity_id: 1,
@@ -33,13 +38,20 @@ $(document).ready(function() {
 	        	
         			// go through the activity list and add it to the update object
 		        	var tmp_activity = null;
+		        	var tmp_expertise = null;
+	        		var push_key = null;
+		        	var num_activities = 0;
 		        	$.each(input, function(key, form_item) {
-
 		        		// add the activity to the profile
 		        		if(form_item.name.toLowerCase().indexOf('activity') >= 0) {
 		        			if (form_item.value != null) {
+		        				// update variables
+		        				num_activites = num_activities + 1;
 		        				tmp_activity = form_item.value;
-		        				profile.activities[tmp_activity] = 0;
+
+		        				// update profile to be saved
+		        				push_key = firebase.database().ref('/profiles/' + profile_id).child('activities').push().key;
+		        				profile.activities[push_key] = {};
 		        			}
 		        			else {
 		        				tmp_activity = null;
@@ -50,11 +62,28 @@ $(document).ready(function() {
 		        		else if (form_item.name.toLowerCase().indexOf('expertise') >= 0) {
 		        			if (tmp_activity != null) {
 		        				if (form_item.value != null) {
-			        				profile.activities[tmp_activity] = form_item.value;
+		        					switch(form_item.value) {
+		        						case "1":
+		        							tmp_expertise = LEVEL_ONE;
+		        							break;
+		        						case "2":
+		        							tmp_expertise = LEVEL_TWO;
+		        							break;
+		        						case "3":
+		        							tmp_expertise = LEVEL_THREE;
+		        							break;
+		        						case "4":
+		        							tmp_expertise = LEVEL_FOUR;
+		        							break;
+		        					}
 			        			}
 			        			else {
-			        				delete profile.activities[tmp_activity];
+			        				delete profile.activities[push_key];
+			        				tmp_activity = null;
 			        			}
+		        			}
+		        			else {
+		        				tmp_activity = null;
 		        			}
 		        		}
 
@@ -62,8 +91,17 @@ $(document).ready(function() {
 		        		else {
 		        			profile[form_item.name] = form_item.value;
 		        		}
+
+		        		// each time activity_exp gets populated, add activity + exp combo to updates and reset
+		        		if (tmp_activity != null && tmp_expertise != null) {
+		        			profile.activities[push_key]['activity_name'] = tmp_activity;
+		        			profile.activities[push_key]['activity_exp'] = tmp_expertise;
+
+		        			tmp_activity = null;
+		        			tmp_expertise = null;
+		        			push_key = null;
+		        		}
 		        	});
-		        	console.log(Object.keys(profile.activities).length);
 		        	if (profile.activities.hasOwnProperty("")) {
 		        		if (Object.keys(profile.activities).length == 1) {
 			        		delete(profile.activities);
@@ -118,23 +156,26 @@ $(document).ready(function() {
 
 					if (user_profile.hasOwnProperty('activities')) {
 						// activity data to be filled
-						$.each(user_profile.activities, function(act, exp) {
+						$.each(user_profile.activities, function(key, activity_data) {
 
 							// update the activity_input so that addRow contains the proper information
-							activity_input['activity_name'] = act;
-							activity_input['activity_expertise'] = exp;
+							activity_input['activity_name'] = activity_data['activity_name'];
+							activity_input['activity_expertise'] = activity_data['activity_exp'];
 
 							addRow();
 
 							// selects the correct values
-							if (exp == 1) {
-								$('#adv-radio-' + (activity_input['activity_id']-1)).prop('checked', true);
+							if (activity_input['activity_expertise'] == LEVEL_ONE) {
+								$('#avg-radio-' + (activity_input['activity_id']-1)).prop('checked', true);
 							}
-							else if (exp == 2) {
+							else if (activity_input['activity_expertise'] == LEVEL_TWO) {
+								$('#ski-radio-' + (activity_input['activity_id']-1)).prop('checked', true);
+							}
+							else if (activity_input['activity_expertise'] == LEVEL_THREE) {
 								$('#exp-radio-' + (activity_input['activity_id']-1)).prop('checked', true);
 							}
-							else if (exp == 3) {
-								$('#mas-radio-' + (activity_input['activity_id']-1)).prop('checked', true);
+							else if (activity_input['activity_expertise'] == LEVEL_FOUR) {
+								$('#vet-radio-' + (activity_input['activity_id']-1)).prop('checked', true);
 							}
 
 							// reset activity_input's act and exp

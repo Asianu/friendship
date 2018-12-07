@@ -4,11 +4,12 @@ $(document).ready(function() {
 
 	// helper to render row blocks
 	Handlebars.registerHelper('if_eq', function(a, b, opts) {
-    if (a == b) {
-        return opts.fn(this);
-    } else {
-        return opts.inverse(this);
-    }
+	    if (a == b) {
+	        return opts.fn(this);
+	    } else {
+	        return opts.inverse(this);
+	    }
+	});
 
 	// if user is signed in, hide the empty-page-col element
 	if(strg.getItem('signin_token') == 'true') {
@@ -61,10 +62,7 @@ $(document).ready(function() {
 						});
 					});
 				}
-
 			});
 		});
-
 	});
-
 });
