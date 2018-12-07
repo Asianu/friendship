@@ -11,229 +11,250 @@ var activity_input = {
 	counter: 1
 };
 
-$(document).ready(function() {
+$("#unfilled_elements").hide();
+$(document).ready(function () {
 
-	window.addEventListener('load', function(e) {
-	    // Fetch all the forms we want to apply custom Bootstrap validation styles to
-	    var forms = document.getElementsByClassName('needs-validation');
-	    // Loop over them and prevent submission
-	    var validation = Array.prototype.filter.call(forms, function(form) {
-	      form.addEventListener("submit", function(event) {
-	        if (form.checkValidity() === false) {
-	          event.preventDefault();
-	          event.stopPropagation();
-	        }
-	        else {
-	        	event.preventDefault();
-	        	var input = $('form').serializeArray();
+			window.addEventListener('load', function (e) {
+				// Fetch all the forms we want to apply custom Bootstrap validation styles to
+				var forms = document.getElementsByClassName('needs-validation');
+				// Loop over them and prevent submission
+				var validation = Array.prototype.filter.call(forms, function (form) {
+					form.addEventListener("submit", function (event) {
+					var activity_entered = false;
+					var expertise_selected = false;
+						if (form.checkValidity() === false) {
+							event.preventDefault();
+							event.stopPropagation();
+						} else {
+							event.preventDefault();
+							var input = $('form').serializeArray();
 
+							var profile = {};
+							profile['uid'] = firebase.auth().currentUser.uid;
+							profile['activities'] = {};
 
-	        	var profile = {};
-	        	profile['uid'] = firebase.auth().currentUser.uid;
-	        	profile['activities'] = {};
+							var profile_id = null;
+							console.log("cp1");
+							firebase.database().ref('/users').child(firebase.auth().currentUser.uid).once('value').then(function (snapshot) {
+								console.log("cp2");
+								profile_id = snapshot.val().profile_id;
 
-	        	var profile_id = null;
-	        	firebase.database().ref('/users').child(firebase.auth().currentUser.uid).once('value').then(function(snapshot) {
-        			profile_id = snapshot.val().profile_id;
-	        	
-        			// go through the activity list and add it to the update object
-		        	var tmp_activity = null;
-		        	var tmp_expertise = null;
-	        		var push_key = null;
-		        	$.each(input, function(key, form_item) {
-		        		// add the activity to the profile
-		        		if(form_item.name.toLowerCase().indexOf('activity') >= 0) {
-		        			if (form_item.value != null && form_item.value != "") {
-		        				// update variables
-		        				tmp_activity = form_item.value;
+								// go through the activity list and add it to the update object
+								var tmp_activity = null;
+								var tmp_expertise = null;
+								var push_key = null;
+								$.each(input, function (key, form_item) {
+									console.log("cp3");
+									// add the activity to the profile
+									if (form_item.name.toLowerCase().indexOf('activity') >= 0) {
+										console.log("cp4");
+										if (form_item.value != null && form_item.value != "") {
+											// update variables
+											tmp_activity = form_item.value;
 
-		        				// update profile to be saved
-		        				push_key = firebase.database().ref('/profiles/' + profile_id).child('activities').push().key;
-		        				profile.activities[push_key] = {};
-		        			}
-		        			else {
-		        				tmp_activity = null;
-		        			}
-		        		}
+											// update profile to be saved
+											push_key = firebase.database().ref('/profiles/' + profile_id).child('activities').push().key;
+											profile.activities[push_key] = {};
+											activity_entered = true;
+										} else {
+											tmp_activity = null;
+										}
+									}
 
-		        		// add the expertise level of that activity to the profile if name exists
-		        		else if (form_item.name.toLowerCase().indexOf('expertise') >= 0) {
-		        			if (tmp_activity != null) {
-		        				if (form_item.value != null) {
-		        					switch(form_item.value) {
-		        						case "1":
-		        							tmp_expertise = LEVEL_ONE;
-		        							break;
-		        						case "2":
-		        							tmp_expertise = LEVEL_TWO;
-		        							break;
-		        						case "3":
-		        							tmp_expertise = LEVEL_THREE;
-		        							break;
-		        						case "4":
-		        							tmp_expertise = LEVEL_FOUR;
-		        							break;
-		        					}
-			        			}
-			        			else {
-			        				delete profile.activities[push_key];
-			        				tmp_activity = null;
-			        			}
-		        			}
-		        			else {
-		        				tmp_activity = null;
-		        			}
-		        		}
+									// add the expertise level of that activity to the profile if name exists
+									else if (form_item.name.toLowerCase().indexOf('expertise') >= 0) {
+										if (tmp_activity != null) {
+											if (form_item.value != null) {
+												expertise_selected = true;
+												switch (form_item.value) {
+													case "1":
+														tmp_expertise = LEVEL_ONE;
+														break;
+													case "2":
+														tmp_expertise = LEVEL_TWO;
+														break;
+													case "3":
+														tmp_expertise = LEVEL_THREE;
+														break;
+													case "4":
+														tmp_expertise = LEVEL_FOUR;
+														break;
+												}
+											} else {
+												delete profile.activities[push_key];
+												tmp_activity = null;
+											}
+										} else {
+											tmp_activity = null;
+										}
+									}
 
-		        		// add any other relevant data to the profile
-		        		else {
-		        			profile[form_item.name] = form_item.value;
-		        		}
+									// add any other relevant data to the profile
+									else {
+										profile[form_item.name] = form_item.value;
+									}
 
-		        		// each time activity_exp gets populated, add activity + exp combo to updates and reset
-		        		if (tmp_activity != null && tmp_expertise != null) {
-		        			profile.activities[push_key]['activity_name'] = tmp_activity;
-		        			profile.activities[push_key]['activity_exp'] = tmp_expertise;
+									// each time activity_exp gets populated, add activity + exp combo to updates and reset
+									if (tmp_activity != null && tmp_expertise != null) {
+										profile.activities[push_key]['activity_name'] = tmp_activity;
+										profile.activities[push_key]['activity_exp'] = tmp_expertise;
 
-		        			tmp_activity = null;
-		        			tmp_expertise = null;
-		        			push_key = null;
-		        		}
-		        	});
-		        	console.log(profile)
-		        	firebase.database().ref('/profiles/' + profile_id).set(profile);
-	        	});
-
-				$('#exampleModal').modal('show');
-
-		        event.preventDefault();
-		        event.stopPropagation();
-		        }
-		        form.classList.add('was-validated');
-	      	}, false);
-	    });
-	}, false);
-
-	// code to make sure that the page is loaded correctly with user's profile info
-	firebase.auth().onAuthStateChanged(function(user) {
-
-		// compile the Handlebar templates
-		var name_template = Handlebars.compile($("#form-name-value-template").html());
-		var text_area_template = Handlebars.compile($("#form-bio-area-template").html());
-
-		// name data to be filled
-		$(name_template(user)).insertAfter('#form-name-label');
-
-		// retrieving the user's info here
-		firebase.database().ref('/users/' + user.uid).once('value').then(function(user_info) {
-
-
-			// search for the user's profile here
-			firebase.database().ref('/profiles').once('value').then(function(profiles) {
-
-				var prof_id = user_info.val().profile_id
-				var user_profile = profiles.val()[prof_id];
-
-				console.log(user_profile);
-
-				// bio data to be filled
-				$("#text-area-group").append(text_area_template(user_profile));
-
-				// if the profile exists, populate the page via this code
-				if (user_profile != null) {
-
-					if (user_profile.hasOwnProperty('activities')) {
-						// activity data to be filled
-						$.each(user_profile.activities, function(key, activity_data) {
-
-							// update the activity_input so that addRow contains the proper information
-							activity_input['activity_name'] = activity_data['activity_name'];
-							activity_input['activity_expertise'] = activity_data['activity_exp'];
-
-							addRow();
-
-							// selects the correct values
-							if (activity_input['activity_expertise'] == LEVEL_ONE) {
-								$('#avg-radio-' + (activity_input['activity_id']-1)).prop('checked', true);
-							}
-							else if (activity_input['activity_expertise'] == LEVEL_TWO) {
-								$('#ski-radio-' + (activity_input['activity_id']-1)).prop('checked', true);
-							}
-							else if (activity_input['activity_expertise'] == LEVEL_THREE) {
-								$('#exp-radio-' + (activity_input['activity_id']-1)).prop('checked', true);
-							}
-							else if (activity_input['activity_expertise'] == LEVEL_FOUR) {
-								$('#vet-radio-' + (activity_input['activity_id']-1)).prop('checked', true);
+										tmp_activity = null;
+										tmp_expertise = null;
+										push_key = null;
+									}
+								});
+								console.log("line 107");
+								console.log(activity_entered);
+								console.log(expertise_selected);	
+								if (!activity_entered || !expertise_selected) {
+									$("#unfilled_elements").show();
+								} else {
+									$("unfilled_elements").hide();
+									$('#exampleModal').modal('show');
+								}
+								// if (profile.activities.["activity_name"] == "") {
+								// 	if (Object.keys(profile.activities).length == 1) {
+								// 		delete(profile.activities);
+								// 	}
+								// 	else {
+								// 		delete(profile.activities[""]);
+								// 	}
+								// }
+								console.log(profile)
+								firebase.database().ref('/profiles/' + profile_id).set(profile);
+							});
+							console.log("line 126");
+							console.log(activity_entered);
+							console.log(expertise_selected);
+							if (activity_entered && expertise_selected){
+								$('#exampleModal').modal('show');
 							}
 
-							// reset activity_input's act and exp
-							activity_input['activity_name'] = "";
-							activity_input['activity_expertise'] = "";
-						});
-					}
-				}
-				// otherwise default populate (add an empty activity template row)
-				else addRow();
+							event.preventDefault();
+							event.stopPropagation();
+						}
+						form.classList.add('was-validated');
+					}, false);
+				});
+			}, false);
+
+			// code to make sure that the page is loaded correctly with user's profile info
+			firebase.auth().onAuthStateChanged(function (user) {
+
+				// compile the Handlebar templates
+				var name_template = Handlebars.compile($("#form-name-value-template").html());
+				var text_area_template = Handlebars.compile($("#form-bio-area-template").html());
+
+				// name data to be filled
+				$(name_template(user)).insertAfter('#form-name-label');
+
+				// retrieving the user's info here
+				firebase.database().ref('/users/' + user.uid).once('value').then(function (user_info) {
+
+
+					// search for the user's profile here
+					firebase.database().ref('/profiles').once('value').then(function (profiles) {
+
+						var prof_id = user_info.val().profile_id
+						var user_profile = profiles.val()[prof_id];
+
+						console.log(user_profile);
+
+						// bio data to be filled
+						$("#text-area-group").append(text_area_template(user_profile));
+
+						// if the profile exists, populate the page via this code
+						if (profiles.val()[prof_id].hasOwnProperty('activities')) {
+
+							if (user_profile.hasOwnProperty('activities')) {
+								// activity data to be filled
+								$.each(user_profile.activities, function (key, activity_data) {
+
+									// update the activity_input so that addRow contains the proper information
+									activity_input['activity_name'] = activity_data['activity_name'];
+									activity_input['activity_expertise'] = activity_data['activity_exp'];
+
+									addRow();
+
+									// selects the correct values
+									if (activity_input['activity_expertise'] == LEVEL_ONE) {
+										$('#avg-radio-' + (activity_input['activity_id'] - 1)).prop('checked', true);
+									} else if (activity_input['activity_expertise'] == LEVEL_TWO) {
+										$('#ski-radio-' + (activity_input['activity_id'] - 1)).prop('checked', true);
+									} else if (activity_input['activity_expertise'] == LEVEL_THREE) {
+										$('#exp-radio-' + (activity_input['activity_id'] - 1)).prop('checked', true);
+									} else if (activity_input['activity_expertise'] == LEVEL_FOUR) {
+										$('#vet-radio-' + (activity_input['activity_id'] - 1)).prop('checked', true);
+									}
+
+									// reset activity_input's act and exp
+									activity_input['activity_name'] = "";
+									activity_input['activity_expertise'] = "";
+								});
+							}
+						}
+						// otherwise default populate (add an empty activity template row)
+						else addRow();
+					});
+				});
 			});
-		});
-	});
 
-	$(".retHomeBtn").click(function() {
-		window.location = $(this).find("a").attr("href");
-		return false;
-    });
-    
-    // helper function to add a new row to the activity list
-    function addRow() {
-		var activity_template = Handlebars.compile($("#form-activity-row-template").html());
+			$(".retHomeBtn").click(function () {
+				window.location = $(this).find("a").attr("href");
+				return false;
+			});
 
-    	// no more than 8 rows allowed
-        if (activity_input['counter'] >= 9){
-        	console.log("max number of rows added");
-            return;
-        }
+			// helper function to add a new row to the activity list
+			function addRow() {
+				var activity_template = Handlebars.compile($("#form-activity-row-template").html());
 
-        // remove add buttons from all existing rows first
-        var row_btn = $(".form-row").find("button");
-        row_btn.off();
-        row_btn.removeClass("add-btn").addClass("remove-btn");
-		row_btn.find("i").removeClass("fa-plus").addClass("fa-times");
+				// no more than 8 rows allowed
+				if (activity_input['counter'] >= 9) {
+					console.log("max number of rows added");
+					return;
+				}
 
-		// appends a new row
-		$('#activity-list').append(activity_template(activity_input));
+				// remove add buttons from all existing rows first
+				var row_btn = $(".form-row").find("button");
+				row_btn.off();
+				row_btn.removeClass("add-btn").addClass("remove-btn");
+				row_btn.find("i").removeClass("fa-plus").addClass("fa-times");
 
-		// if the row has reached maximum capacity, make sure last row has 'x'
-		if (activity_input['counter'] == 8) {
-        	var row_btn = $(".form-row").find("button");
-			row_btn.removeClass("add-btn").addClass("remove-btn");
-			row_btn.find("i").removeClass("fa-plus").addClass("fa-times");
-		}
+				// appends a new row
+				$('#activity-list').append(activity_template(activity_input));
 
-        activity_input['activity_id'] = activity_input['activity_id'] + 1;
-        activity_input['counter'] = activity_input['counter'] + 1;
+				// if the row has reached maximum capacity, make sure last row has 'x'
+				if (activity_input['counter'] == 8) {
+					var row_btn = $(".form-row").find("button");
+					row_btn.removeClass("add-btn").addClass("remove-btn");
+					row_btn.find("i").removeClass("fa-plus").addClass("fa-times");
+				}
 
-        $(".add-btn").on("click", addRow);
-        $(".remove-btn").on("click", deleteRow);
+				activity_input['activity_id'] = activity_input['activity_id'] + 1;
+				activity_input['counter'] = activity_input['counter'] + 1;
 
-        console.log(activity_input);
-    };
+				$(".add-btn").on("click", addRow);
+				$(".remove-btn").on("click", deleteRow);
 
-    // helper function to delete rows and reset button functionality
-    function deleteRow() {
-        $(this).parent().parent().remove();
-        activity_input['counter'] = activity_input['counter'] - 1;
+				console.log(activity_input);
+			};
 
-        // make the last button always be plus (unless max capacity reached)
-        $(".form-row").find("button").off();
+			// helper function to delete rows and reset button functionality
+			function deleteRow() {
+				$(this).parent().parent().remove();
+				activity_input['counter'] = activity_input['counter'] - 1;
 
-        var row_btn = $(".form-row:last").find("button");
-        console.log(row_btn.name);
-        row_btn.removeClass("remove-btn").addClass("add-btn");
-		row_btn.find("i").removeClass("fa-times").addClass("fa-plus");
-        $(".add-btn").on("click", addRow);
-        $(".remove-btn").on("click", deleteRow);
+				// make the last button always be plus (unless max capacity reached)
+				$(".form-row").find("button").off();
 
-        console.log(activity_input);
-    };
+				var row_btn = $(".form-row:last").find("button");
+				console.log(row_btn.name);
+				row_btn.removeClass("remove-btn").addClass("add-btn");
+				row_btn.find("i").removeClass("fa-times").addClass("fa-plus");
+				$(".add-btn").on("click", addRow);
+				$(".remove-btn").on("click", deleteRow);
 
+				console.log(activity_input);
+			};
 });
