@@ -87,30 +87,14 @@
                                                                 </tr>
                                                             </thead>
                                                             <tbody>
+                                                                {{#each activities}}
+                                                                {{#with this}}
                                                                 <tr>
-                                                                    <td>activity1</td>
-                                                                    <td>master</td>
+                                                                    <td>{{activity_name}}</td>
+                                                                    <td>{{activity_exp}}</td>
                                                                 </tr>
-                                                                <tr>
-                                                                    <td>activity2</td>
-                                                                    <td>expert</td>
-                                                                </tr>
-                                                                <tr>
-                                                                    <td>activity3</td>
-                                                                    <td>master</td>
-                                                                </tr>
-                                                                <tr>
-                                                                    <td>activity4</td>
-                                                                    <td>master</td>
-                                                                </tr>
-                                                                <tr>
-                                                                    <td>activity5</td>
-                                                                    <td>master</td>
-                                                                </tr>
-                                                                <tr>
-                                                                    <td>activity6</td>
-                                                                    <td>master</td>
-                                                                </tr>
+                                                                {{/with}}
+                                                                {{/each}}
                                                             </tbody>
                                                         </table>
                                                     </div>

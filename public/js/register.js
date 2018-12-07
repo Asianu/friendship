@@ -1,5 +1,10 @@
 var strg = window.localStorage;
 
+const LEVEL_ONE = "Average";
+const LEVEL_TWO = "Skilled";
+const LEVEL_THREE = "Expert";
+const LEVEL_FOUR = "Veteran";
+
 // variable that will keep track of the number of activity rows in the page
 var activity_input = {
 	activity_id: 1,
@@ -57,7 +62,20 @@ $(document).ready(function() {
 		        		else if (form_item.name.toLowerCase().indexOf('expertise') >= 0) {
 		        			if (tmp_activity != null) {
 		        				if (form_item.value != null) {
-		        					tmp_expertise = form_item.value;
+		        					switch(form_item.value) {
+		        						case "1":
+		        							tmp_expertise = LEVEL_ONE;
+		        							break;
+		        						case "2":
+		        							tmp_expertise = LEVEL_TWO;
+		        							break;
+		        						case "3":
+		        							tmp_expertise = LEVEL_THREE;
+		        							break;
+		        						case "4":
+		        							tmp_expertise = LEVEL_FOUR;
+		        							break;
+		        					}
 			        			}
 			        			else {
 			        				delete profile.activities[push_key];

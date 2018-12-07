@@ -2,6 +2,14 @@ var strg = window.localStorage;
 
 $(document).ready(function() {
 
+	// helper to render row blocks
+	Handlebars.registerHelper('if_eq', function(a, b, opts) {
+    if (a == b) {
+        return opts.fn(this);
+    } else {
+        return opts.inverse(this);
+    }
+
 	// if user is signed in, hide the empty-page-col element
 	if(strg.getItem('signin_token') == 'true') {
 		$("#empty-page-col").hide();
@@ -19,6 +27,7 @@ $(document).ready(function() {
 			// to load the profile pictures
 			profile_info.photoURL = snapshot.val().photoURL;
 
+			console.log(profile_info);
 
 			var template = Handlebars.compile($("#find-card-template").html());
 			$(".card-deck").append(template(profile_info));
@@ -57,8 +66,5 @@ $(document).ready(function() {
 		});
 
 	});
-
-
-
 
 });
