@@ -7,16 +7,17 @@ $(document).ready(function() {
 		$("#profile_header").append(template(user));
 
 		// update the table entries and remove empty-table-row
-		firebase.database().ref('/users').child(user.uid).once('value').then(function(snapshot) {
-			var mentor_list_id = snapshot.val().mentor_list;
-			var mentee_list_id = snapshot.val().mentee_list;
+		firebase.database().ref('/users').child(user.uid).once('value').then(function(user) {
+			var mentor_list_id = user.val().mentor_list;
+			var mentee_list_id = user.val().mentee_list;
 
 			var mentor_template = Handlebars.compile($("#mentor-table-template").html());
 			firebase.database().ref('/mentor_list').child(mentor_list_id).once('value').then(function(mentors) {
 				if(mentors.val() != null) {
 
-					$.each(mentors.val(), function(key) {
-						firebase.database().ref('/mentors').child(key).once('value').then(function(mentor) {
+					$.each(mentors.val(), function(key, profile_id) {
+						firebase.database().ref('/profiles').child(profile_id).once('value').then(function(mentor) {
+							console.log(mentor.val());
 							$("#mentor-table-body").append(mentor_template(mentor.val()));
 						});
 						$("#empty-mentor-row").hide();

@@ -67,17 +67,27 @@
                     <table id="mentor-table" class="table table-striped table-hover">
                         <thead>
                             <th>Name</th>
-                            <th>Activity</th>
-                            <th>Specific Activity</th>
+                            <th>Activities</th>
                             <th>Level of Expertise</th>
                         </thead>
                         <tbody id="mentor-table-body">
                             <script id="mentor-table-template" type="text/x-handlebars-template">
                                 <tr class="clickable-row">
                                     <td>{{name}}</td>
-                                    <td>{{activity}}</td>
-                                    <td>{{specific-activity}}</td>
-                                    <td>{{expertise}}</td>
+                                    <td>
+                                        <ul class="list-group">
+                                        {{#each activities}}
+                                            <li class="list-group-item">{{activity_name}}</li>
+                                        {{/each}}
+                                        </ul>
+                                    </td>
+                                    <td>
+                                        <ul class="list-group">
+                                        {{#each activities}}
+                                            <li class="list-group-item">{{activity_exp}}</li>
+                                        {{/each}}
+                                        </ul>
+                                    </td>
                                 </tr>
                             </script>
                             <tr id="empty-mentor-row">
